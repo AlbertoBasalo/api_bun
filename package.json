@@ -1,0 +1,21 @@
+{
+  "name": "api_beta",
+  "version": "1.0.0",
+  "description": "An API for the beta version of any app",
+  "author": {
+    "name": "Alberto Basalo",
+    "url": "https://albertobasalo.dev"
+  },
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "dev": "bun --watch run src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
