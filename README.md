@@ -19,7 +19,7 @@ bun run start
 
 ```bash
 # Install local bun
-npm run ibun
+npm i
 # Run app
 npm start
 ```
