@@ -14,6 +14,9 @@
   },
   "description": "An API for the beta version of any app",
   "scripts": {
+    "bun": "bun",
+    "ibun": "npm i bun",
+    "nstart": "node src/index.ts",
     "start": "bun run src/index.ts",
     "dev": "bun --watch run src/index.ts"
   },
