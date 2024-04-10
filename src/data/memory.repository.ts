@@ -7,7 +7,7 @@ async function readCollection(collectionName: string): Promise<unknown[]> {
   if (!db[collectionName]) {
     db[collectionName] = [];
   }
-  if (db[collectionName].length === 0) {
+  if (db[collectionName].length === 0 && Bun.env.SEED_DATA === "true") {
     const fileContent = await readJson(collectionName);
     db[collectionName] = fileContent;
   }
@@ -16,7 +16,9 @@ async function readCollection(collectionName: string): Promise<unknown[]> {
 
 async function writeCollection(collectionName: string, data: unknown[]) {
   db[collectionName] = [...data];
-  await writeJson(collectionName, data);
+  if (Bun.env.PERSISTENCE === "true") {
+    await writeJson(collectionName, data);
+  }
 }
 
 /**

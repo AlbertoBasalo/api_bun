@@ -5,9 +5,9 @@
  */
 export async function readJson(collectionName: string): Promise<unknown[]> {
   try {
+    console.log("readJson", collectionName);
     return await Bun.file(getPath(collectionName)).json();
-  }
-  catch (e) {
+  } catch (e) {
     await writeJson(collectionName, []);
     return [];
   }

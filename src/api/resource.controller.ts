@@ -6,9 +6,8 @@ export async function getResource(requestInfo: RequestInfo): Promise<Response> {
     const selectedData = await selectById(requestInfo.resource, requestInfo.id);
     if (selectedData.result) {
       return new Response(JSON.stringify(selectedData.result), { status: 200 });
-    }
-    if (selectedData.error) {
-      return new Response(selectedData.error, { status: 404 });
+    } else {
+      return new Response("Not Found", { status: 404 });
     }
   }
   if (requestInfo.key && requestInfo.value) {
