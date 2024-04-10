@@ -7,6 +7,7 @@ const server = Bun.serve({
     try {
       return handleRequest(req);
     } catch (error: any) {
+      console.error(error);
       return new Response(error.message, { status: 500 });
     }
   },
@@ -17,16 +18,16 @@ console.log(`Listening on ${server.url}`);
 async function handleRequest(request: Request) {
   let requestInfoOption = await extractInfo(request);
   if (!requestInfoOption.result || requestInfoOption.error) {
+    console.error(requestInfoOption.error);
     return new Response(requestInfoOption.error, { status: 500 });
   }
   const requestInfo = requestInfoOption.result;
   switch (requestInfo.method) {
     case "GET":
-      const path = new URL(request.url).pathname;
-      if (path === "/") {
+      if (requestInfo.endPoint === "/") {
         return new Response("Hello, World!");
       }
-      if (path === "/favicon.ico") {
+      if (requestInfo.endPoint === "/favicon.ico") {
         return new Response(null, { status: 204 });
       }
       return await getResource(requestInfo);
