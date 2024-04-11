@@ -1,4 +1,4 @@
-import type { Result } from "../util/result.type";
+import type { Result } from "../model/result.type";
 /**
  * Structured information extracted from the request object
  */

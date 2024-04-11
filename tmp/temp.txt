@@ -1,0 +1,13 @@
+{
+  "marca":"Citroen",
+  "modelo": "Saxo",
+  "año":1996,
+  "precio": 10000
+}
+
+{
+  "marca":"Peugeot",
+  "modelo": "307 SW",
+  "año":2002,
+  "precio": 18000
+}

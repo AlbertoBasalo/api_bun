@@ -1,9 +1,10 @@
-import type { Result } from "../util/result.type";
+import type { Item, NewItem } from "../model/item.type";
+import type { Result } from "../model/result.type";
 import { readJson, writeJson } from "./file.repository";
 // A dictionary of collections
-const db: Record<string, unknown[]> = {};
+const db: Record<string, Item[]> = {};
 
-async function readCollection(collectionName: string): Promise<unknown[]> {
+async function readCollection(collectionName: string): Promise<Item[]> {
   if (!db[collectionName]) {
     db[collectionName] = [];
   }
@@ -14,7 +15,7 @@ async function readCollection(collectionName: string): Promise<unknown[]> {
   return [...db[collectionName]];
 }
 
-async function writeCollection(collectionName: string, data: unknown[]) {
+async function writeCollection(collectionName: string, data: Item[]) {
   db[collectionName] = [...data];
   if (Bun.env.STORAGE === "file") {
     await writeJson(collectionName, data);
@@ -26,7 +27,7 @@ async function writeCollection(collectionName: string, data: unknown[]) {
  * @param collection Collection name
  * @returns The array of items in the collection
  */
-export async function selectAll(collection: string): Promise<Result<unknown[]>> {
+export async function selectAll(collection: string): Promise<Result<Item[]>> {
   const result = await readCollection(collection);
   return { result };
 }
@@ -38,7 +39,7 @@ export async function selectAll(collection: string): Promise<Result<unknown[]>> 
  * @param value The value to search for
  * @returns The items that match the key value pair or an empty array if none are found
  */
-export async function selectByKeyValue(collection: string, key: string, value: string): Promise<Result<unknown[]>> {
+export async function selectByKeyValue(collection: string, key: string, value: string): Promise<Result<Item[]>> {
   const selectedData = await selectAll(collection);
   if (selectedData.result) {
     const result = selectedData.result.filter((item: any) => item[key] == value);
@@ -53,7 +54,7 @@ export async function selectByKeyValue(collection: string, key: string, value: s
  * @param id The id of the item to retrieve
  * @returns The item or null if the item is not found
  */
-export async function selectById(collection: string, id: string): Promise<Result<unknown>> {
+export async function selectById(collection: string, id: string): Promise<Result<Item>> {
   const selectedData = await selectByKeyValue(collection, "id", id);
   if (selectedData.result && selectedData.result.length > 0) {
     const result = selectedData.result[0];
@@ -68,11 +69,11 @@ export async function selectById(collection: string, id: string): Promise<Result
  * @param content The content to search for
  * @returns The items that match the content or an empty array if none are found
  */
-export async function selectByContent(collection: string, content: string): Promise<Result<unknown[]>> {
+export async function selectByContent(collection: string, content: string): Promise<Result<Item[]>> {
   const selectedData = await selectAll(collection);
-  let result: unknown[] = [];
+  let result: Item[] = [];
   if (selectedData.result) {
-    result = selectedData.result.filter((item: any) => {
+    result = selectedData.result.filter((item: Item) => {
       const values = Object.values(item);
       return values.some((value: any) => value.toString().includes(content));
     });
@@ -83,25 +84,24 @@ export async function selectByContent(collection: string, content: string): Prom
 /**
  * Insert an item into a collection
  * @param collection Collection name
- * @param item The item to insert
+ * @param newItem The new item to insert
  * @returns The item that was inserted
  */
-export async function insert(collection: string, item: any): Promise<Result<unknown>> {
-  if (item.hasOwnProperty("id")) {
-    const id = item.id;
+export async function insert(collection: string, newItem: NewItem): Promise<Result<Item>> {
+  let id = newItem.id;
+  if (id) {
     const existingItem = await selectById(collection, id);
     if (existingItem.result) {
       return { error: `Item ${id} already exists on ${collection}` };
     }
   } else {
-    item.id = Math.random().toString(36).substring(2, 9);
+    id = Math.random().toString(36).substring(2, 9);
   }
-  item.createdAt = new Date().toISOString();
-  item.updatedAt = new Date().toISOString();
+  const item: Item = { ...newItem, id, createdAt: new Date(), updatedAt: null };
   const collectionData = await readCollection(collection);
   collectionData.push(item);
   await writeCollection(collection, collectionData);
-  const result = item as unknown;
+  const result = item;
   return { result };
 }
 
@@ -112,14 +112,14 @@ export async function insert(collection: string, item: any): Promise<Result<unkn
  * @param item The item data to update
  * @returns The updated item or null if the item was not found
  */
-export async function update(collection: string, id: string, item: any): Promise<Result<unknown>> {
+export async function update(collection: string, id: string, item: Item): Promise<Result<Item>> {
   const collectionData = await readCollection(collection);
-  const index = collectionData.findIndex((i: any) => i.id == id);
+  const index = collectionData.findIndex((i: Item) => i.id === id);
   if (index === -1) {
     return { error: `Item ${id} not found on ${collection}` };
   }
-  const existingItem = collectionData[index] as any;
-  const updatedItem = { ...existingItem, ...item, updatedAt: new Date().toISOString() };
+  const existingItem: Item = collectionData[index];
+  const updatedItem = { ...existingItem, ...item, updatedAt: new Date() };
   collectionData[index] = updatedItem;
   await writeCollection(collection, collectionData);
   const result = collectionData[index];
@@ -132,13 +132,12 @@ export async function update(collection: string, id: string, item: any): Promise
  * @param id The id of the item to delete
  * @returns The deleted item or null if the item was not found
  */
-export async function deleteById(collection: string, id: string): Promise<Result<unknown>> {
+export async function deleteById(collection: string, id: string): Promise<Result<Item[]>> {
   const collectionData = await readCollection(collection);
   const index = collectionData.findIndex((i: any) => i.id == id);
   if (index === -1) {
-    return { error: `Item ${id} not found on ${collection}` };
+    collectionData.splice(index, 1);
+    await writeCollection(collection, collectionData);
   }
-  collectionData.splice(index, 1);
-  await writeCollection(collection, collectionData);
-  return { result: { id } };
+  return { result: [] };
 }
