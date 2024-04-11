@@ -8,7 +8,6 @@ export async function readJson(collectionName: string): Promise<unknown[]> {
     console.log("readJson", collectionName);
     return await Bun.file(getPath(collectionName)).json();
   } catch (e) {
-    await writeJson(collectionName, []);
     return [];
   }
 }

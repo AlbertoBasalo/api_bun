@@ -7,7 +7,7 @@ async function readCollection(collectionName: string): Promise<unknown[]> {
   if (!db[collectionName]) {
     db[collectionName] = [];
   }
-  if (db[collectionName].length === 0 && Bun.env.SEED_DATA === "true") {
+  if (db[collectionName].length === 0) {
     const fileContent = await readJson(collectionName);
     db[collectionName] = fileContent;
   }
@@ -16,7 +16,7 @@ async function readCollection(collectionName: string): Promise<unknown[]> {
 
 async function writeCollection(collectionName: string, data: unknown[]) {
   db[collectionName] = [...data];
-  if (Bun.env.PERSISTENCE === "true") {
+  if (Bun.env.STORAGE === "file") {
     await writeJson(collectionName, data);
   }
 }
@@ -90,13 +90,14 @@ export async function insert(collection: string, item: any): Promise<Result<unkn
   if (item.hasOwnProperty("id")) {
     const id = item.id;
     const existingItem = await selectById(collection, id);
-    if (existingItem) {
+    if (existingItem.result) {
       return { error: `Item ${id} already exists on ${collection}` };
     }
   } else {
     item.id = Math.random().toString(36).substring(2, 9);
   }
   item.createdAt = new Date().toISOString();
+  item.updatedAt = new Date().toISOString();
   const collectionData = await readCollection(collection);
   collectionData.push(item);
   await writeCollection(collection, collectionData);
@@ -117,8 +118,9 @@ export async function update(collection: string, id: string, item: any): Promise
   if (index === -1) {
     return { error: `Item ${id} not found on ${collection}` };
   }
-  item.updatedAt = new Date().toISOString();
-  collectionData[index] = item;
+  const existingItem = collectionData[index] as any;
+  const updatedItem = { ...existingItem, ...item, updatedAt: new Date().toISOString() };
+  collectionData[index] = updatedItem;
   await writeCollection(collection, collectionData);
   const result = collectionData[index];
   return { result };

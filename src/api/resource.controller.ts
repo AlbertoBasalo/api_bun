@@ -33,7 +33,7 @@ export async function getResource(requestInfo: RequestInfo): Promise<Response> {
 export async function postResource(requestInfo: RequestInfo): Promise<Response> {
   const insertedData = await insert(requestInfo.resource, requestInfo.body);
   if (insertedData.result) {
-    return new Response(JSON.stringify(insertedData), { status: 201 });
+    return new Response(JSON.stringify(insertedData.result), { status: 201 });
   }
   if (insertedData.error) {
     return new Response(insertedData.error, { status: 409 });
@@ -42,9 +42,12 @@ export async function postResource(requestInfo: RequestInfo): Promise<Response> 
 }
 
 export async function putResource(requestInfo: RequestInfo): Promise<Response> {
+  if (!requestInfo.id) {
+    requestInfo.id = requestInfo.body.id;
+  }
   const updatedData = await update(requestInfo.resource, requestInfo.id, requestInfo.body);
   if (updatedData.result) {
-    return new Response(JSON.stringify(updatedData), { status: 200 });
+    return new Response(JSON.stringify(updatedData.result), { status: 200 });
   }
   if (updatedData.error) {
     return new Response(updatedData.error, { status: 404 });
@@ -55,7 +58,7 @@ export async function putResource(requestInfo: RequestInfo): Promise<Response> {
 export async function deleteResource(requestInfo: RequestInfo): Promise<Response> {
   const deletedData = await deleteById(requestInfo.resource, requestInfo.id);
   if (deletedData.result) {
-    return new Response(JSON.stringify(deletedData), { status: 200 });
+    return new Response(JSON.stringify(deletedData.result), { status: 200 });
   }
   if (deletedData.error) {
     return new Response(deletedData.error, { status: 204 });
