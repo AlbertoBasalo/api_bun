@@ -17,11 +17,13 @@ bun i
 bun run dev
 ```
 
-> [!TIP] > _Bun_ installation is easy and highly recommended.
+## 2 🤷‍♂️ - If not a _bun_ user, then fallback to npm
+
+> [!TIP]
+>
+> _Bun_ installation is easy and highly recommended.
 >
 > https://bun.sh/docs/cli/install
-
-## 2 🤷‍♂️ - If not a _bun_ user, then fallback to npm
 
 ```bash
 # 🥖 want to try this:
