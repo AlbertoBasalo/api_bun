@@ -8,12 +8,12 @@ This project was created using [_bun_](https://bun.sh) v1.1.3.
 ## 1 - If you have already _bun_ in your system
 
 ```bash
-# To just start the API server.
+# Just want this thing running.
 bun run start
-# To start in dev mode
-# install the types and then
+# To start in dev mode:
+# install the types...
 bun i
-# run watching changes.
+# and then run watching changes.
 bun run dev
 ```
 
@@ -24,10 +24,10 @@ bun run dev
 > https://bun.sh/docs/cli/install
 
 ```bash
-# Just want this thing running
-# install local bun and then
+# Just want this thing running:
+# install local bun...
 npm run bun:i
-# start the API server with npm
+# and then start the API server with npm
 npm start
 ```
 
