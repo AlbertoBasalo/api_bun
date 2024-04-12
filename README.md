@@ -1,8 +1,8 @@
-# api_beta
+# API bun
 
 > A generic in-memory/file-based CRUD API server for rapid prototyping, testing, workshops...
 
-This project was created using `bun init` in bun v1.1.3. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+This project was created using `bun init` in bun v1.1.3. [Bun](https://bun.sh) .
 
 > [!NOTE]
 > Bun installation is highly recommended>
