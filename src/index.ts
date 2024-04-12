@@ -1,5 +1,6 @@
-import { extractInfo } from "./api/request.info";
 import { deleteResource, getResource, postResource, putResource } from "./api/resource.controller";
+import { extractInfo } from "./model/request.info";
+import { getPage } from "./web/web.controller";
 
 const server = Bun.serve({
   port: 3000,
@@ -16,20 +17,14 @@ const server = Bun.serve({
 console.log(`Listening on ${server.url}`);
 
 async function handleRequest(request: Request) {
-  let requestInfoOption = await extractInfo(request);
-  if (!requestInfoOption.result || requestInfoOption.error) {
-    console.error(requestInfoOption.error);
-    return new Response(requestInfoOption.error, { status: 500 });
+  const requestInfo = await extractInfo(request);
+  if (!requestInfo) {
+    return new Response("Bad request", { status: 400 });
   }
-  const requestInfo = requestInfoOption.result;
   switch (requestInfo.method) {
     case "GET":
-      if (requestInfo.endPoint === "/") {
-        return new Response("Hello, World!");
-      }
-      if (requestInfo.endPoint === "/favicon.ico") {
-        return new Response(null, { status: 204 });
-      }
+      const page = await getPage(requestInfo);
+      if (page) return page;
       return await getResource(requestInfo);
     case "POST":
       return await postResource(requestInfo);

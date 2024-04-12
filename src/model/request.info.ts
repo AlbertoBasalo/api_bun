@@ -1,4 +1,3 @@
-import type { Result } from "../model/result.type";
 /**
  * Structured information extracted from the request object
  */
@@ -17,7 +16,7 @@ export type RequestInfo = {
  * @param request Request object
  * @returns Structured information extracted from the request object
  */
-export async function extractInfo(request: Request): Promise<Result<RequestInfo>> {
+export async function extractInfo(request: Request): Promise<RequestInfo> {
   const method = request.method;
   const endPoint = new URL(request.url).pathname;
   const resource = endPoint.split("/")[1] || "";
@@ -31,5 +30,5 @@ export async function extractInfo(request: Request): Promise<Result<RequestInfo>
   }
   const result = { method, endPoint, resource, id, key, value, body };
   console.log(JSON.stringify(result));
-  return { result };
+  return result;
 }
