@@ -112,9 +112,6 @@ const db: Record<string, Item[]> = {};
  */
 async function readCollection(collectionName: string): Promise<Item[]> {
   if (!db[collectionName]) {
-    db[collectionName] = [];
-  }
-  if (db[collectionName].length === 0) {
     const fileContent = await readJson(collectionName);
     db[collectionName] = fileContent;
   }
@@ -123,13 +120,10 @@ async function readCollection(collectionName: string): Promise<Item[]> {
 
 /**
  * Write a collection to memory
- * @description If env.STORAGE is set to "file", also writes to file system
  * @param collectionName The name of the collection
  * @param data The data to write to the collection
  */
 async function writeCollection(collectionName: string, data: Item[]) {
   db[collectionName] = [...data];
-  if (Bun.env.STORAGE === "file") {
-    await writeJson(collectionName, data);
-  }
+  await writeJson(collectionName, data);
 }

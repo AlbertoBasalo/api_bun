@@ -1,4 +1,4 @@
-import type { RequestInfo } from "../model/request.info";
+import type { RequestInfo } from "../model/request_info.type";
 import { del, getAll, getById, getByKeyValue, post, put } from "./resource.service";
 
 // API Controller

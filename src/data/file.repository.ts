@@ -1,4 +1,6 @@
 import type { Item } from "../model/item.type";
+import { API_BUN_CONFIG } from "../util/api_bun.config";
+import { logError, logInfo, logTrace, logWarning } from "../util/log.service";
 
 /**
  * Read a JSON file from the db folder
@@ -7,9 +9,15 @@ import type { Item } from "../model/item.type";
  */
 export async function readJson(collectionName: string): Promise<Item[]> {
   try {
-    console.log("readJson", collectionName);
-    return await Bun.file(getPath(collectionName)).json();
+    const path = getPath(collectionName);
+    logTrace("Reading seed data", path);
+    return await Bun.file(path).json();
   } catch (e) {
+    logInfo("No seed data available. Starting empty collection.", collectionName);
+    if (API_BUN_CONFIG.STORAGE === "file") {
+      logWarning("Creating file storage", collectionName);
+      writeJson(collectionName, []);
+    }
     return [];
   }
 }
@@ -20,11 +28,12 @@ export async function readJson(collectionName: string): Promise<Item[]> {
  * @param data The data to write to the file
  */
 export async function writeJson(collectionName: string, data: Item[]): Promise<void> {
+  if (API_BUN_CONFIG.STORAGE !== "file") return;
   try {
     const content = JSON.stringify(data, null, 2);
     await Bun.write(getPath(collectionName), content);
   } catch (e) {
-    console.error(e);
+    logError("Error writing to file. Using only memory.", e);
   }
 }
 

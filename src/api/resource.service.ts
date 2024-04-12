@@ -3,7 +3,7 @@
 
 // ToDo: Implement user authorization
 
-import { deleteById, insert, selectAll, selectByKeyValue } from "../data/memory.repository";
+import { deleteById, insert, selectAll, selectByKeyValue, update } from "../data/memory.repository";
 import type { Item, NewItem } from "../model/item.type";
 import type { Result } from "../model/result.type";
 
@@ -49,8 +49,10 @@ export async function put(collection: string, id: string, item: Item): Promise<R
   }
   const updatedAt = new Date();
   const updatedItem = { ...existingItem.result, ...item, updatedAt };
-  const result = await insert(collection, updatedItem);
-  return { result };
+  const updated = await update(collection, id, updatedItem);
+  const result = updated ? updatedItem : undefined;
+  const error = updated ? undefined : `Item ${id} not updated on ${collection}`;
+  return { result, error };
 }
 
 export async function del(collection: string, id: string): Promise<void> {

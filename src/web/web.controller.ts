@@ -1,4 +1,4 @@
-import type { RequestInfo } from "../model/request.info";
+import type { RequestInfo } from "../model/request_info.type";
 
 export async function getPage(requestInfo: RequestInfo): Promise<Response | null> {
   if (requestInfo.endPoint === "/") {

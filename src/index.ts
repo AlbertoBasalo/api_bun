@@ -1,5 +1,7 @@
 import { deleteResource, getResource, postResource, putResource } from "./api/resource.controller";
-import { extractInfo } from "./model/request.info";
+import { extractInfo } from "./model/request_info.type";
+import { API_BUN_CONFIG } from "./util/api_bun.config";
+import { logError, logInfo } from "./util/log.service";
 import { getPage } from "./web/web.controller";
 
 const server = Bun.serve({
@@ -8,13 +10,13 @@ const server = Bun.serve({
     try {
       return handleRequest(req);
     } catch (error: any) {
-      console.error(error);
+      logError("Error processing request", error);
       return new Response(error.message, { status: 500 });
     }
   },
 });
 
-console.log(`Listening on ${server.url}`);
+logInfo(`Listening on ${server.url}`, API_BUN_CONFIG);
 
 async function handleRequest(request: Request) {
   const requestInfo = await extractInfo(request);
