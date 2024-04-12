@@ -52,6 +52,7 @@ npm start
 - [ ] _Pagination_
 - [ ] _Put and patch distinction_
 - [ ] _Allow to configure the primary key property name_
+- [ ] _Allow to configure the storage path_
 
 ## Environment configuration
 
