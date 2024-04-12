@@ -36,8 +36,8 @@ npm start
 ## Features
 
 - [x] Publishes a generic CRUD API
-- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for get all or post.
-- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}/{id}` for get one, put or delete.
+- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.
+- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}/{id}` for GET one, PUT or DELETE.
 - [x] Endpoint routes in the form `http://localhost:3000/{collection_name}?key={key}&value={value}` for get by key/value.
 - [x] Feeds any resource with seed data from `db/{collection_name}.json`.
 - [x] If no file found, then starts with an empty array.
@@ -46,7 +46,7 @@ npm start
 - [x] If `STORAGE=file` configuration, then persist changes (POST,PUT, DELETE) to file system.
 - [x] PUT works like a PATCH, only updating the fields supplied.
 - [x] Logs to console with different levels (info, none, verbose).
-- [ ] Security and authorization
+- [ ] _Security and authorization_
 
 ## Environment configuration
 
