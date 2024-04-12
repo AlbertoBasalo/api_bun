@@ -2,28 +2,30 @@
 
 > [!NOTE]
 > A generic JSON in-memory/file-based CRUD API server for rapid prototyping, testing, workshops...
+> 
+> This project was created using [_bun_](https://bun.sh) v1.1.3.
 
-This project was created using [_bun_](https://bun.sh) v1.1.3.
 
-## 1 - If you have already _bun_ in your system
+
+## 1 🧑‍🍳 - If you have already _bun_ in your system
 
 ```bash
-# Just want this thing running.
+# 🥖 want to try this!
 bun run start
-# To start in dev mode:
+# 🧑‍🍳 To start in dev mode:
 # install the types...
 bun i
-# and then run watching changes.
+# and then run-watching changes.
 bun run dev
 ```
-
-## 2 - If not a _bun_ user, then fallback to npm
-
-> [!IMPORTANT] > _Bun_ installation is easy and highly recommended.
+> [!IMPORTANT]
+> _Bun_ installation is easy and highly recommended.
+> 
 > https://bun.sh/docs/cli/install
+## 2 🤷‍♂️ - If not a _bun_ user, then fallback to npm
 
 ```bash
-# Just want this thing running:
+# 🥖 want to try this:
 # install local bun...
 npm run bun:i
 # and then start the API server with npm
