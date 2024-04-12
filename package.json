@@ -1,5 +1,6 @@
 {
-  "name": "api_beta",
+  "name": "api_bun",
+  "description": "A fast fake API for developers and teachers... made with bun",
   "version": "1.0.0",
   "author": {
     "name": "Alberto Basalo",
@@ -18,7 +19,6 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "description": "An API for the beta version of any app",
   "scripts": {
     "bun": "bun",
     "bun:i": "npm install bun --save=false",
