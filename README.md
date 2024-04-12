@@ -50,7 +50,7 @@ npm start
 
 Runtime configuration taken from from `.env` file, command line or defaults.
 
-```json
+```ts
 export type ApiBunConfig = {
   /** Log level (info,none,verbose) */
   LOG_LEVEL: LogLevels;
@@ -63,7 +63,7 @@ export type ApiBunConfig = {
 > [!NOTE]
 > Sample `.env` with default values
 
-```txt
+```toml
 STORAGE=memory
 LOG_LEVEL=info
 ```
