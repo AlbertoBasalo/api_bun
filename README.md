@@ -19,8 +19,7 @@ bun run dev
 
 ## 2 - If not a _bun_ user, then fallback to npm
 
-> [!TIP]
-> Bun installation is easy and highly recommended
+> [!IMPORTANT] > _Bun_ installation is easy and highly recommended.
 > https://bun.sh/docs/cli/install
 
 ```bash
@@ -60,7 +59,7 @@ export type ApiBunConfig = {
 };
 ```
 
-> [!NOTE]
+> [!TIP]
 > Sample `.env` with default values
 
 ```txt
