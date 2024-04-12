@@ -37,16 +37,21 @@ npm start
 
 - [x] Publishes a generic CRUD API
 - [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.
-- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}/{id}` for GET one, PUT or DELETE.
-- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}?key={key}&value={value}` for get by key/value.
-- [x] Feeds any resource with seed data from `db/{collection_name}.json`.
+- [x] Add the _id_ `http://localhost:3000/{collection_name}/{id}` for GET one, PUT or DELETE.
+- [x] Add _queryParams_ `http://localhost:3000/{collection_name}?key={key}&value={value}` for GET by key/value.
+- [x] Always try to feeds any resource with seed data from `db/{collection_name}.json`.
 - [x] If no file found, then starts with an empty array.
-- [x] Adds a random `id` to any item if not supplied during POST.
+- [x] Uses _id_ as a primary key to identify items.
+- [x] If not supplied during POST, then generates a new random _id_.
 - [x] Configuration with `.env` file or command line (see below).
-- [x] If `STORAGE=file` configuration, then persist changes (POST,PUT, DELETE) to file system.
+- [x] If configured with `STORAGE=file`, then persist changes (POST,PUT, DELETE) to file system.
 - [x] PUT works like a PATCH, only updating the fields supplied.
-- [x] Logs to console with different levels (info, none, verbose).
+- [x] Logs to console with different levels (_info, none, verbose_).
 - [ ] _Security and authorization_
+- [ ] _Sorted results_
+- [ ] _Pagination_
+- [ ] _Put and patch distinction_
+- [ ] _Allow to configure the primary key property name_
 
 ## Environment configuration
 
