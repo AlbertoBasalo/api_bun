@@ -63,7 +63,7 @@ export type ApiBunConfig = {
 > [!NOTE]
 > Sample `.env` with default values
 
-```toml
+```txt
 STORAGE=memory
 LOG_LEVEL=info
 ```
