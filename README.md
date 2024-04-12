@@ -17,7 +17,7 @@ bun i
 bun run dev
 ```
 
-> [!IMPORTANT] > _Bun_ installation is easy and highly recommended.
+> [!TIP] > _Bun_ installation is easy and highly recommended.
 >
 > https://bun.sh/docs/cli/install
 
