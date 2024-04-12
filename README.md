@@ -1,28 +1,77 @@
 # API bun
 
-> A generic in-memory/file-based CRUD API server for rapid prototyping, testing, workshops...
-
-This project was created using `bun init` in bun v1.1.3. [Bun](https://bun.sh) .
-
 > [!NOTE]
-> Bun installation is highly recommended>
+> A generic JSON in-memory/file-based CRUD API server for rapid prototyping, testing, workshops...
+
+This project was created using [_bun_](https://bun.sh) v1.1.3.
+
+## 1 - If you have already _bun_ in your system
+
+```bash
+# To just start the API server.
+bun run start
+# To start in dev mode
+# install the types and then
+bun i
+# run watching changes.
+bun run dev
+```
+
+## 2 - If not a _bun_ user, then fallback to npm
+
+> [!TIP]
+> Bun installation is easy and highly recommended
 > https://bun.sh/docs/cli/install
 
-## Start running if you have already bun in your system
-
 ```bash
-# To run de app:
-bun run start
-```
-
-## If no bun then fallback to npm
-
-```bash
-# Install local bun
-npm i
-# Run app
+# Just want this thing running
+# install local bun and then
+npm run bun:i
+# start the API server with npm
 npm start
 ```
+
+## Features
+
+- [x] Publishes a generic CRUD API
+- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for get all or post.
+- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}/{id}` for get one, put or delete.
+- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}?key={key}&value={value}` for get by key/value.
+- [x] Feeds any resource with seed data from `db/{collection_name}.json`.
+- [x] If no file found, then starts with an empty array.
+- [x] Adds a random `id` to any item if not supplied during POST.
+- [x] Configuration with `.env` file or command line (see below).
+- [x] If `STORAGE=file` configuration, then persist changes (POST,PUT, DELETE) to file system.
+- [x] PUT works like a PATCH, only updating the fields supplied.
+- [x] Logs to console with different levels (info, none, verbose).
+- [ ] Security and authorization
+
+## Environment configuration
+
+Runtime configuration taken from from `.env` file, command line or defaults.
+
+```json
+export type ApiBunConfig = {
+  /** Log level (info,none,verbose) */
+  LOG_LEVEL: LogLevels;
+  /** Storage type (memory,file) */
+  STORAGE: StorageTypes;
+  // ToDo: Auth configuration
+};
+```
+
+> [!NOTE]
+> Sample `.env` with default values
+
+```toml
+STORAGE=memory
+LOG_LEVEL=info
+```
+
+---
+
+> [!CAUTION]
+> Not suitable for production use. Use only for rapid prototyping, testing, workshops...
 
 ---
 

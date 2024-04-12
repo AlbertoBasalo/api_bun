@@ -5,6 +5,12 @@
     "name": "Alberto Basalo",
     "url": "https://albertobasalo.dev"
   },
+  "homepage": "https://github.com/AlbertoBasalo/api_bun/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlbertoBasalo/api_bun.git"
+  },
+  "license": "MIT",
   "module": "index.ts",
   "devDependencies": {
     "@types/bun": "latest"
@@ -12,13 +18,10 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "dependencies": {
-    "bun": "latest"
-  },
   "description": "An API for the beta version of any app",
   "scripts": {
     "bun": "bun",
-    "nstart": "node src/index.ts",
+    "bun:i": "npm install bun --save=false",
     "start": "bun run src/index.ts",
     "dev": "bun --watch run src/index.ts"
   },
