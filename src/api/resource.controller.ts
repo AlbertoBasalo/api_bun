@@ -38,7 +38,7 @@ export async function deleteResource(requestInfo: RequestInfo): Promise<Response
 
 async function getResourceAll(requestInfo: RequestInfo): Promise<Response> {
   const selectedData = await getAll(requestInfo.resource);
-  const status = selectedData.length > 0 ? 200 : 204;
+  const status = selectedData.length > 0 ? 200 : 200;
   const body = JSON.stringify(selectedData);
   return new Response(body, { status });
 }
@@ -52,7 +52,7 @@ async function getResourceById(requestInfo: RequestInfo): Promise<Response> {
 
 async function getResourceByKeyValue(requestInfo: RequestInfo): Promise<Response> {
   const selectedData = await getByKeyValue(requestInfo.resource, requestInfo.key, requestInfo.value);
-  const status = selectedData.length > 0 ? 200 : 204;
+  const status = selectedData.length > 0 ? 200 : 200;
   const body = JSON.stringify(selectedData);
   return new Response(body, { status });
 }

@@ -1,7 +1,7 @@
 {
   "name": "api_bun",
   "description": "A fast fake API for developers and teachers... made with bun",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Alberto Basalo",
     "url": "https://albertobasalo.dev"
@@ -22,8 +22,10 @@
   "scripts": {
     "bun": "bun",
     "bun:i": "npm install bun --save=false",
-    "start": "bun run src/index.ts",
-    "dev": "bun --watch run src/index.ts"
+    "build": "bun build --minify src/index.ts > dist/api-bun/index.js ",
+    "prestart": "bun run build",
+    "start": "bun run dist/api-bun/index.js",
+    "dev": "LOG_LEVEL=verbose bun --watch run src/index.ts"
   },
   "type": "module"
 }
