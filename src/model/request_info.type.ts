@@ -32,7 +32,7 @@ export async function extractInfo(request: Request): Promise<RequestInfo | null>
       body = await request.json();
     }
     const result = { method, endPoint, resource, id, key, value, body };
-    logTrace("Request info", result);
+    logTrace("Request:", result);
     return result;
   } catch (error: any) {
     logError("Error extracting request info", error);

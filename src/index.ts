@@ -1,4 +1,5 @@
 import { deleteResource, getResource, postResource, putResource } from "./api/resource.controller";
+import { ClientResponse } from "./model/client_response.class";
 import { extractInfo } from "./model/request_info.type";
 import { API_BUN_CONFIG } from "./util/api_bun.config";
 import { logError, logInfo } from "./util/log.service";
@@ -18,7 +19,7 @@ const server = Bun.serve({
 
 logInfo(`Listening on ${server.url}`, API_BUN_CONFIG);
 
-async function handleRequest(request: Request) {
+async function handleRequest(request: Request): Promise<Response> {
   const requestInfo = await extractInfo(request);
   if (!requestInfo) {
     return new Response("Bad request", { status: 400 });
@@ -34,7 +35,9 @@ async function handleRequest(request: Request) {
       return await putResource(requestInfo);
     case "DELETE":
       return await deleteResource(requestInfo);
+    case "OPTIONS":
+      return new ClientResponse("OK");
     default:
-      return new Response("Method Not Allowed", { status: 405 });
+      return new Response("Method Not Allowed", { status: 200 });
   }
 }
