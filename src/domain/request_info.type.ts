@@ -8,10 +8,13 @@ export type RequestInfo = {
   method: string;
   endPoint: string;
   resource: string;
-  id: string;
-  key: string;
-  value: string;
-  body?: any;
+  id?: string;
+  q?: string;
+  _sort?: string;
+  _order?: "asc" | "desc";
+  key?: string;
+  value?: string;
+  body?: unknown;
   userId?: string;
 };
 
@@ -25,13 +28,16 @@ export async function extractInfo(request: Request): Promise<RequestInfo | null>
     const method = request.method;
     const endPoint = new URL(request.url).pathname;
     const resource = endPoint.split("/")[1] || "";
-    let id = endPoint.split("/")[2] || "";
+    const id = endPoint.split("/")[2] || undefined;
     const query = new URL(request.url).searchParams;
-    const key = query.get("key") || "";
-    const value = query.get("value") || "";
-    let body: any | undefined = extractBody(request);
-    const userId = extractUserId(request);
-    const result = { method, endPoint, resource, id, key, value, body, userId };
+    const q = query.get("q") || undefined;
+    const _sort = query.get("_sort") || undefined;
+    const _order = (query.get("_order") as "asc" | "desc") || undefined;
+    const key = query.get("key") || undefined;
+    const value = query.get("value") || undefined;
+    const body: any | undefined = await extractBody(request);
+    const userId: string | undefined = extractUserId(request);
+    const result = { method, endPoint, resource, id, q, _sort, _order, key, value, body, userId };
     logTrace("Request:", result);
     return result;
   } catch (error: any) {
@@ -42,8 +48,13 @@ export async function extractInfo(request: Request): Promise<RequestInfo | null>
 
 async function extractBody(request: Request): Promise<any | undefined> {
   if (request.method === "POST" || request.method === "PUT") {
-    return await request.json();
+    const body = await request.json();
+    const props = Object.keys(body).length;
+    logTrace("extractBody:", { props, body });
+    if (Object.keys(body).length === 0) return undefined;
+    return body;
   }
+  return undefined;
 }
 
 /**

@@ -3,7 +3,14 @@
 
 // ToDo: Implement user authorization
 
-import { deleteById, insert, selectAll, selectByKeyValue, update } from "../repository/memory.repository";
+import {
+  deleteById,
+  insert,
+  selectAll,
+  selectByContent,
+  selectByKeyValue,
+  update,
+} from "../repository/memory.repository";
 import type { Item, NewItem } from "./item.type";
 import type { Result } from "./result.type";
 
@@ -21,6 +28,12 @@ export async function getById(collection: string, id: string): Promise<Result<It
 
 export async function getByKeyValue(collection: string, key: string, value: string): Promise<Item[]> {
   const selectedData = await selectByKeyValue(collection, key, value);
+  const result = selectedData;
+  return result;
+}
+
+export async function getByQueryContent(collection: string, queryContent: string): Promise<Item[]> {
+  const selectedData = await selectByContent(collection, queryContent);
   const result = selectedData;
   return result;
 }

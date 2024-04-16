@@ -1,6 +1,7 @@
 import crypto from "crypto";
+import { API_BUN_CONFIG } from "../api_bun.config";
 import type { Result } from "./result.type";
-const secret = "secret";
+const secret = API_BUN_CONFIG.SECRET;
 
 export async function hashCredentials(credentials: any): Promise<any> {
   const password = await Bun.password.hash(credentials.password);
