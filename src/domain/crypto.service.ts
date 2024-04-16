@@ -26,3 +26,7 @@ export function verifyToken(token: string): Result<string> {
   }
   return { result: payload };
 }
+
+export function generateUUID(): string {
+  return crypto.randomUUID({});
+}

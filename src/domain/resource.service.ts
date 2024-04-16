@@ -11,6 +11,7 @@ import {
   selectByKeyValue,
   update,
 } from "../repository/memory.repository";
+import { generateUUID } from "./crypto.service";
 import type { Item, NewItem } from "./item.type";
 import type { Result } from "./result.type";
 
@@ -46,7 +47,7 @@ export async function post(collection: string, newItem: NewItem): Promise<Result
       return { result: undefined, error: `Item with id ${id} already exists in ${collection}` };
     }
   } else {
-    id = Math.random().toString(36).substr(2, 9);
+    id = generateUUID();
   }
   const createdAt = new Date();
   const updatedAt = null;

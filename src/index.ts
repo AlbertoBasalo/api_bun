@@ -14,4 +14,4 @@ const server = Bun.serve({
   },
 });
 
-logInfo(`Listening on ${server.url}`, API_BUN_CONFIG);
+logInfo(`API-bun is listening on ${server.url}`, API_BUN_CONFIG);

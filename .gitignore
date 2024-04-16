@@ -173,3 +173,8 @@ out
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# db files
+/db/
+# except for the activities db file
+!/db/activities.db

@@ -6,12 +6,12 @@ import { getWebController } from "./web.controller";
 export async function handleRequest(request: Request): Promise<Response> {
   const requestInfo = await extractInfo(request);
   if (!requestInfo) {
-    return new Response("Bad request", { status: 400 });
+    return new ClientResponse("Bad request", { status: 400 });
   }
   switch (requestInfo.method) {
     case "GET":
-      const page = await getWebController(requestInfo);
-      if (page) return page;
+      const pageResponse = await getWebController(requestInfo);
+      if (pageResponse) return pageResponse;
       return await getController(requestInfo);
     case "POST":
       return await postController(requestInfo);

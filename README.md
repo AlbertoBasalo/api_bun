@@ -64,7 +64,10 @@ export type ApiBunConfig = {
   LOG_LEVEL: LogLevels;
   /** Storage type (memory,file) */
   STORAGE: StorageTypes;
-  // ToDo: Auth configuration
+  /** Security type (none,write) */
+  SECURITY: SecurityTypes;
+  /** Secret */
+  SECRET: string;
 };
 ```
 
@@ -74,6 +77,8 @@ export type ApiBunConfig = {
 ```txt
 STORAGE=memory
 LOG_LEVEL=info
+SECURITY=none
+SECRET=secret
 ```
 
 ---
