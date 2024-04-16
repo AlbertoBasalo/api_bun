@@ -1,10 +1,8 @@
-import type { Item } from "./item.type";
-
 /**
  * Result type for returning a result or an error
  * Inspired by Rust's Result type
  */
-export type Result<T extends Item | Item[]> = {
+export type Result<T> = {
   result?: T;
   error?: string;
 };

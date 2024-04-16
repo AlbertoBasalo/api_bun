@@ -38,6 +38,6 @@ async function handleRequest(request: Request): Promise<Response> {
     case "OPTIONS":
       return new ClientResponse("OK");
     default:
-      return new Response("Method Not Allowed", { status: 200 });
+      return new ClientResponse("Method Not Allowed", { status: 200 });
   }
 }
