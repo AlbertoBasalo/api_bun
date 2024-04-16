@@ -1,5 +1,5 @@
-import { verifyToken } from "./crypto.service";
-import { logError, logTrace } from "./log.service";
+import { verifyToken } from "../domain/crypto.service";
+import { logError, logTrace } from "../domain/log.service";
 
 /**
  * Structured information extracted from the request object
@@ -50,8 +50,7 @@ async function extractBody(request: Request): Promise<any | undefined> {
   if (request.method === "POST" || request.method === "PUT") {
     const body = await request.json();
     const props = Object.keys(body).length;
-    logTrace("extractBody:", { props, body });
-    if (Object.keys(body).length === 0) return undefined;
+    if (props === 0) return undefined;
     return body;
   }
   return undefined;

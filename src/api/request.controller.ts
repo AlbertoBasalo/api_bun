@@ -1,6 +1,6 @@
 import { ClientResponse } from "../domain/client_response.class";
-import { extractInfo } from "../domain/request_info.type";
 import { deleteController, getController, postController, putController } from "./api.controller";
+import { extractInfo } from "./request_info.type";
 import { getWebController } from "./web.controller";
 
 export async function handleRequest(request: Request): Promise<Response> {

@@ -1,4 +1,4 @@
-import type { RequestInfo } from "../domain/request_info.type";
+import type { RequestInfo } from "./request_info.type";
 
 export async function getWebController(requestInfo: RequestInfo): Promise<Response | null> {
   if (requestInfo.endPoint === "/") {

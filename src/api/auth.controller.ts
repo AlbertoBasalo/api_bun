@@ -1,7 +1,7 @@
 import { ClientResponse } from "../domain/client_response.class";
 import { generateToken, hashCredentials, verifyCredentials } from "../domain/crypto.service";
-import type { RequestInfo } from "../domain/request_info.type";
 import { getByKeyValue, post } from "../domain/resource.service";
+import type { RequestInfo } from "./request_info.type";
 
 export async function postRegister(requestInfo: RequestInfo): Promise<Response> {
   const email = (requestInfo.body as any)?.email;

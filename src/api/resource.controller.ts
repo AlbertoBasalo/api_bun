@@ -1,7 +1,7 @@
 import { ClientResponse } from "../domain/client_response.class";
 import type { Item, NewItem } from "../domain/item.type";
-import type { RequestInfo } from "../domain/request_info.type";
 import { del, getAll, getById, getByKeyValue, getByQueryContent, post, put } from "../domain/resource.service";
+import type { RequestInfo } from "./request_info.type";
 
 export async function getResourceAll(requestInfo: RequestInfo): Promise<Response> {
   const selectedData = await getAll(requestInfo.resource);

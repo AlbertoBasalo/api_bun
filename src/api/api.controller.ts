@@ -1,7 +1,7 @@
 import { API_BUN_CONFIG } from "../api_bun.config";
 import type { Item, NewItem } from "../domain/item.type";
-import type { RequestInfo } from "../domain/request_info.type";
 import { postLogin, postRegister } from "./auth.controller";
+import type { RequestInfo } from "./request_info.type";
 import {
   deleteResource,
   getResourceAll,
