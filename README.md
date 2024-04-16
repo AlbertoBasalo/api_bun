@@ -5,7 +5,15 @@
 >
 > This project was created using [_bun_](https://bun.sh) v1.1.3.
 
-## 1 🧑‍🍳 - If you have already _bun_ in your system
+## 1 Installation and start
+
+```bash
+# ⬇️ clone the repo
+git clone https://github.com/AlbertoBasalo/api_bun.git
+cd api_bun
+```
+
+### 1.1 🧑‍🍳 - If you have already _bun_ in your system
 
 ```bash
 # 🥖 want to try this!
@@ -17,7 +25,7 @@ bun i
 bun run dev
 ```
 
-## 2 🤷‍♂️ - If not a _bun_ user, then fallback to npm
+### 1.2 🤷‍♂️ - If not a _bun_ user, then fallback to npm
 
 > [!TIP]
 >
@@ -33,28 +41,7 @@ npm run bun:i
 npm start
 ```
 
-## Features
-
-- [x] Publishes a generic CRUD API
-- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.
-- [x] Add the _id_ `http://localhost:3000/{collection_name}/{id}` for GET one, PUT or DELETE.
-- [x] Add _queryParams_ `http://localhost:3000/{collection_name}?key={key}&value={value}` for GET by key/value.
-- [x] Always try to feeds any resource with seed data from `db/{collection_name}.json`.
-- [x] If no file found, then starts with an empty array.
-- [x] Uses _id_ as a primary key to identify items.
-- [x] If not supplied during POST, then generates a new random _id_.
-- [x] Configuration with `.env` file or command line (see below).
-- [x] If configured with `STORAGE=file`, then persist changes (POST,PUT, DELETE) to file system.
-- [x] PUT works like a PATCH, only updating the fields supplied.
-- [x] Logs to console with different levels (_info, none, verbose_).
-- [ ] _Security and authorization_
-- [ ] _Sorted results_
-- [ ] _Pagination_
-- [ ] _Put and patch distinction_
-- [ ] _Allow to configure the primary key property name_
-- [ ] _Allow to configure the storage path_
-
-## Environment configuration
+## 2 Environment configuration
 
 Runtime configuration taken from from `.env` file, command line or defaults.
 
@@ -73,6 +60,8 @@ export type ApiBunConfig = {
 
 > [!TIP]
 > Sample `.env` with default values
+>
+> Create it outside the `src` folder. It will be ignored by git.
 
 ```txt
 STORAGE=memory
@@ -80,6 +69,28 @@ LOG_LEVEL=info
 SECURITY=none
 SECRET=secret
 ```
+
+## 3 Features
+
+- [x] Publishes a generic CRUD API
+- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.
+- [x] Add the _id_ `http://localhost:3000/{collection_name}/{id}` for GET one, PUT or DELETE.
+- [x] Add _queryParams_ `http://localhost:3000/{collection_name}?key={key}&value={value}` for GET by key/value.
+- [x] Always try to feeds any resource with seed data from `db/{collection_name}.json`.
+- [x] If no file found, then starts with an empty array.
+- [x] Uses _id_ as a primary key to identify items.
+- [x] If not supplied during POST, then generates a new random _id_.
+- [x] Configuration with `.env` file or command line (see below).
+- [x] If configured with `STORAGE=file`, then persist changes (POST,PUT, DELETE) to file system.
+- [x] PUT works like a PATCH, only updating the fields supplied.
+- [x] Logs to console with different levels (_info, none, verbose_).
+- [x] Minimal security with signed token (not JWT compliant).
+- [ ] _JWT Security and authorization_
+- [ ] _Sorted results_
+- [ ] _Pagination_
+- [ ] _Put and patch distinction_
+- [ ] _Allow to configure the primary key property name_
+- [ ] _Allow to configure the storage path_
 
 ---
 
