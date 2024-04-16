@@ -1,4 +1,4 @@
-import { logTrace } from "../util/log.service";
+import { logTrace } from "./log.service";
 
 export class ClientResponse extends Response {
   constructor(body?: any, init?: any) {

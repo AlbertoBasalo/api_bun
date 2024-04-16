@@ -1,6 +1,6 @@
-import type { Item } from "../model/item.type";
-import { API_BUN_CONFIG } from "../util/api_bun.config";
-import { logError, logInfo, logTrace, logWarning } from "../util/log.service";
+import { API_BUN_CONFIG } from "../api_bun.config";
+import type { Item } from "../domain/item.type";
+import { logError, logInfo, logTrace, logWarning } from "../domain/log.service";
 
 /**
  * Read a JSON file from the db folder

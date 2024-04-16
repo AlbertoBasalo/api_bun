@@ -1,4 +1,4 @@
-import type { Item } from "../model/item.type";
+import type { Item } from "../domain/item.type";
 import { readJson, writeJson } from "./file.repository";
 
 /**

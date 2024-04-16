@@ -1,4 +1,4 @@
-import { logError, logTrace } from "../util/log.service";
+import { logError, logTrace } from "./log.service";
 
 /**
  * Structured information extracted from the request object
@@ -11,6 +11,7 @@ export type RequestInfo = {
   key: string;
   value: string;
   body?: any;
+  userId?: string;
 };
 
 /**
@@ -23,14 +24,18 @@ export async function extractInfo(request: Request): Promise<RequestInfo | null>
     const method = request.method;
     const endPoint = new URL(request.url).pathname;
     const resource = endPoint.split("/")[1] || "";
-    const id = endPoint.split("/")[2] || "";
+    let id = endPoint.split("/")[2] || "";
     const query = new URL(request.url).searchParams;
     const key = query.get("key") || "";
     const value = query.get("value") || "";
-    let body = {};
+    let body: any = {};
     if (method === "POST" || method === "PUT") {
       body = await request.json();
+      if (method === "PUT") {
+        id = body.id || id;
+      }
     }
+    // get UserId from request headers
     const result = { method, endPoint, resource, id, key, value, body };
     logTrace("Request:", result);
     return result;

@@ -1,9 +1,9 @@
-import { deleteResource, getResource, postResource, putResource } from "./api/resource.controller";
-import { ClientResponse } from "./model/client_response.class";
-import { extractInfo } from "./model/request_info.type";
-import { API_BUN_CONFIG } from "./util/api_bun.config";
-import { logError, logInfo } from "./util/log.service";
-import { getPage } from "./web/web.controller";
+import { deleteController, getController, postController, putController } from "./api/api.controller";
+import { getWebController } from "./api/web.controller";
+import { API_BUN_CONFIG } from "./api_bun.config";
+import { ClientResponse } from "./domain/client_response.class";
+import { logError, logInfo } from "./domain/log.service";
+import { extractInfo } from "./domain/request_info.type";
 
 const server = Bun.serve({
   port: 3000,
@@ -26,15 +26,15 @@ async function handleRequest(request: Request): Promise<Response> {
   }
   switch (requestInfo.method) {
     case "GET":
-      const page = await getPage(requestInfo);
+      const page = await getWebController(requestInfo);
       if (page) return page;
-      return await getResource(requestInfo);
+      return await getController(requestInfo);
     case "POST":
-      return await postResource(requestInfo);
+      return await postController(requestInfo);
     case "PUT":
-      return await putResource(requestInfo);
+      return await putController(requestInfo);
     case "DELETE":
-      return await deleteResource(requestInfo);
+      return await deleteController(requestInfo);
     case "OPTIONS":
       return new ClientResponse("OK");
     default:

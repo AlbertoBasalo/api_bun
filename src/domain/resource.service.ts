@@ -3,9 +3,9 @@
 
 // ToDo: Implement user authorization
 
-import { deleteById, insert, selectAll, selectByKeyValue, update } from "../data/memory.repository";
-import type { Item, NewItem } from "../model/item.type";
-import type { Result } from "../model/result.type";
+import { deleteById, insert, selectAll, selectByKeyValue, update } from "../repository/memory.repository";
+import type { Item, NewItem } from "./item.type";
+import type { Result } from "./result.type";
 
 export async function getAll(collection: string): Promise<Item[]> {
   const result = await selectAll(collection);

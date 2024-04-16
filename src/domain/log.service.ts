@@ -1,4 +1,4 @@
-import { API_BUN_CONFIG } from "./api_bun.config";
+import { API_BUN_CONFIG } from "../api_bun.config";
 
 type LogLevel = "none" | "info" | "verbose";
 
