@@ -1,4 +1,4 @@
-import { handleRequest } from "./api/request.controller";
+import { handleRequest } from "./server/request.controller";
 import { API_BUN_CONFIG } from "./api_bun.config";
 import { logError, logInfo } from "./domain/log.service";
 

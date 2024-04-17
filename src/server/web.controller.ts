@@ -1,6 +1,6 @@
-import type { RequestInfo } from "./request_info.type";
+import type { ClientRequest } from "../domain/client_request.type";
 
-export async function getWebController(requestInfo: RequestInfo): Promise<Response | null> {
+export async function getWebController(requestInfo: ClientRequest): Promise<Response | null> {
   if (requestInfo.endPoint === "/") {
     const homePage = `
       <html>
