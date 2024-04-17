@@ -14,6 +14,7 @@
   "license": "MIT",
   "module": "index.ts",
   "devDependencies": {
+    "@biomejs/biome": "^1.7.0",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -25,7 +26,8 @@
     "build": "bun build --minify src/index.ts > dist/api-bun/index.js ",
     "prestart": "bun run build",
     "start": "bun run dist/api-bun/index.js",
-    "dev": "LOG_LEVEL=verbose STORAGE=memory bun --watch run src/index.ts"
+    "dev": "LOG_LEVEL=verbose STORAGE=memory bun --watch run src/index.ts",
+    "lint": "biome check --apply ./src"
   },
   "type": "module"
 }
