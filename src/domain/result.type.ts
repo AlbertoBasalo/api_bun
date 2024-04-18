@@ -1,8 +1,8 @@
 /**
- * Result type for returning a result or an error
+ * Result type for returning data or an error
  * Inspired by Rust's Result type
  */
 export type Result<T> = {
-  result?: T;
+  data?: T;
   error?: string;
 };

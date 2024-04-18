@@ -1,20 +1,24 @@
-import { ClientResponse } from "../domain/client_response.class";
 import { deleteController, getController, postController, putController } from "../api/api.controller";
+import { ClientResponse } from "./client_response.class";
 
+import type { Result } from "../domain/result.type";
+import { buildClientRequest } from "./client_request.service";
+import type { ClientRequest } from "./client_request.type";
 import { getWebController } from "./web.controller";
-import { extractInfo } from "../domain/request.service";
-import type { ClientRequest } from "../domain/client_request.type";
 
 export async function handleRequest(request: Request): Promise<ClientResponse> {
-  const clientRequest: ClientRequest | undefined = await extractInfo(request);
+  const clientRequestResult: Result<ClientRequest> = await buildClientRequest(request);
+  const clientRequest = clientRequestResult.data;
   if (!clientRequest) {
-    return new ClientResponse("Bad request", { status: 400 });
+    return new ClientResponse(clientRequestResult.error, { status: 400 });
   }
   switch (clientRequest.method) {
     case "GET":
-      const pageResponse = await getWebController(clientRequest);
-      if (pageResponse) return pageResponse;
-      return await getController(clientRequest);
+      {
+        const webResponseResult = await getWebController(clientRequest);
+        if (webResponseResult.data) return webResponseResult.data;
+        return await getController(clientRequest);
+      }
     case "POST":
       return await postController(clientRequest);
     case "PUT":
@@ -24,6 +28,6 @@ export async function handleRequest(request: Request): Promise<ClientResponse> {
     case "OPTIONS":
       return new ClientResponse("OK");
     default:
-      return new ClientResponse("Method Not Allowed", { status: 200 });
+      return new ClientResponse("Method Not Allowed", { status: 405 });
   }
 }

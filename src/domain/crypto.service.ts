@@ -1,8 +1,8 @@
-import crypto from "crypto";
+import crypto from "node:crypto";
 import { API_BUN_CONFIG } from "../api_bun.config";
-import type { Result } from "./result.type";
 import type { Credentials } from "./credentials.type";
 import type { Item } from "./item.type";
+import type { Result } from "./result.type";
 const secret = API_BUN_CONFIG.SECRET;
 
 export async function hashCredentials(credentials: Credentials): Promise<Credentials> {
@@ -14,8 +14,7 @@ export async function verifyCredentials(credentials: Credentials, hash: string):
   return await Bun.password.verify(credentials.password, hash);
 }
 
-export function generateToken(user: Item): string {
-  const payload = user.id;
+export function generateToken(payload: string): string {
   const sign = crypto.createHmac("sha256", secret).update(payload).digest("base64");
   return `${payload}.${sign}`;
 }
@@ -26,7 +25,7 @@ export function verifyToken(token: string): Result<string> {
   if (sign !== payloadSign) {
     return { error: "Invalid token" };
   }
-  return { result: payload };
+  return { data: payload };
 }
 
 export function generateUUID(): string {

@@ -24,7 +24,7 @@ export async function getById(collection: string, id: string): Promise<Result<It
   const selectedData = await selectByKeyValue(collection, "id", id);
   const result = selectedData[0];
   const error = result ? undefined : `Item with id ${id} not found in ${collection}`;
-  return { result, error };
+  return { data: result, error };
 }
 
 export async function getByKeyValue(collection: string, key: string, value: string): Promise<Item[]> {
@@ -43,8 +43,8 @@ export async function post(collection: string, newItem: NewItem): Promise<Result
   let id = newItem.id;
   if (id) {
     const existingItem = await getById(collection, id);
-    if (existingItem.result) {
-      return { result: undefined, error: `Item with id ${id} already exists in ${collection}` };
+    if (existingItem.data) {
+      return { data: undefined, error: `Item with id ${id} already exists in ${collection}` };
     }
   } else {
     id = generateUUID();
@@ -53,7 +53,7 @@ export async function post(collection: string, newItem: NewItem): Promise<Result
   const updatedAt = null;
   const item: Item = { ...newItem, id, createdAt, updatedAt };
   const result = await insert(collection, item);
-  return { result };
+  return { data: result };
 }
 
 export async function put(collection: string, id: string, item: Item): Promise<Result<Item>> {
@@ -62,11 +62,11 @@ export async function put(collection: string, id: string, item: Item): Promise<R
     return { error: `Item ${id} not found on ${collection}` };
   }
   const updatedAt = new Date();
-  const updatedItem = { ...existingItem.result, ...item, updatedAt };
+  const updatedItem = { ...existingItem.data, ...item, updatedAt };
   const updated = await update(collection, id, updatedItem);
   const result = updated ? updatedItem : undefined;
   const error = updated ? undefined : `Item ${id} not updated on ${collection}`;
-  return { result, error };
+  return { data: result, error };
 }
 
 export async function del(collection: string, id: string): Promise<void> {

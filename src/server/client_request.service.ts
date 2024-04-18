@@ -1,38 +1,44 @@
 import { API_BUN_CONFIG } from "../api_bun.config";
-import type { ClientRequest } from "./client_request.type";
-import { verifyToken } from "./crypto.service";
-import { logTrace, logError } from "./log.service";
+import { verifyToken } from "../domain/crypto.service";
+import { logError, logTrace } from "../domain/log.service";
+import type { Result } from "../domain/result.type";
+import type { ClientBody, ClientRequest } from "./client_request.type";
 
 /**
  * Extracts structured information from the request object
  * @param request Request object
  * @returns Structured information extracted from the request object
  */
-export async function extractInfo(request: Request): Promise<ClientRequest | undefined> {
+export async function buildClientRequest(request: Request): Promise<Result<ClientRequest>> {
   try {
     const method = request.method;
     const endPoint = new URL(request.url).pathname;
     const resource = endPoint.split("/")[1] || "";
     const query = new URL(request.url).searchParams;
     const q = query.get("q") || undefined;
-    const _sort = query.get("_sort") || undefined;
-    const _order = (query.get("_order") as "asc" | "desc") || undefined;
+    const sort = query.get("_sort") || undefined;
+    const order = (query.get("_order") as "asc" | "desc") || undefined;
     const key = query.get("key") || undefined;
     const value = query.get("value") || undefined;
-    const body: any | undefined = await extractBody(request);
+    const body: ClientBody | undefined = await extractBody(request);
+    const id = extractId(endPoint, body);
     const userId: string | undefined = extractUserId(request);
     const allowWrite: boolean = API_BUN_CONFIG.SECURITY === "none" || userId !== undefined;
-    const id = endPoint.split("/")[2] || (body as any)?.id || undefined;
-    const result = { method, endPoint, resource, allowWrite, id, q, _sort, _order, key, value, body, userId };
+    const result = { method, endPoint, resource, allowWrite, id, q, sort, order, key, value, body, userId };
     logTrace("Request:", result);
-    return result;
-  } catch (error: any) {
+    return { data: result };
+  } catch (error: unknown) {
     logError("Error extracting request info", error);
-    return undefined;
+    return { error: "Bad request" };
   }
 }
 
-async function extractBody(request: Request): Promise<unknown | undefined> {
+/**
+ * Extracts the body for POST and PUT requests
+ * @param request The current http request object
+ * @returns The body of the request or undefined if the request does not have a body
+ */
+async function extractBody(request: Request): Promise<ClientBody | undefined> {
   if (request.method === "POST" || request.method === "PUT") {
     const body = await request.json();
     const props = Object.keys(body).length;
@@ -40,6 +46,20 @@ async function extractBody(request: Request): Promise<unknown | undefined> {
     return body;
   }
   return undefined;
+}
+
+/**
+ * Extracts the id from the request endpoint or body
+ * @param endPoint Request endpoint
+ * @param body Request body if not present in the endpoint
+ * @returns The id extracted from the endpoint or body
+ */
+function extractId(endPoint: string, body?: ClientBody): string | undefined {
+  let id = undefined;
+  id = endPoint.split("/")[2];
+  if (id) return id;
+  id = body?.id;
+  return id;
 }
 
 /**
@@ -57,6 +77,6 @@ function extractUserId(request: Request): string | undefined {
     logTrace("Extracting UserId", user.error);
     return undefined;
   }
-  return user.result;
+  return user.data;
 }
 

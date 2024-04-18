@@ -1,6 +1,8 @@
-import type { ClientRequest } from "../domain/client_request.type";
+import type { Result } from "../domain/result.type";
+import type { ClientRequest } from "./client_request.type";
+import { ClientResponse } from "./client_response.class";
 
-export async function getWebController(requestInfo: ClientRequest): Promise<Response | null> {
+export async function getWebController(requestInfo: ClientRequest): Promise<Result<ClientResponse>> {
   if (requestInfo.endPoint === "/") {
     const homePage = `
       <html>
@@ -16,10 +18,12 @@ export async function getWebController(requestInfo: ClientRequest): Promise<Resp
         </body>
       </html>
     `;
-    return new Response(homePage, { headers: { "Content-Type": "text/html" } });
+    return { data: new ClientResponse(homePage, { headers: { "Content-Type": "text/html" } }) };
   }
   if (requestInfo.endPoint === "/favicon.ico") {
-    return new Response(null, { status: 204 });
+    return {
+      data: new ClientResponse(null, { status: 204 }),
+    };
   }
-  return null;
+  return { data: undefined };
 }
