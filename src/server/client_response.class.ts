@@ -5,7 +5,7 @@ import { logTrace } from "../domain/log.service";
  */
 export class ClientResponse extends Response {
   constructor(body?: unknown, init?: ResponseInit) {
-    const bodyString = body ? JSON.stringify(body) : "";
+    const bodyString = body ? (typeof body === "object" ? JSON.stringify(body) : body.toString()) : "";
     const options = init || { status: 200, statusText: "OK" };
     super(bodyString, options);
     this.headers.set("Access-Control-Allow-Headers", "*");
@@ -15,5 +15,6 @@ export class ClientResponse extends Response {
     if (bytes) logTrace(`Response: ${this.status}`, { bytes });
   }
 }
+
 
 //this.headers.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");

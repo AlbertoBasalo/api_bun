@@ -1,34 +1,34 @@
 {
-  "name": "api_bun",
-  "description": "A fast fake API for developers and teachers... made with bun",
-  "version": "1.0.5",
-  "author": {
-    "name": "Alberto Basalo",
-    "url": "https://albertobasalo.dev"
-  },
-  "homepage": "https://github.com/AlbertoBasalo/api_bun/blob/main/README.md",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AlbertoBasalo/api_bun.git"
-  },
-  "license": "MIT",
-  "module": "index.ts",
-  "devDependencies": {
-    "@biomejs/biome": "^1.7.0",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "scripts": {
-    "bun": "bun",
-    "bun:i": "npm install bun --save=false",
-    "build": "bun build --minify src/index.ts > dist/api-bun/index.js ",
-    "prestart": "bun run build",
-    "start": "bun run dist/api-bun/index.js",
-    "dev": "LOG_LEVEL=verbose STORAGE=memory bun --watch run src/index.ts",
-    "lint": "biome check ./src",
-    "lint:fix": "biome check --apply ./src"
-  },
-  "type": "module"
+	"name": "api_bun",
+	"description": "A fast fake API for developers and teachers... made with bun",
+	"version": "1.0.6",
+	"author": {
+		"name": "Alberto Basalo",
+		"url": "https://albertobasalo.dev"
+	},
+	"homepage": "https://github.com/AlbertoBasalo/api_bun/blob/main/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AlbertoBasalo/api_bun.git"
+	},
+	"license": "MIT",
+	"module": "index.ts",
+	"devDependencies": {
+		"@biomejs/biome": "^1.7.0",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"scripts": {
+		"bun": "bun",
+		"bun:i": "npm install bun --save=false",
+		"build": "bun build --minify src/index.ts > dist/api-bun/index.js ",
+		"prestart": "bun run build",
+		"start": "bun run dist/api-bun/index.js",
+		"dev": "LOG_LEVEL=verbose STORAGE=memory bun --watch run src/index.ts",
+		"lint": "biome check ./src",
+		"lint:fix": "biome check --apply ./src"
+	},
+	"type": "module"
 }

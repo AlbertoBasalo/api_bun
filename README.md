@@ -1,11 +1,17 @@
-# API bun
+# 🥖 API bun
 
 > [!NOTE]
 > A generic JSON in-memory/file-based CRUD API server for rapid prototyping, testing, workshops...
 >
+> Your delicious and fast Rest API ready to consume.
+>
 > This project was created using [_bun_](https://bun.sh) v1.1.3.
 
-## 1 Installation and start
+- 🥖 For rapid prototypes
+- 🥖 For small pet projects
+- 🥖 For educational purposes
+
+## 1 🍳 Installation and start
 
 ```bash
 # ⬇️ clone the repo
@@ -25,7 +31,7 @@ bun i
 bun run dev
 ```
 
-### 1.2 🤷‍♂️ - If not a _bun_ user, then fallback to npm
+### 1.2 🍽️ - If not a _bun_ user, then fallback to npm
 
 > [!TIP]
 >
@@ -41,7 +47,7 @@ npm run bun:i
 npm start
 ```
 
-## 2 Environment configuration
+## 2 🧂 Tasty environment configuration
 
 Runtime configuration taken from from `.env` file, command line or defaults.
 
@@ -70,7 +76,7 @@ SECURITY=none
 SECRET=secret
 ```
 
-## 3 Features
+## 3 ☕ Hot Features
 
 - [x] Publishes a generic CRUD API
 - [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.

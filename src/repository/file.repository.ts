@@ -11,7 +11,9 @@ export async function readJson(collectionName: string): Promise<Item[]> {
   try {
     const path = getPath(collectionName);
     logTrace("Reading seed data", path);
-    return await Bun.file(path).json();
+    const seedData = await Bun.file(path).json();
+    logInfo("Seed data loaded", collectionName);
+    return seedData;
   } catch (e) {
     logInfo("No seed data available. Starting empty collection.", collectionName);
     if (API_BUN_CONFIG.STORAGE === "file") {
