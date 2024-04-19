@@ -100,6 +100,10 @@ The default security level is `none`. This means that the API-bun will not requi
 
 If you want to add a minimal security layer, then configure the `.env` file with `SECURITY=write`. This will require a signed token to access the resources. The token is generated with the `SECRET` value in the `.env` file.
 
+When enabled, any `POST, PUT, PATCH or DELETE` request to the API must include the token in the `Authorization` header with the `Bearer` prefix. 
+
+The identified user `id` is also added to any posted item as `userId` property as an owner for future fine grained security.
+
 > [!CAUTION]
 > The token is not JWT compliant and is only a minimal security layer.
 
