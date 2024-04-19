@@ -24,14 +24,11 @@ export async function postRegister(clientRequest: ClientRequest): Promise<Client
   }
   const hashedCredentials = await hashCredentials(credentials) as NewItem;
   const newUser = await post("users", hashedCredentials);
-  if (!newUser.data) {
-    return new ClientResponse(newUser.error, { status: 500 });
-  }
   const userCredentials = castToUserCredentials(newUser.data);
   if (!userCredentials.data) {
     return new ClientResponse(newUser.error, { status: 500 });
   }
-  const userToken = generateUserToken(userCredentials.data);
+  const userToken = buildUserToken(userCredentials.data);
   return new ClientResponse(userToken);
 }
 
@@ -60,7 +57,7 @@ export async function postLogin(clientRequest: ClientRequest): Promise<ClientRes
   if (!(await verifyCredentials(credentials, password))) {
     return new ClientResponse("Invalid credentials", { status: 404 });
   }
-  const userToken = generateUserToken(existingUserResult.data);
+  const userToken = buildUserToken(existingUserResult.data);
   return new ClientResponse(userToken);
 }
 
@@ -70,7 +67,11 @@ export async function postLogin(clientRequest: ClientRequest): Promise<ClientRes
  * @returns An onject with the user and credentials properties
  * @throws {Result} If the item is malformed returns an error
  */
-function castToUserCredentials(user: Item): Result<Credentials & Item> {
+function castToUserCredentials(user?: Item): Result<Credentials & Item> {
+  if (!user) {
+    const error = "User not found";
+    return { error };
+  }
   const data = user as Credentials & Item;
   if (!data.id || !data.email || !data.password) {
     const error = "Item malformed";
@@ -80,11 +81,11 @@ function castToUserCredentials(user: Item): Result<Credentials & Item> {
 }
 
 /**
- * Generates a user token for the given user 
+ * Builds a user token with the user id and email and an access token
  * @param existingUser The existing user
  * @returns The user token
  */
-function generateUserToken(existingUser: Credentials & Item): UserToken {
+function buildUserToken(existingUser: Credentials & Item): UserToken {
   const id = existingUser.id;
   const email = existingUser.email;
   const user: { id: string, email: string } = { id, email };

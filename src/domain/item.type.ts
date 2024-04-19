@@ -14,4 +14,5 @@ export type Item = {
   id: string;
   createdAt: Date;
   updatedAt: Date | null;
+  [key: string]: unknown;
 };

@@ -1,7 +1,7 @@
 # 🥖 API bun
 
 > [!NOTE]
-> A generic JSON in-memory/file-based CRUD API server for rapid prototyping, testing, workshops...
+> A just-in-memory or file-based CRUD API server for rapid prototyping, testing, workshops...
 >
 > Your delicious and fast Rest API ready to consume.
 >
@@ -11,7 +11,7 @@
 - 🥖 For small pet projects
 - 🥖 For educational purposes
 
-## 1 🍳 Installation and start
+## 1 🍳 Ready for ~~lunch~~ launch
 
 ```bash
 # ⬇️ clone the repo
@@ -22,9 +22,9 @@ cd api_bun
 ### 1.1 🧑‍🍳 - If you have already _bun_ in your system
 
 ```bash
-# 🥖 want to try this!
+# 🥖 want to taste this!
 bun run start
-# 🧑‍🍳 To start in dev mode:
+# 🧑‍🍳 To cook in dev mode:
 # install the types...
 bun i
 # and then run-watching changes.
@@ -40,7 +40,7 @@ bun run dev
 > https://bun.sh/docs/cli/install
 
 ```bash
-# 🥖 want to try this:
+# 🥖 want to taste this!
 # install local bun...
 npm run bun:i
 # and then start the API server with npm
@@ -49,7 +49,7 @@ npm start
 
 ## 2 🧂 Tasty environment configuration
 
-Runtime configuration taken from from `.env` file, command line or defaults.
+API-bun is configurable through the command line, `.env` file, or code defaults. To get an idea of your flavors, see configuration types and the .env sample below.
 
 ```ts
 export type ApiBunConfig = {
@@ -76,7 +76,47 @@ SECURITY=none
 SECRET=secret
 ```
 
-## 3 ☕ Hot Features
+## 3 🥡 Storage
+
+### 3.1 🍱 In Memory
+
+By default, the API-bun uses an in-memory storage system for rapid prototyping and testing. This means that all data is lost when the server stops. Useful for clean starts.
+
+If you want to feed the system with some seed data, just create a file named `db/{collection_name}.json` with an array of objects. Api-bun will load it automatically and serve it fresh without touching nothing.
+
+As an usable example, you can find a `db/activities.json` file with a list of recreational activities. Also you can taste flavors of the world by using the amazing [countries-states-cities-database](https://github.com/dr5hn/countries-states-cities-database) files.
+
+### 3.2 🍲 File System
+
+If you want to persist changes between server restarts, then configure the `.env` file with `STORAGE=file`. This will save all changes to the file system in the `db` folder. Useful for after test analysis or to run in a more realistic scenario.
+
+## 4 🍵 Security
+
+### 4.1 🍩 None
+
+The default security level is `none`. This means that the API-bun will not require any token to access the resources. Again, this is useful for rapid prototyping and testing, the main goal of this project.
+
+### 4.2 🍪 Signed Token for write
+
+If you want to add a minimal security layer, then configure the `.env` file with `SECURITY=write`. This will require a signed token to access the resources. The token is generated with the `SECRET` value in the `.env` file.
+
+> [!CAUTION]
+> The token is not JWT compliant and is only a minimal security layer.
+
+#### To register a new user
+
+```bash
+curl -X POST http://localhost:3000/register -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
+```
+
+#### To login
+
+```bash
+curl -X POST http://localhost:3000/login -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
+```
+
+
+## 5 🥪 Hot features and cold road-map
 
 - [x] Publishes a generic CRUD API
 - [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.
@@ -97,6 +137,7 @@ SECRET=secret
 - [ ] _Put and patch distinction_
 - [ ] _Allow to configure the primary key property name_
 - [ ] _Allow to configure the storage path_
+- [ ] _Published to npm_
 
 ---
 

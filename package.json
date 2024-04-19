@@ -1,7 +1,7 @@
 {
 	"name": "api_bun",
 	"description": "A fast fake API for developers and teachers... made with bun",
-	"version": "1.0.6",
+	"version": "1.1.0",
 	"author": {
 		"name": "Alberto Basalo",
 		"url": "https://albertobasalo.dev"

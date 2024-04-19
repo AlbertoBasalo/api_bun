@@ -25,7 +25,7 @@ export async function buildClientRequest(request: Request): Promise<Result<Clien
     const userId: string | undefined = extractUserId(request);
     const allowWrite: boolean = API_BUN_CONFIG.SECURITY === "none" || userId !== undefined;
     const result = { method, endPoint, resource, allowWrite, id, q, sort, order, key, value, body, userId };
-    logTrace("Request:", result);
+    logTrace("Request info", { method, endPoint, resource, allowWrite, id, q, sort, order, key, value, userId });
     return { data: result };
   } catch (error: unknown) {
     logError("Error extracting request info", error);

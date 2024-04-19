@@ -1,4 +1,5 @@
 import type { Item } from "../domain/item.type";
+import { logTrace } from "../domain/log.service";
 import { readJson, writeJson } from "./file.repository";
 
 /**
@@ -20,7 +21,8 @@ export async function selectAll(collection: string): Promise<Item[]> {
  */
 export async function selectByKeyValue(collection: string, key: string, value: string): Promise<Item[]> {
   const selectedData = await selectAll(collection);
-  const result = selectedData.filter((item: any) => item[key] == value);
+  logTrace("selectByKeyValue", { collection, key, value, });
+  const result = selectedData.filter((item: Item) => (item[key] as string).toString() === value);
   return result;
 }
 
@@ -43,10 +45,17 @@ export async function selectById(collection: string, id: string): Promise<Item> 
  * @returns The items that match the content or an empty array if none are found
  */
 export async function selectByContent(collection: string, content: string): Promise<Item[]> {
+  const loweredContent = content.toLowerCase(); // case insensitive search
   const selectedData = await selectAll(collection);
   const result = selectedData.filter((item: Item) => {
     const values = Object.values(item);
-    return values.some((value: any) => value.toString().includes(content));
+    return values.some((value) => {
+      if (typeof value === "string") {
+        return value.toLocaleLowerCase().includes(loweredContent);
+      }
+      return false;
+    }
+    );
   });
   return result;
 }
@@ -92,7 +101,7 @@ export async function update(collection: string, id: string, item: Item): Promis
  */
 export async function deleteById(collection: string, id: string): Promise<void> {
   const collectionData = await readCollection(collection);
-  const index = collectionData.findIndex((i: any) => i.id == id);
+  const index = collectionData.findIndex((i: Item) => i.id === id);
   if (index >= 0) {
     collectionData.splice(index, 1);
     await writeCollection(collection, collectionData);

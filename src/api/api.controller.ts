@@ -13,7 +13,7 @@ import {
 } from "./resource.controller";
 
 // API method Controller
-// Receives a requestInfo object and returns a response object
+// Receives a ClientRequest object and returns a ClientResponse object
 
 /**
  * Handles GET requests (by id, query, or all)

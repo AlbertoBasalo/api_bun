@@ -1,7 +1,6 @@
 import crypto from "node:crypto";
 import { API_BUN_CONFIG } from "../api_bun.config";
 import type { Credentials } from "./credentials.type";
-import type { Item } from "./item.type";
 import type { Result } from "./result.type";
 const secret = API_BUN_CONFIG.SECRET;
 

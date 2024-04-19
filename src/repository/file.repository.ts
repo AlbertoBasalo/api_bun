@@ -10,7 +10,6 @@ import { logError, logInfo, logTrace, logWarning } from "../domain/log.service";
 export async function readJson(collectionName: string): Promise<Item[]> {
   try {
     const path = getPath(collectionName);
-    logTrace("Reading seed data", path);
     const seedData = await Bun.file(path).json();
     logInfo("Seed data loaded", collectionName);
     return seedData;

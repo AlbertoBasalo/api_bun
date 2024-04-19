@@ -16,5 +16,6 @@ const server = Bun.serve({
 });
 
 logInfo(`🥖 API-bun is listening on ${server.url}`, API_BUN_CONFIG);
-logInfo("☕ Your delicious and fast Rest API ready to consume.", { cookedWith: "bun", by: "Alberto Basalo" });
+const recipe = { cookedWith: "https://bun.sh", by: "https://twitter.com/AlbertoBasalo" };
+logInfo("☕ Delicious fast Rest API ready to consume.", recipe);
 logInfo("🍳 Try the sample `activities` end point", `${server.url}activities`);
