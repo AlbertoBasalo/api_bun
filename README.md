@@ -1,14 +1,16 @@
 # 🥖 API bun
 
 > [!NOTE]
-> A just-in-memory or file-based CRUD API server for rapid prototyping, testing, workshops...
+> An API server for rapid prototyping, testing, workshops...
 >
-> Your delicious and fast Rest API ready to consume.
+> Delicious and fast food JSON ready to consume.
 >
-> This project was created using [_bun_](https://bun.sh) v1.1.3.
+> This project was cooked using [_bun_](https://bun.sh) v1.1.3.
 
+- 🥖 Just-in-memory or file-based
+- 🥖 Open or secured
 - 🥖 For rapid prototypes
-- 🥖 For small pet projects
+- 🥖 For front end testing
 - 🥖 For educational purposes
 
 ## 1 🍳 Ready for ~~lunch~~ launch
@@ -25,7 +27,7 @@ cd api_bun
 # 🥖 want to taste this!
 bun run start
 # 🧑‍🍳 To cook in dev mode:
-# install the types...
+# install the tools...
 bun i
 # and then run-watching changes.
 bun run dev
@@ -100,7 +102,7 @@ The default security level is `none`. This means that the API-bun will not requi
 
 If you want to add a minimal security layer, then configure the `.env` file with `SECURITY=write`. This will require a signed token to access the resources. The token is generated with the `SECRET` value in the `.env` file.
 
-When enabled, any `POST, PUT, PATCH or DELETE` request to the API must include the token in the `Authorization` header with the `Bearer` prefix. 
+When enabled, any `POST, PUT, PATCH or DELETE` request to the API must include the token in the `Authorization` header with the `Bearer` prefix.
 
 The identified user `id` is also added to any posted item as `userId` property as an owner for future fine grained security.
 
@@ -118,7 +120,6 @@ curl -X POST http://localhost:3000/register -d '{"email":"admin@world.org","pass
 ```bash
 curl -X POST http://localhost:3000/login -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
 ```
-
 
 ## 5 🥪 Hot features and cold road-map
 
@@ -139,6 +140,7 @@ curl -X POST http://localhost:3000/login -d '{"email":"admin@world.org","passwor
 - [ ] _Sorted results_
 - [ ] _Pagination_
 - [ ] _Put and patch distinction_
+- [ ] _Allow to configure the root api route_
 - [ ] _Allow to configure the primary key property name_
 - [ ] _Allow to configure the storage path_
 - [ ] _Published to npm_
