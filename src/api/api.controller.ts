@@ -40,14 +40,14 @@ export async function getController(clientRequest: ClientRequest): Promise<Clien
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function postController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (!clientRequest.body) return new ClientResponse("Bad request", { status: 400 });
+  if (!clientRequest.body) return new ClientResponse("Bad request", { status: 400 }, clientRequest);
   if (clientRequest.endPoint === "/login") {
     return await postLogin(clientRequest);
   }
   if (clientRequest.endPoint === "/register") {
     return await postRegister(clientRequest);
   }
-  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 });
+  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 }, clientRequest);
   clientRequest.body.userId = clientRequest.userId;
   return await postResource(clientRequest.resource, clientRequest.body);
 }
@@ -59,8 +59,8 @@ export async function postController(clientRequest: ClientRequest): Promise<Clie
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function putController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (!clientRequest.id) return new ClientResponse("Bad request", { status: 400 });
-  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 });
+  if (!clientRequest.id) return new ClientResponse("Bad request", { status: 400 }, clientRequest);
+  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 }, clientRequest);
   return await putResource(clientRequest.resource, clientRequest.id, clientRequest.body as Item);
 }
 
@@ -71,8 +71,8 @@ export async function putController(clientRequest: ClientRequest): Promise<Clien
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function deleteController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (!clientRequest.id) return new ClientResponse("Bad request", { status: 400 });
-  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 });
+  if (!clientRequest.id) return new ClientResponse("Bad request", { status: 400 }, clientRequest);
+  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 }, clientRequest);
   return await deleteResource(clientRequest.resource, clientRequest.id);
 }
 

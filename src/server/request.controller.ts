@@ -1,17 +1,11 @@
 import { deleteController, getController, postController, putController } from "../api/api.controller";
-import { ClientResponse } from "./client_response.class";
-
-import type { Result } from "../domain/result.type";
 import { buildClientRequest } from "./client_request.service";
 import type { ClientRequest } from "./client_request.type";
+import { ClientResponse } from "./client_response.class";
 import { getWebController } from "./web.controller";
 
 export async function handleRequest(request: Request): Promise<ClientResponse> {
-  const clientRequestResult: Result<ClientRequest> = await buildClientRequest(request);
-  const clientRequest = clientRequestResult.data;
-  if (!clientRequest) {
-    return new ClientResponse(clientRequestResult.error, { status: 400 });
-  }
+  const clientRequest: ClientRequest = await buildClientRequest(request);
   switch (clientRequest.method) {
     case "GET":
       {
@@ -26,8 +20,8 @@ export async function handleRequest(request: Request): Promise<ClientResponse> {
     case "DELETE":
       return await deleteController(clientRequest);
     case "OPTIONS":
-      return new ClientResponse("OK");
+      return new ClientResponse("No Content", { status: 204 }, clientRequest);
     default:
-      return new ClientResponse("Method Not Allowed", { status: 405 });
+      return new ClientResponse("Method Not Allowed", { status: 405 }, clientRequest);
   }
 }

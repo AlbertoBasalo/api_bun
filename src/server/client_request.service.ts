@@ -1,6 +1,6 @@
 import { API_BUN_CONFIG } from "../api_bun.config";
 import { verifyToken } from "../domain/crypto.service";
-import { logError, logTrace } from "../domain/log.service";
+import { logError, logRequest, logTrace } from "../domain/log.service";
 import type { Result } from "../domain/result.type";
 import type { ClientBody, ClientRequest } from "./client_request.type";
 
@@ -9,28 +9,23 @@ import type { ClientBody, ClientRequest } from "./client_request.type";
  * @param request Request object
  * @returns Structured information extracted from the request object
  */
-export async function buildClientRequest(request: Request): Promise<Result<ClientRequest>> {
-  try {
-    const method = request.method;
-    const endPoint = new URL(request.url).pathname;
-    const resource = endPoint.split("/")[1] || "";
-    const query = new URL(request.url).searchParams;
-    const q = query.get("q") || undefined;
-    const sort = query.get("_sort") || undefined;
-    const order = (query.get("_order") as "asc" | "desc") || undefined;
-    const key = query.get("key") || undefined;
-    const value = query.get("value") || undefined;
-    const body: ClientBody | undefined = await extractBody(request);
-    const id = extractId(endPoint, body);
-    const userId: string | undefined = extractUserId(request);
-    const allowWrite: boolean = API_BUN_CONFIG.SECURITY === "none" || userId !== undefined;
-    const result = { method, endPoint, resource, allowWrite, id, q, sort, order, key, value, body, userId };
-    logTrace("Request info", { method, endPoint, resource, allowWrite, id, q, sort, order, key, value, userId });
-    return { data: result };
-  } catch (error: unknown) {
-    logError("Error extracting request info", error);
-    return { error: "Bad request" };
-  }
+export async function buildClientRequest(request: Request): Promise<ClientRequest> {
+  const method = request.method;
+  const endPoint = new URL(request.url).pathname;
+  const resource = endPoint.split("/")[1] || "";
+  const query = new URL(request.url).searchParams;
+  const q = query.get("q") || undefined;
+  const sort = query.get("_sort") || undefined;
+  const order = (query.get("_order") as "asc" | "desc") || undefined;
+  const key = query.get("key") || undefined;
+  const value = query.get("value") || undefined;
+  const body: ClientBody | undefined = await extractBody(request);
+  const id = extractId(endPoint, body);
+  const userId: string | undefined = extractUserId(request);
+  const allowWrite: boolean = API_BUN_CONFIG.SECURITY === "none" || userId !== undefined;
+  const clientRequest = { method, endPoint, resource, allowWrite, id, q, sort, order, key, value, body, userId };
+  logRequest(clientRequest);
+  return clientRequest;
 }
 
 /**

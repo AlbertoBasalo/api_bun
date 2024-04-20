@@ -3,7 +3,7 @@
 > [!NOTE]
 > An API server for rapid prototyping, testing, workshops...
 >
-> Delicious and fast food JSON ready to consume.
+> Delicious JSON fast food ready to consume.
 >
 > This project was cooked using [_bun_](https://bun.sh) v1.1.3.
 

@@ -29,7 +29,7 @@ export async function postRegister(clientRequest: ClientRequest): Promise<Client
     return new ClientResponse(newUser.error, { status: 500 });
   }
   const userToken = buildUserToken(userCredentials.data);
-  return new ClientResponse(userToken);
+  return new ClientResponse(userToken, { status: 201 });
 }
 
 /**
@@ -46,7 +46,7 @@ export async function postLogin(clientRequest: ClientRequest): Promise<ClientRes
   }
   const existingUsers = await getByKeyValue("users", "email", email);
   if (!existingUsers[0]) {
-    return new ClientResponse("Invalid credentials", { status: 404 });
+    return new ClientResponse("Invalid credentials", { status: 404, statusText: "Not Found" });
   }
   const existingUserResult: Result<Credentials & Item> = castToUserCredentials(existingUsers[0]);
   if (!existingUserResult.data) {

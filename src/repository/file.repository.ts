@@ -8,15 +8,15 @@ import { logError, logInfo, logTrace, logWarning } from "../domain/log.service";
  * @returns An array of items from the collection or an empty array if the file does not exist
  */
 export async function readJson(collectionName: string): Promise<Item[]> {
+  const path = getPath(collectionName);
   try {
-    const path = getPath(collectionName);
     const seedData = await Bun.file(path).json();
-    logInfo("Seed data loaded", collectionName);
+    logTrace("Seed data loaded", { path });
     return seedData;
   } catch (e) {
-    logInfo("No seed data available. Starting empty collection.", collectionName);
+    logTrace("No seed data available. Starting empty collection.", { path });
     if (API_BUN_CONFIG.STORAGE === "file") {
-      logWarning("Creating file storage", collectionName);
+      logInfo("Creating file storage", { path });
       writeJson(collectionName, []);
     }
     return [];
@@ -30,11 +30,12 @@ export async function readJson(collectionName: string): Promise<Item[]> {
  */
 export async function writeJson(collectionName: string, data: Item[]): Promise<void> {
   if (API_BUN_CONFIG.STORAGE !== "file") return;
+  const path = getPath(collectionName);
   try {
     const content = JSON.stringify(data, null, 2);
-    await Bun.write(getPath(collectionName), content);
+    await Bun.write(path, content);
   } catch (e) {
-    logError("Error writing to file. Using only memory.", e);
+    logError("Error writing to file system. Using only memory.", e);
   }
 }
 

@@ -21,7 +21,6 @@ export async function selectAll(collection: string): Promise<Item[]> {
  */
 export async function selectByKeyValue(collection: string, key: string, value: string): Promise<Item[]> {
   const selectedData = await selectAll(collection);
-  logTrace("selectByKeyValue", { collection, key, value, });
   const result = selectedData.filter((item: Item) => (item[key] as string).toString() === value);
   return result;
 }

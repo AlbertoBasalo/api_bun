@@ -12,8 +12,9 @@ export async function getResourceAll(resource: string): Promise<ClientResponse> 
 export async function getResourceById(resource: string, id: string): Promise<ClientResponse> {
   const selectedData = await getById(resource, id);
   const status = selectedData.data ? 200 : 404;
+  const statusText = selectedData.data ? "OK" : `Not Found${resource} with id ${id}`;
   const body = selectedData.data ? selectedData.data : selectedData.error;
-  return new ClientResponse(body, { status });
+  return new ClientResponse(body, { status, statusText });
 }
 
 export async function getResourceByKeyValue(resource: string, key: string, value: string): Promise<ClientResponse> {
