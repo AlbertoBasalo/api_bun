@@ -2,6 +2,7 @@ import type { Item } from "../domain/item.type";
 import type { ClientRequest } from "../server/client_request.type";
 import { ClientResponse } from "../server/client_response.class";
 import { postLogin, postRegister } from "./auth.controller";
+import { getForced } from "./forced.controller";
 import {
   deleteResource,
   getResourceAll,
@@ -21,6 +22,9 @@ import {
  * @returns {ClientResponse} A client response object
  */
 export async function getController(clientRequest: ClientRequest): Promise<ClientResponse> {
+  if (clientRequest.resource === "forced") {
+    return await getForced(clientRequest);
+  }
   if (clientRequest.id) {
     return await getResourceById(clientRequest.resource, clientRequest.id);
   }
