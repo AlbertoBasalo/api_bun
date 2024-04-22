@@ -1,27 +1,23 @@
-import { deleteController, getController, postController, putController } from "../api/api.controller";
+import { apiController, deleteController, getController, postController, putController } from "../api/api.controller";
+import { forcedController } from "../api/forced.controller";
+import { API_BUN_CONFIG } from "../api_bun.config";
 import { buildClientRequest } from "./client_request.service";
 import type { ClientRequest } from "./client_request.type";
-import { ClientResponse } from "./client_response.class";
+import type { ClientResponse } from "./client_response.class";
 import { getWebController } from "./web.controller";
 
+/**
+ * Handles the request and routes it to the corresponding controller
+ * @param request The http native request 
+ * @returns A promise with the client response
+ */
 export async function handleRequest(request: Request): Promise<ClientResponse> {
   const clientRequest: ClientRequest = await buildClientRequest(request);
-  switch (clientRequest.method) {
-    case "GET":
-      {
-        const webResponseResult = await getWebController(clientRequest);
-        if (webResponseResult.data) return webResponseResult.data;
-        return await getController(clientRequest);
-      }
-    case "POST":
-      return await postController(clientRequest);
-    case "PUT":
-      return await putController(clientRequest);
-    case "DELETE":
-      return await deleteController(clientRequest);
-    case "OPTIONS":
-      return new ClientResponse("No Content", { status: 204 }, clientRequest);
-    default:
-      return new ClientResponse("Method Not Allowed", { status: 405 }, clientRequest);
+  if (clientRequest.root === API_BUN_CONFIG.API_ROOT) {
+    return await apiController(clientRequest);
   }
+  if (clientRequest.root === API_BUN_CONFIG.API_FORCED) {
+    return await forcedController(clientRequest);
+  }
+  return await getWebController(clientRequest);
 }

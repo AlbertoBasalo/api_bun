@@ -1,10 +1,18 @@
-import type { Result } from "../domain/result.type";
 import type { ClientRequest } from "./client_request.type";
 import { ClientResponse } from "./client_response.class";
 
-export async function getWebController(requestInfo: ClientRequest): Promise<Result<ClientResponse>> {
+const webHeaders = { headers: { "Content-Type": "text/html" } };
+export async function getWebController(requestInfo: ClientRequest): Promise<ClientResponse> {
   if (requestInfo.endPoint === "/") {
-    const homePage = `
+    return getHomePageWebResponse();
+  }
+  if (requestInfo.endPoint === "/favicon.ico") {
+    return getEmptyWebResponse();
+  }
+  return getNotFoundWebResponse();
+}
+function getHomePageWebResponse() {
+  const homePage = `
     <!DOCTYPE html>
       <html lang="en" >
         <head>
@@ -36,12 +44,13 @@ export async function getWebController(requestInfo: ClientRequest): Promise<Resu
         </body>
       </html>
     `;
-    return { data: new ClientResponse(homePage, { headers: { "Content-Type": "text/html" } }) };
-  }
-  if (requestInfo.endPoint === "/favicon.ico") {
-    return {
-      data: new ClientResponse("", { status: 204 }),
-    };
-  }
-  return { data: undefined };
+  return new ClientResponse(homePage, webHeaders);
+}
+
+function getEmptyWebResponse(): ClientResponse {
+  return new ClientResponse("", { ...webHeaders, status: 204 });
+}
+
+function getNotFoundWebResponse(): ClientResponse {
+  return new ClientResponse("Resource not found", { ...webHeaders, status: 404 });
 }

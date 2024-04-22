@@ -4,6 +4,7 @@ import type { Item, NewItem } from "../domain/item.type";
 import { logError, logWarning } from "../domain/log.service";
 import { getByKeyValue, post } from "../domain/resource.service";
 import type { Result } from "../domain/result.type";
+import type { UserToken } from "../domain/user_token.type";
 import type { ClientRequest } from "../server/client_request.type";
 import { ClientResponse } from "../server/client_response.class";
 
@@ -96,11 +97,3 @@ function buildUserToken(existingUser: Credentials & Item): UserToken {
   };
   return userToken;
 }
-/**
- * The user token sent to the client
- * Includes the user id and email and the access token
- */
-type UserToken = {
-  user: { id: string; email: string };
-  accessToken: string;
-};

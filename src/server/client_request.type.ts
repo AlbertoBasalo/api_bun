@@ -6,6 +6,7 @@
 export type ClientRequest = {
   method: string;
   endPoint: string;
+  root: string;
   resource: string;
   allowWrite?: boolean;
   id?: string;

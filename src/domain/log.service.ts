@@ -85,11 +85,11 @@ const statusColoredHearts: Record<string, string> = {
   "200": "💚",
   "201": "💙",
   "204": "💜",
-  "400": "❤️ ",
-  "401": "💔",
-  "403": "💖",
+  "400": "💔 ",
+  "401": "💘",
+  "403": "💘",
   "404": "💗",
-  "500": "💘",
+  "500": "🖤",
 };
 
 const statusMessages: Record<string, string> = {
@@ -101,4 +101,5 @@ const statusMessages: Record<string, string> = {
   "403": "Forbidden",
   "404": "Not Found",
   "500": "Internal Server Error",
+
 };

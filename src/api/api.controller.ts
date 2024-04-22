@@ -2,7 +2,7 @@ import type { Item } from "../domain/item.type";
 import type { ClientRequest } from "../server/client_request.type";
 import { ClientResponse } from "../server/client_response.class";
 import { postLogin, postRegister } from "./auth.controller";
-import { getForced } from "./forced.controller";
+
 import {
   deleteResource,
   getResourceAll,
@@ -16,15 +16,30 @@ import {
 // API method Controller
 // Receives a ClientRequest object and returns a ClientResponse object
 
+export async function apiController(clientRequest: ClientRequest): Promise<ClientResponse> {
+  switch (clientRequest.method) {
+    case "GET":
+      return await getController(clientRequest);
+    case "POST":
+      return await postController(clientRequest);
+    case "PUT":
+      return await putController(clientRequest);
+    case "DELETE":
+      return await deleteController(clientRequest);
+    case "OPTIONS":
+      return new ClientResponse("No Content", { status: 204 }, clientRequest);
+    default:
+      return new ClientResponse("Method Not Allowed", { status: 405 }, clientRequest);
+  }
+}
+
+
 /**
  * Handles GET requests (by id, query, or all)
  * @param clientRequest The client request information
  * @returns {ClientResponse} A client response object
  */
 export async function getController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (clientRequest.resource === "forced") {
-    return await getForced(clientRequest);
-  }
   if (clientRequest.id) {
     return await getResourceById(clientRequest.resource, clientRequest.id);
   }
