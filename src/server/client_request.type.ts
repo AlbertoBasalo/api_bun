@@ -8,15 +8,11 @@ export type ClientRequest = {
   endPoint: string;
   root: string;
   resource: string;
-  allowWrite?: boolean;
   id?: string;
-  q?: string;
-  sort?: string;
-  order?: "asc" | "desc";
-  key?: string;
-  value?: string;
+  params?: Params;
   body?: ClientBody;
-  userId?: string;
+  force?: ForcedParams;
+  security?: Security;
 };
 
 
@@ -24,3 +20,21 @@ export type ClientBody = {
   id?: string;
   userId?: string;
 };
+
+export type ForcedParams = {
+  delay: number;
+  status: number;
+}
+
+export type Security = {
+  anonymous: boolean;
+  userId?: string;
+}
+
+export type Params = {
+  q?: string;
+  key?: string;
+  value?: string;
+  sort?: string;
+  order?: "asc" | "desc";
+}

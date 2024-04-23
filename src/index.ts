@@ -20,4 +20,4 @@ console.clear();
 logInfo(`API-bun is listening on ${server.url} 🥖`, API_BUN_CONFIG);
 const recipe = { cookedWith: "https://bun.sh", baker: "https://twitter.com/AlbertoBasalo" };
 logInfo("Delicious JSON fast food ready to consume. ☕", recipe);
-logInfo("Try the sample `activities` end point 🍳", `${server.url}activities`);
+logInfo("Try the sample `activities` end point 🍳", `${server.url}api/activities`);

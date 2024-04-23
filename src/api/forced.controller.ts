@@ -1,12 +1,10 @@
-import { API_BUN_CONFIG } from "../api_bun.config";
 import type { ClientRequest } from "../server/client_request.type";
 import { ClientResponse } from "../server/client_response.class";
 
 export async function forcedController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  const status = Number.parseInt(clientRequest.q || '500');
-  await new Promise(resolve => setTimeout(resolve, API_BUN_CONFIG.API_FORCED_TIMEOUT));
+  const status = clientRequest.force?.status || 500;
   const body = getBody(clientRequest);
-  return new ClientResponse(body, { status }, clientRequest);
+  return new ClientResponse({ body, status, clientRequest });
 }
 
 function getBody(clientRequest: ClientRequest): unknown {

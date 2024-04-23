@@ -1,8 +1,6 @@
 // Logic service for the resource API
 // Receives arguments and returns a promise result with the data or an error message
 
-// ToDo: Implement user authorization
-
 import {
   deleteById,
   insert,

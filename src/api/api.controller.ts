@@ -27,9 +27,9 @@ export async function apiController(clientRequest: ClientRequest): Promise<Clien
     case "DELETE":
       return await deleteController(clientRequest);
     case "OPTIONS":
-      return new ClientResponse("No Content", { status: 204 }, clientRequest);
+      return new ClientResponse({ body: "No Content", status: 204, clientRequest });
     default:
-      return new ClientResponse("Method Not Allowed", { status: 405 }, clientRequest);
+      return new ClientResponse({ body: "Method not allowed", status: 405, clientRequest });
   }
 }
 
@@ -41,15 +41,22 @@ export async function apiController(clientRequest: ClientRequest): Promise<Clien
  */
 export async function getController(clientRequest: ClientRequest): Promise<ClientResponse> {
   if (clientRequest.id) {
-    return await getResourceById(clientRequest.resource, clientRequest.id);
+    const myResponse = await getResourceById(clientRequest.resource, clientRequest.id);
+    return new ClientResponse({ ...myResponse, clientRequest });
   }
-  if (clientRequest.q) {
-    return await getResourceByQuery(clientRequest.resource, clientRequest.q);
+  const params = clientRequest.params;
+  if (params) {
+    if (params.q) {
+      const myResponse = await getResourceByQuery(clientRequest.resource, params.q);
+      return new ClientResponse({ ...myResponse, clientRequest });
+    }
+    if (params.key && params.value) {
+      const myResponse = await getResourceByKeyValue(clientRequest.resource, params.key, params.value);
+      return new ClientResponse({ ...myResponse, clientRequest });
+    }
   }
-  if (clientRequest.key && clientRequest.value) {
-    return await getResourceByKeyValue(clientRequest.resource, clientRequest.key, clientRequest.value);
-  }
-  return await getResourceAll(clientRequest.resource);
+  const myResponse = await getResourceAll(clientRequest.resource);
+  return new ClientResponse({ ...myResponse, clientRequest });
 }
 
 /**
@@ -59,16 +66,20 @@ export async function getController(clientRequest: ClientRequest): Promise<Clien
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function postController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (!clientRequest.body) return new ClientResponse("Bad request", { status: 400 }, clientRequest);
-  if (clientRequest.endPoint === "/login") {
+  if (!clientRequest.body) return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
+  if (clientRequest.endPoint === "/api/login") {
     return await postLogin(clientRequest);
   }
-  if (clientRequest.endPoint === "/register") {
+  if (clientRequest.endPoint === "/api/register") {
     return await postRegister(clientRequest);
   }
-  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 }, clientRequest);
-  clientRequest.body.userId = clientRequest.userId;
-  return await postResource(clientRequest.resource, clientRequest.body);
+  if (clientRequest.security) {
+    if (clientRequest.security.anonymous)
+      return new ClientResponse({ body: "Unauthorized", status: 401, clientRequest });
+    clientRequest.body.userId = clientRequest.security.userId;
+  }
+  const myResponse = await postResource(clientRequest.resource, clientRequest.body);
+  return new ClientResponse({ ...myResponse, clientRequest });
 }
 
 /**
@@ -78,9 +89,13 @@ export async function postController(clientRequest: ClientRequest): Promise<Clie
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function putController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (!clientRequest.id) return new ClientResponse("Bad request", { status: 400 }, clientRequest);
-  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 }, clientRequest);
-  return await putResource(clientRequest.resource, clientRequest.id, clientRequest.body as Item);
+  if (!clientRequest.id) return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
+  if (clientRequest.security) {
+    if (clientRequest.security.anonymous)
+      return new ClientResponse({ body: "Unauthorized", status: 401, clientRequest });
+  }
+  const myResponse = await putResource(clientRequest.resource, clientRequest.id, clientRequest.body as Item);
+  return new ClientResponse({ ...myResponse, clientRequest });
 }
 
 /**
@@ -90,8 +105,12 @@ export async function putController(clientRequest: ClientRequest): Promise<Clien
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function deleteController(clientRequest: ClientRequest): Promise<ClientResponse> {
-  if (!clientRequest.id) return new ClientResponse("Bad request", { status: 400 }, clientRequest);
-  if (!clientRequest.allowWrite) return new ClientResponse("Unauthorized", { status: 401 }, clientRequest);
-  return await deleteResource(clientRequest.resource, clientRequest.id);
+  if (!clientRequest.id) return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
+  if (clientRequest.security) {
+    if (clientRequest.security.anonymous)
+      return new ClientResponse({ body: "Unauthorized", status: 401, clientRequest });
+  }
+  const myResponse = await deleteResource(clientRequest.resource, clientRequest.id);
+  return new ClientResponse({ ...myResponse, clientRequest });
 }
 

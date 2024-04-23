@@ -16,21 +16,21 @@ import { ClientResponse } from "../server/client_response.class";
  */
 export async function postRegister(clientRequest: ClientRequest): Promise<ClientResponse> {
   const credentials: Credentials = clientRequest.body as Credentials;
-  if (!credentials) return new ClientResponse("Bad request", { status: 400 });
+  if (!credentials) return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
   const email = credentials.email;
   const existingUser = await getByKeyValue("users", "email", email);
   if (existingUser.length > 0) {
     logWarning("Registering a user that already exists", { email });
-    return new ClientResponse("Invalid credentials", { status: 400 });
+    return new ClientResponse({ body: "Invalid credentials", status: 400, clientRequest });
   }
   const hashedCredentials = await hashCredentials(credentials) as NewItem;
   const newUser = await post("users", hashedCredentials);
   const userCredentials = castToUserCredentials(newUser.data);
   if (!userCredentials.data) {
-    return new ClientResponse(newUser.error, { status: 500 });
+    return new ClientResponse({ body: newUser.error, status: 500, clientRequest });
   }
   const userToken = buildUserToken(userCredentials.data);
-  return new ClientResponse(userToken, { status: 201 });
+  return new ClientResponse({ body: userToken, status: 201, clientRequest });
 }
 
 /**
@@ -43,23 +43,23 @@ export async function postLogin(clientRequest: ClientRequest): Promise<ClientRes
   const credentials: Credentials = clientRequest.body as Credentials;
   const email = credentials.email;
   if (!email) {
-    return new ClientResponse("Email is required", { status: 400 });
+    return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
   }
   const existingUsers = await getByKeyValue("users", "email", email);
   if (!existingUsers[0]) {
-    return new ClientResponse("Invalid credentials", { status: 404, statusText: "Not Found" });
+    return new ClientResponse({ body: "Invalid credentials", status: 400, clientRequest });
   }
   const existingUserResult: Result<Credentials & Item> = castToUserCredentials(existingUsers[0]);
   if (!existingUserResult.data) {
     logError(existingUserResult.error || 'Item malformed on db', { email });
-    return new ClientResponse("Internal server error", { status: 500 });
+    return new ClientResponse({ body: "Internal server error", status: 500, clientRequest });
   }
   const password: string = existingUserResult.data.password;
   if (!(await verifyCredentials(credentials, password))) {
-    return new ClientResponse("Invalid credentials", { status: 404 });
+    return new ClientResponse({ body: "Invalid credentials", status: 404, clientRequest });
   }
   const userToken = buildUserToken(existingUserResult.data);
-  return new ClientResponse(userToken);
+  return new ClientResponse({ body: userToken, status: 201, clientRequest });
 }
 
 /**

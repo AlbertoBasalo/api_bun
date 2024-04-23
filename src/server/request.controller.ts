@@ -13,11 +13,17 @@ import { getWebController } from "./web.controller";
  */
 export async function handleRequest(request: Request): Promise<ClientResponse> {
   const clientRequest: ClientRequest = await buildClientRequest(request);
+  if (clientRequest.force) {
+    if (clientRequest.force.delay) {
+      const delayMs = clientRequest.force?.delay || API_BUN_CONFIG.API_FORCED_TIMEOUT;
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+    if (clientRequest.force.status) {
+      return await forcedController(clientRequest);
+    }
+  }
   if (clientRequest.root === API_BUN_CONFIG.API_ROOT) {
     return await apiController(clientRequest);
-  }
-  if (clientRequest.root === API_BUN_CONFIG.API_FORCED) {
-    return await forcedController(clientRequest);
   }
   return await getWebController(clientRequest);
 }

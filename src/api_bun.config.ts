@@ -13,8 +13,6 @@ export type ApiBunConfig = {
   SECRET: string;
   /** API root (api by default) */
   API_ROOT?: string;
-  /** Forced result status (api-forced by default) */
-  API_FORCED?: string;
   /** Forced timeout in milliseconds */
   API_FORCED_TIMEOUT: number;
 };
@@ -28,6 +26,5 @@ export const API_BUN_CONFIG: ApiBunConfig = {
   SECURITY: (Bun.env.SECURITY as SecurityTypes) || "none",
   SECRET: (Bun.env.SECRET as string) || "secret",
   API_ROOT: Bun.env.API_ROOT as string || "api",
-  API_FORCED: Bun.env.API_FORCED as string || "api-forced",
   API_FORCED_TIMEOUT: Number.parseInt(Bun.env.API_FORCED_TIMEOUT || '1000')
 };
