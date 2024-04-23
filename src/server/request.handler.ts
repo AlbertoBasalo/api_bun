@@ -6,11 +6,11 @@ import {
 	putController,
 } from "../api/api.controller";
 import { forcedController } from "../api/forced.controller";
+import { getWebController } from "../api/web.controller";
 import { API_BUN_CONFIG } from "../api_bun.config";
 import { buildClientRequest } from "./client_request.service";
 import type { ClientRequest } from "./client_request.type";
 import type { ClientResponse } from "./client_response.class";
-import { getWebController } from "./web.controller";
 
 /**
  * Handles the request and routes it to the corresponding controller
@@ -19,11 +19,9 @@ import { getWebController } from "./web.controller";
  */
 export async function handleRequest(request: Request): Promise<ClientResponse> {
 	const clientRequest: ClientRequest = await buildClientRequest(request);
-	if (clientRequest.force) {
-		handleDelayedResponse(clientRequest.force.delay);
-		if (clientRequest.force.status) {
-			return await forcedController(clientRequest);
-		}
+	handleDelayedResponse(clientRequest.force?.delay);
+	if (clientRequest.force?.status) {
+		return await forcedController(clientRequest);
 	}
 	if (clientRequest.root === API_BUN_CONFIG.API_ROOT) {
 		return await apiController(clientRequest);
@@ -31,9 +29,7 @@ export async function handleRequest(request: Request): Promise<ClientResponse> {
 	return await getWebController(clientRequest);
 }
 
-async function handleDelayedResponse(
-	delayMs: number | undefined,
-): Promise<void> {
+async function handleDelayedResponse(delayMs: number | undefined): Promise<void> {
 	if (!delayMs) return;
 	await new Promise((resolve) => setTimeout(resolve, delayMs));
 }

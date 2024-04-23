@@ -7,17 +7,13 @@ type LogLevel = "none" | "info" | "verbose";
 const logLevel: LogLevel = API_BUN_CONFIG.LOG_LEVEL as LogLevel;
 
 export function logTrace(message: string, payload?: unknown): void {
-	if (logLevel !== "verbose") {
-		return;
-	}
+	if (logLevel !== "verbose") return;
 	console.log(`📖\t${message}`);
 	printPayload(payload);
 }
 
 export function logInfo(message: string, payload?: unknown): void {
-	if (logLevel === "none") {
-		return;
-	}
+	if (logLevel === "none") return;
 	console.log(`📘\t${message}`);
 	printPayload(payload);
 }
@@ -39,26 +35,15 @@ export function logError(message: string, payload?: unknown): void {
 }
 
 export function logRequest(clientRequest: ClientRequest): void {
-	if (logLevel !== "verbose") {
-		return;
-	}
-	if (clientRequest.method === "OPTIONS") {
-		return;
-	}
+	if (logLevel !== "verbose") return;
+	if (clientRequest.method === "OPTIONS") return;
 	const request = getLogForRequest(clientRequest);
 	console.log(`💌\t${request}`);
 	printPayload(clientRequest);
 }
 export function logResponse(clientResponse: ClientResponse): void {
-	if (logLevel === "none") {
-		return;
-	}
-	if (
-		clientResponse.clientRequest &&
-		clientResponse.clientRequest.method === "OPTIONS"
-	) {
-		return;
-	}
+	if (logLevel === "none") return;
+	if (clientResponse.clientRequest?.method === "OPTIONS") return;
 	const status = getLogForStatus(clientResponse);
 	const request = getLogForRequest(clientResponse.clientRequest);
 	console.log(`${status} ${request} `);
@@ -70,20 +55,14 @@ function getLogForRequest(clientRequest?: ClientRequest) {
 }
 
 function printPayload(payload?: unknown): void {
-	if (!payload) {
-		return;
-	}
-	if (logLevel !== "verbose") {
-		return;
-	}
+	if (!payload) return;
+	if (logLevel !== "verbose") return;
 	console.log(`\t${stringifyPayload(payload)}`);
 	console.write("\n");
 }
 
 function stringifyPayload(payload: unknown): string {
-	if (typeof payload !== "object") {
-		return payload as string;
-	}
+	if (typeof payload !== "object") return payload as string;
 	try {
 		return JSON.stringify(payload);
 	} catch (error: unknown) {

@@ -1,15 +1,13 @@
-import type { ClientRequest } from "./client_request.type";
-import { ClientResponse, type MyResponse } from "./client_response.class";
+import type { ClientRequest } from "../server/client_request.type";
+import { ClientResponse, type MyResponse } from "../server/client_response.class";
 
 /**
  * Handles the web request and returns the corresponding html response
  * @param request The http native request
  * @returns A promise with the client response
  */
-export async function getWebController(
-	clientRequest: ClientRequest,
-): Promise<ClientResponse> {
-	let myResponse = getNotFoundWebResponse();
+export async function getWebController(clientRequest: ClientRequest): Promise<ClientResponse> {
+	let myResponse = getNotFoundWebResponse(clientRequest);
 	if (clientRequest.endPoint === "/") {
 		myResponse = getHomePageWebResponse();
 	}
@@ -54,8 +52,8 @@ function getHomePageWebResponse(): MyResponse {
 	};
 }
 
-function getNotFoundWebResponse(): MyResponse {
-	const body = "Not found";
+function getNotFoundWebResponse(clientRequest: ClientRequest): MyResponse {
+	const body = `Not found: ${clientRequest.endPoint}`;
 	const status = 404;
 	return { body, status };
 }

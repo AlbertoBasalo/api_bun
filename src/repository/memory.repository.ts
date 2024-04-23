@@ -1,5 +1,4 @@
 import type { Item } from "../domain/item.type";
-import { logTrace } from "../domain/log.service";
 import { readJson, writeJson } from "./file.repository";
 
 /**
@@ -8,8 +7,8 @@ import { readJson, writeJson } from "./file.repository";
  * @returns The array of items in the collection
  */
 export async function selectAll(collection: string): Promise<Item[]> {
-  const result = await readCollection(collection);
-  return result;
+	const result = await readCollection(collection);
+	return result;
 }
 
 /**
@@ -19,10 +18,14 @@ export async function selectAll(collection: string): Promise<Item[]> {
  * @param value The value to search for
  * @returns The items that match the key value pair or an empty array if none are found
  */
-export async function selectByKeyValue(collection: string, key: string, value: string): Promise<Item[]> {
-  const selectedData = await selectAll(collection);
-  const result = selectedData.filter((item: Item) => (item[key] as string).toString() === value);
-  return result;
+export async function selectByKeyValue(
+	collection: string,
+	key: string,
+	value: string,
+): Promise<Item[]> {
+	const selectedData = await selectAll(collection);
+	const result = selectedData.filter((item: Item) => (item[key] as string).toString() === value);
+	return result;
 }
 
 /**
@@ -32,9 +35,9 @@ export async function selectByKeyValue(collection: string, key: string, value: s
  * @returns The item or null if the item is not found
  */
 export async function selectById(collection: string, id: string): Promise<Item> {
-  const selectedData = await selectByKeyValue(collection, "id", id);
-  const result = selectedData[0];
-  return result;
+	const selectedData = await selectByKeyValue(collection, "id", id);
+	const result = selectedData[0];
+	return result;
 }
 
 /**
@@ -44,19 +47,19 @@ export async function selectById(collection: string, id: string): Promise<Item> 
  * @returns The items that match the content or an empty array if none are found
  */
 export async function selectByContent(collection: string, content: string): Promise<Item[]> {
-  const loweredContent = content.toLowerCase(); // case insensitive search
-  const selectedData = await selectAll(collection);
-  const result = selectedData.filter((item: Item) => {
-    const values = Object.values(item);
-    return values.some((value) => {
-      if (typeof value === "string") {
-        return value.toLocaleLowerCase().includes(loweredContent);
-      }
-      return false;
-    }
-    );
-  });
-  return result;
+	const loweredContent = content.toLowerCase(); // case insensitive search
+	const selectedData = await selectAll(collection);
+	const result = selectedData.filter((item: Item) => {
+		const values = Object.values(item);
+		return values.some((value) => {
+			if (typeof value === "string") {
+				return value.toLocaleLowerCase().includes(loweredContent);
+			}
+			// biome-ignore lint/suspicious/noDoubleEquals: <explanation>
+			return value == content;
+		});
+	});
+	return result;
 }
 
 /**
@@ -66,11 +69,11 @@ export async function selectByContent(collection: string, content: string): Prom
  * @returns The item that was inserted
  */
 export async function insert(collection: string, item: Item): Promise<Item> {
-  const collectionData = await readCollection(collection);
-  collectionData.push(item);
-  await writeCollection(collection, collectionData);
-  const result = item;
-  return result;
+	const collectionData = await readCollection(collection);
+	collectionData.push(item);
+	await writeCollection(collection, collectionData);
+	const result = item;
+	return result;
 }
 
 /**
@@ -81,15 +84,15 @@ export async function insert(collection: string, item: Item): Promise<Item> {
  * @returns The updated item or null if the item was not found
  */
 export async function update(collection: string, id: string, item: Item): Promise<Item | null> {
-  const collectionData = await readCollection(collection);
-  const index = collectionData.findIndex((i: Item) => i.id === id);
-  if (index === -1) {
-    return null;
-  }
-  collectionData[index] = item;
-  await writeCollection(collection, collectionData);
-  const result = collectionData[index];
-  return result;
+	const collectionData = await readCollection(collection);
+	const index = collectionData.findIndex((i: Item) => i.id === id);
+	if (index === -1) {
+		return null;
+	}
+	collectionData[index] = item;
+	await writeCollection(collection, collectionData);
+	const result = collectionData[index];
+	return result;
 }
 
 /**
@@ -99,12 +102,12 @@ export async function update(collection: string, id: string, item: Item): Promis
  * @returns The deleted item or null if the item was not found
  */
 export async function deleteById(collection: string, id: string): Promise<void> {
-  const collectionData = await readCollection(collection);
-  const index = collectionData.findIndex((i: Item) => i.id === id);
-  if (index >= 0) {
-    collectionData.splice(index, 1);
-    await writeCollection(collection, collectionData);
-  }
+	const collectionData = await readCollection(collection);
+	const index = collectionData.findIndex((i: Item) => i.id === id);
+	if (index >= 0) {
+		collectionData.splice(index, 1);
+		await writeCollection(collection, collectionData);
+	}
 }
 
 /**
@@ -119,11 +122,11 @@ const db: Record<string, Item[]> = {};
  * @returns An array of items from the collection or an empty array if the collection does not exist
  */
 async function readCollection(collectionName: string): Promise<Item[]> {
-  if (!db[collectionName]) {
-    const fileContent = await readJson(collectionName);
-    db[collectionName] = fileContent;
-  }
-  return [...db[collectionName]];
+	if (!db[collectionName]) {
+		const fileContent = await readJson(collectionName);
+		db[collectionName] = fileContent;
+	}
+	return [...db[collectionName]];
 }
 
 /**
@@ -132,6 +135,6 @@ async function readCollection(collectionName: string): Promise<Item[]> {
  * @param data The data to write to the collection
  */
 async function writeCollection(collectionName: string, data: Item[]) {
-  db[collectionName] = [...data];
-  await writeJson(collectionName, data);
+	db[collectionName] = [...data];
+	await writeJson(collectionName, data);
 }

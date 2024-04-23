@@ -1,6 +1,6 @@
 import { API_BUN_CONFIG } from "./api_bun.config";
 import { logError, logInfo } from "./domain/log.service";
-import { handleRequest } from "./server/request.controller";
+import { handleRequest } from "./server/request.handler";
 
 const server = Bun.serve({
 	port: 3000,
