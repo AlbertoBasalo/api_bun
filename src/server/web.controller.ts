@@ -1,18 +1,22 @@
 import type { ClientRequest } from "./client_request.type";
-import { ClientResponse } from "./client_response.class";
+import { ClientResponse, type MyResponse } from "./client_response.class";
 
-const webHeaders = { headers: { "Content-Type": "text/html" } };
-export async function getWebController(requestInfo: ClientRequest): Promise<ClientResponse> {
-  if (requestInfo.endPoint === "/") {
-    return getHomePageWebResponse();
-  }
-  if (requestInfo.endPoint === "/favicon.ico") {
-    return getEmptyWebResponse();
-  }
-  return getNotFoundWebResponse();
+/**
+ * Handles the web request and returns the corresponding html response
+ * @param request The http native request
+ * @returns A promise with the client response
+ */
+export async function getWebController(
+	clientRequest: ClientRequest,
+): Promise<ClientResponse> {
+	let myResponse = getNotFoundWebResponse();
+	if (clientRequest.endPoint === "/") {
+		myResponse = getHomePageWebResponse();
+	}
+	return new ClientResponse({ ...myResponse, clientRequest });
 }
-function getHomePageWebResponse() {
-  const homePage = `
+function getHomePageWebResponse(): MyResponse {
+	const body = `
     <!DOCTYPE html>
       <html lang="en" >
         <head>
@@ -32,7 +36,7 @@ function getHomePageWebResponse() {
               <li>For small pet projects.</li>
               <li>For educational purposes.</li>
               <li>Read the <a href="https://github.com/AlbertoBasalo/api_bun/blob/main/README.md" target="_blank" >docs</a> for more information.</li>
-              <li>Check the <a href="./activities">activities</a> sample endpoint.</li>
+              <li>Check the <a href="./api/activities">activities</a> sample endpoint.</li>
             </ul>
           </main>
           <footer>
@@ -44,13 +48,14 @@ function getHomePageWebResponse() {
         </body>
       </html>
     `;
-  return new ClientResponse(homePage, webHeaders);
+	return {
+		body,
+		status: 200,
+	};
 }
 
-function getEmptyWebResponse(): ClientResponse {
-  return new ClientResponse("", { ...webHeaders, status: 204 });
-}
-
-function getNotFoundWebResponse(): ClientResponse {
-  return new ClientResponse("Resource not found", { ...webHeaders, status: 404 });
+function getNotFoundWebResponse(): MyResponse {
+	const body = "Not found";
+	const status = 404;
+	return { body, status };
 }
