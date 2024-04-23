@@ -22,8 +22,8 @@ export type ClientBody = {
 };
 
 export type ForcedParams = {
-  delay: number;
-  status: number;
+  delay?: number;
+  status?: number;
 }
 
 export type Security = {

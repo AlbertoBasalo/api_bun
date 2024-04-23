@@ -63,7 +63,7 @@ async function extractForce(query: URLSearchParams): Promise<ForcedParams | unde
   const qStatus = query.get("status");
   let status: number | undefined;
   if (qStatus) status = Number.parseInt(qStatus);
-  if (delay === undefined || status === undefined) {
+  if (delay === undefined && status === undefined) {
     return undefined;
   }
   return { delay, status };
