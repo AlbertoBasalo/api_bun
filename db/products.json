@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Sport Product 1",
+    "description": "Product 1 for sports and athletics.",
+    "price": 19.99,
+    "stock": 10,
+    "category_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Sport Product 2",
+    "description": "Product 2 for sports and athletics.",
+    "price": 29.99,
+    "stock": 5,
+    "category_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Travel Product 1",
+    "description": "Product 1 for travel and outdoor adventures.",
+    "price": 49.99,
+    "stock": 8,
+    "category_id": 2
+  },
+  {
+    "id": 4,
+    "name": "Travel Product 2",
+    "description": "Product 2 for travel and outdoor adventures.",
+    "price": 39.99,
+    "stock": 3,
+    "category_id": 2
+  },
+  {
+    "id": 5,
+    "name": "Leisure Product 1",
+    "description": "Product 1 for relaxation and entertainment.",
+    "price": 24.99,
+    "stock": 12,
+    "category_id": 3
+  },
+  {
+    "id": 6,
+    "name": "Leisure Product 2",
+    "description": "Product 2 for relaxation and entertainment.",
+    "price": 34.99,
+    "stock": 7,
+    "category_id": 3
+  }
+]

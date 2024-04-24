@@ -175,6 +175,8 @@ out
 .DS_Store
 
 # db files
-/db/
-# except for the activities db file
-!/db/activities.db
+
+# except for the selected db file
+!/db/activities.json
+!/db/categories.json
+!/db/products.json
