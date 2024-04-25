@@ -51,7 +51,7 @@ export function logResponse(clientResponse: ClientResponse): void {
 }
 
 function getLogForRequest(clientRequest?: ClientRequest) {
-	return `${clientRequest?.method} ${clientRequest?.endPoint}`;
+	return `${clientRequest?.method.padEnd(6, " ")} ${clientRequest?.endPoint}`;
 }
 
 function printPayload(payload?: unknown): void {
@@ -75,7 +75,7 @@ function getLogForStatus(clientResponse: ClientResponse): string {
 	const status = clientResponse.status;
 	const heart = statusColoredHearts[status] || "💔";
 	const text = clientResponse.statusText || statusMessages[status] || "Unknown";
-	const statusLog = `${heart}\t${text.toUpperCase()} ${status}`;
+	const statusLog = `${heart}\t${status} ${text.toUpperCase().slice(0, 12).padEnd(12, " ")}`;
 	return statusLog;
 }
 
@@ -98,5 +98,5 @@ const statusMessages: Record<string, string> = {
 	"401": "Unauthorized",
 	"403": "Forbidden",
 	"404": "Not Found",
-	"500": "Internal Server Error",
+	"500": "Server Error",
 };
