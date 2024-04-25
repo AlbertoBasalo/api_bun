@@ -1,52 +1,27 @@
 [
-  {
-    "id": 1,
-    "name": "Sport",
-    "description": "Products related to sports and athletics."
-  },
-  {
-    "id": 2,
-    "name": "Travel",
-    "description": "Products for travel and outdoor adventures."
-  },
-  {
-    "id": 3,
-    "name": "Leisure",
-    "description": "Products for relaxation and entertainment."
-  },
-  {
-    "id": 4,
-    "name": "Fitness",
-    "description": "Products for fitness and exercise."
-  },
-  {
-    "id": 5,
-    "name": "Outdoor",
-    "description": "Products for outdoor activities and exploration."
-  },
-  {
-    "id": 6,
-    "name": "Water Sports",
-    "description": "Products for water-based sports and activities."
-  },
-  {
-    "id": 7,
-    "name": "Adventure",
-    "description": "Products for adventurous activities and experiences."
-  },
-  {
-    "id": 8,
-    "name": "Camping",
-    "description": "Products for camping and outdoor living."
-  },
-  {
-    "id": 9,
-    "name": "Hiking",
-    "description": "Products for hiking and trekking."
-  },
-  {
-    "id": 10,
-    "name": "Travel Accessories",
-    "description": "Accessories for travel and on-the-go."
-  }
+	{
+		"id": 1,
+		"name": "Sporting Goods",
+		"description": "Explore a wide range of sports equipment and accessories for various activities including hiking, camping, running, swimming, and more."
+	},
+	{
+		"id": 2,
+		"name": "Travel Gear",
+		"description": "Discover essential travel gear and accessories to make your journeys comfortable and convenient. From backpacks and luggage to travel pillows and accessories."
+	},
+	{
+		"id": 3,
+		"name": "Leisure Products",
+		"description": "Find leisure products to enhance relaxation and outdoor enjoyment. From hammocks and binoculars to fishing gear and outdoor games."
+	},
+	{
+		"id": 4,
+		"name": "Fitness Equipment",
+		"description": "Browse through a selection of fitness equipment designed to help you stay in shape and achieve your health goals. Includes workout machines, weights, and accessories."
+	},
+	{
+		"id": 5,
+		"name": "Outdoor Apparel",
+		"description": "Stay comfortable and protected during your outdoor adventures with our range of outdoor apparel. From waterproof jackets and hiking boots to moisture-wicking shirts and thermal layers."
+	}
 ]

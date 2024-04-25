@@ -1,50 +1,1204 @@
 [
-  {
-    "id": 1,
-    "name": "Sport Product 1",
-    "description": "Product 1 for sports and athletics.",
-    "price": 19.99,
-    "stock": 10,
-    "category_id": 1
-  },
-  {
-    "id": 2,
-    "name": "Sport Product 2",
-    "description": "Product 2 for sports and athletics.",
-    "price": 29.99,
-    "stock": 5,
-    "category_id": 1
-  },
-  {
-    "id": 3,
-    "name": "Travel Product 1",
-    "description": "Product 1 for travel and outdoor adventures.",
-    "price": 49.99,
-    "stock": 8,
-    "category_id": 2
-  },
-  {
-    "id": 4,
-    "name": "Travel Product 2",
-    "description": "Product 2 for travel and outdoor adventures.",
-    "price": 39.99,
-    "stock": 3,
-    "category_id": 2
-  },
-  {
-    "id": 5,
-    "name": "Leisure Product 1",
-    "description": "Product 1 for relaxation and entertainment.",
-    "price": 24.99,
-    "stock": 12,
-    "category_id": 3
-  },
-  {
-    "id": 6,
-    "name": "Leisure Product 2",
-    "description": "Product 2 for relaxation and entertainment.",
-    "price": 34.99,
-    "stock": 7,
-    "category_id": 3
-  }
+	{
+		"id": 1,
+		"name": "Hiking Backpack",
+		"description": "A durable backpack designed for hiking and outdoor adventures. Features multiple compartments and adjustable straps for comfort.",
+		"price": 59.99,
+		"stock": 10,
+		"category_id": 1
+	},
+	{
+		"id": 2,
+		"name": "Camping Tent",
+		"description": "Spacious tent suitable for camping trips. Easy to set up and waterproof, providing protection in various weather conditions.",
+		"price": 129.99,
+		"stock": 0,
+		"category_id": 1
+	},
+	{
+		"id": 3,
+		"name": "Yoga Mat",
+		"description": "High-quality yoga mat made from eco-friendly materials. Provides cushioning and support for yoga and other floor exercises.",
+		"price": 24.99,
+		"stock": 15,
+		"category_id": 1
+	},
+	{
+		"id": 4,
+		"name": "Running Shoes",
+		"description": "Lightweight and breathable running shoes designed for performance and comfort. Ideal for both casual jogging and competitive running.",
+		"price": 79.99,
+		"stock": 75,
+		"category_id": 1
+	},
+	{
+		"id": 5,
+		"name": "Swimming Goggles",
+		"description": "Anti-fog swimming goggles with UV protection. Adjustable strap for a secure and comfortable fit, suitable for both recreational and competitive swimming.",
+		"price": 14.99,
+		"stock": 100,
+		"category_id": 1
+	},
+	{
+		"id": 6,
+		"name": "Travel Backpack",
+		"description": "Versatile backpack designed for travel. Features multiple compartments, padded straps, and a laptop sleeve for convenience on the go.",
+		"price": 79.99,
+		"stock": 8,
+		"category_id": 2
+	},
+	{
+		"id": 7,
+		"name": "Portable Hammock",
+		"description": "Compact and lightweight hammock for outdoor relaxation. Easy to set up and pack, perfect for camping, beach trips, or backyard lounging.",
+		"price": 39.99,
+		"stock": 1,
+		"category_id": 2
+	},
+	{
+		"id": 8,
+		"name": "Binoculars",
+		"description": "High-quality binoculars with magnification for birdwatching, wildlife observation, or sporting events. Durable and waterproof construction.",
+		"price": 49.99,
+		"stock": 50,
+		"category_id": 3
+	},
+	{
+		"id": 9,
+		"name": "Fishing Rod and Reel Combo",
+		"description": "Complete fishing rod and reel set for anglers of all skill levels. Lightweight and portable, suitable for freshwater and light saltwater fishing.",
+		"price": 89.99,
+		"stock": 3,
+		"category_id": 3
+	},
+	{
+		"id": 10,
+		"name": "Travel Neck Pillow",
+		"description": "Ergonomically designed neck pillow for comfortable travel. Provides support and helps prevent neck strain during long flights or car rides.",
+		"price": 19.99,
+		"stock": 100,
+		"category_id": 2
+	},
+	{
+		"id": 11,
+		"name": "Treadmill",
+		"description": "High-quality treadmill with various workout programs and adjustable speed. Perfect for indoor cardio workouts and staying active at home.",
+		"price": 699.99,
+		"stock": 0,
+		"category_id": 4
+	},
+	{
+		"id": 12,
+		"name": "Waterproof Jacket",
+		"description": "Durable waterproof jacket designed to keep you dry and comfortable during outdoor activities. Features breathable fabric and adjustable hood.",
+		"price": 89.99,
+		"stock": 60,
+		"category_id": 5
+	},
+	{
+		"id": 13,
+		"name": "Mountain Bike",
+		"description": "High-performance mountain bike built for rugged trails and off-road adventures. Features suspension system and durable frame.",
+		"price": 899.99,
+		"stock": 25,
+		"category_id": 1
+	},
+	{
+		"id": 14,
+		"name": "Sleeping Bag",
+		"description": "Warm and comfortable sleeping bag for camping trips. Designed to provide insulation and protection from the cold.",
+		"price": 59.99,
+		"stock": 4,
+		"category_id": 1
+	},
+	{
+		"id": 15,
+		"name": "Fitness Tracker",
+		"description": "Advanced fitness tracker with heart rate monitor and activity tracking features. Helps you monitor your workouts and achieve your fitness goals.",
+		"price": 129.99,
+		"stock": 60,
+		"category_id": 4
+	},
+	{
+		"id": 16,
+		"name": "Camping Stove",
+		"description": "Portable camping stove for cooking meals outdoors. Compact and easy to use, suitable for camping, hiking, and backpacking.",
+		"price": 39.99,
+		"stock": 35,
+		"category_id": 1
+	},
+	{
+		"id": 17,
+		"name": "Travel Adapter",
+		"description": "Universal travel adapter compatible with multiple plug types. Essential for international travel to charge your electronic devices.",
+		"price": 19.99,
+		"stock": 100,
+		"category_id": 2
+	},
+	{
+		"id": 18,
+		"name": "Frisbee",
+		"description": "Classic flying disc for outdoor fun and games. Lightweight and durable, perfect for picnics, beach outings, and park activities.",
+		"price": 9.99,
+		"stock": 0,
+		"category_id": 3
+	},
+	{
+		"id": 19,
+		"name": "Dumbbell Set",
+		"description": "Adjustable dumbbell set for strength training at home. Includes multiple weight plates and easy-to-use locking mechanism.",
+		"price": 149.99,
+		"stock": 30,
+		"category_id": 4
+	},
+	{
+		"id": 20,
+		"name": "Trail Running Shoes",
+		"description": "Sturdy trail running shoes with excellent traction and stability. Designed for off-road running and outdoor adventures.",
+		"price": 109.99,
+		"stock": 5,
+		"category_id": 1
+	},
+	{
+		"id": 21,
+		"name": "Inflatable Kayak",
+		"description": "Compact inflatable kayak for recreational paddling. Easy to inflate and deflate, suitable for lakes, rivers, and calm coastal waters.",
+		"price": 299.99,
+		"stock": 15,
+		"category_id": 3
+	},
+	{
+		"id": 22,
+		"name": "Trekking Poles",
+		"description": "Adjustable trekking poles for hiking and backpacking. Helps reduce strain on knees and improve stability on challenging terrain.",
+		"price": 49.99,
+		"stock": 4,
+		"category_id": 1
+	},
+	{
+		"id": 23,
+		"name": "Water Bottle",
+		"description": "Reusable water bottle made from durable and BPA-free materials. Perfect for staying hydrated during outdoor activities and travel.",
+		"price": 12.99,
+		"stock": 150,
+		"category_id": 1
+	},
+	{
+		"id": 24,
+		"name": "Travel Towel",
+		"description": "Quick-drying and compact travel towel ideal for camping, hiking, and backpacking. Absorbs moisture effectively and takes up minimal space in your pack.",
+		"price": 14.99,
+		"stock": 100,
+		"category_id": 2
+	},
+	{
+		"id": 25,
+		"name": "Campfire Cooking Set",
+		"description": "Complete campfire cooking set including pots, pans, and utensils. Perfect for preparing meals over an open flame during camping trips.",
+		"price": 59.99,
+		"stock": 3,
+		"category_id": 1
+	},
+	{
+		"id": 26,
+		"name": "Tent Lantern",
+		"description": "Compact and lightweight lantern for illuminating your tent or campsite. Features adjustable brightness settings and long battery life.",
+		"price": 24.99,
+		"stock": 8,
+		"category_id": 1
+	},
+	{
+		"id": 27,
+		"name": "Travel Organizer Set",
+		"description": "Set of travel organizers including packing cubes, toiletry bags, and shoe bags. Helps keep your belongings neat and organized during travel.",
+		"price": 29.99,
+		"stock": 60,
+		"category_id": 2
+	},
+	{
+		"id": 28,
+		"name": "Sun Hat",
+		"description": "Wide-brimmed sun hat for sun protection during outdoor activities. Made from breathable materials and adjustable for a comfortable fit.",
+		"price": 19.99,
+		"stock": 100,
+		"category_id": 5
+	},
+	{
+		"id": 29,
+		"name": "Outdoor Games Set",
+		"description": "Set of outdoor games including a volleyball, badminton, and frisbee. Perfect for beach outings, picnics, and backyard gatherings.",
+		"price": 39.99,
+		"stock": 40,
+		"category_id": 3
+	},
+	{
+		"id": 30,
+		"name": "Resistance Bands Set",
+		"description": "Set of resistance bands for strength training and flexibility exercises. Compact and portable, suitable for home workouts or travel.",
+		"price": 34.99,
+		"stock": 5,
+		"category_id": 4
+	},
+	{
+		"id": 31,
+		"name": "Backpacking Stove",
+		"description": "Lightweight and portable stove for backpacking and outdoor cooking. Runs on backpacking fuel canisters and features adjustable flame control.",
+		"price": 49.99,
+		"stock": 25,
+		"category_id": 1
+	},
+	{
+		"id": 32,
+		"name": "Insulated Cooler Bag",
+		"description": "Insulated cooler bag for keeping food and drinks cold during outdoor adventures and picnics. Features multiple pockets and a shoulder strap for easy carrying.",
+		"price": 29.99,
+		"stock": 0,
+		"category_id": 3
+	},
+
+	{
+		"id": 33,
+		"name": "Climbing Harness",
+		"description": "Durable climbing harness for rock climbing and mountaineering. Features adjustable leg loops and waist belt for a secure fit.",
+		"price": 89.99,
+		"stock": 20,
+		"category_id": 1
+	},
+	{
+		"id": 34,
+		"name": "Travel First Aid Kit",
+		"description": "Compact first aid kit for travel and outdoor adventures. Includes essential medical supplies for treating minor injuries and emergencies.",
+		"price": 24.99,
+		"stock": 0,
+		"category_id": 2
+	},
+	{
+		"id": 35,
+		"name": "Inflatable Sleeping Pad",
+		"description": "Comfortable inflatable sleeping pad for camping and backpacking. Provides cushioning and insulation for a good night's sleep in the outdoors.",
+		"price": 49.99,
+		"stock": 4,
+		"category_id": 1
+	},
+	{
+		"id": 36,
+		"name": "Collapsible Water Jug",
+		"description": "Collapsible water jug for storing and transporting water during outdoor activities. Folds flat for easy storage when not in use.",
+		"price": 17.99,
+		"stock": 80,
+		"category_id": 1
+	},
+	{
+		"id": 37,
+		"name": "Compression Socks",
+		"description": "Graduated compression socks for improved circulation and reduced fatigue during long flights or hikes. Helps prevent swelling and discomfort.",
+		"price": 19.99,
+		"stock": 100,
+		"category_id": 5
+	},
+	{
+		"id": 38,
+		"name": "Camping Cookware Set",
+		"description": "Complete camping cookware set including pots, pans, and utensils. Lightweight and durable, perfect for preparing meals outdoors.",
+		"price": 39.99,
+		"stock": 30,
+		"category_id": 1
+	},
+	{
+		"id": 39,
+		"name": "Travel Pillow",
+		"description": "Compact travel pillow for neck support during long journeys. Ergonomically designed for comfort and convenience on planes, trains, and cars.",
+		"price": 16.99,
+		"stock": 70,
+		"category_id": 2
+	},
+	{
+		"id": 40,
+		"name": "Outdoor Folding Chair",
+		"description": "Portable folding chair for outdoor events and camping. Lightweight and easy to carry, with a built-in cup holder for added convenience.",
+		"price": 29.99,
+		"stock": 5,
+		"category_id": 3
+	},
+	{
+		"id": 41,
+		"name": "Trail Mix",
+		"description": "Nutritious trail mix with a blend of nuts, dried fruits, and seeds. Provides energy and sustenance during outdoor activities and hikes.",
+		"price": 8.99,
+		"stock": 120,
+		"category_id": 1
+	},
+	{
+		"id": 42,
+		"name": "Cycling Helmet",
+		"description": "Protective cycling helmet with adjustable straps and ventilation. Provides safety and comfort for cyclists on roads and trails.",
+		"price": 39.99,
+		"stock": 60,
+		"category_id": 1
+	},
+	{
+		"id": 43,
+		"name": "Travel Umbrella",
+		"description": "Compact travel umbrella for protection against rain and sun. Lightweight and portable, with a sturdy frame for durability in windy conditions.",
+		"price": 14.99,
+		"stock": 9,
+		"category_id": 2
+	},
+	{
+		"id": 44,
+		"name": "Outdoor Blanket",
+		"description": "Water-resistant outdoor blanket for picnics, beach outings, and camping. Features a soft fleece lining and rolls up for easy carrying.",
+		"price": 24.99,
+		"stock": 40,
+		"category_id": 3
+	},
+	{
+		"id": 45,
+		"name": "Resistance Loop Bands",
+		"description": "Set of resistance loop bands for strength training, physical therapy, and stretching exercises. Made from durable latex with varying resistance levels.",
+		"price": 19.99,
+		"stock": 0,
+		"category_id": 4
+	},
+	{
+		"id": 46,
+		"name": "Portable Power Bank",
+		"description": "Portable power bank for charging electronic devices on the go. Compact and lightweight, with multiple charging ports and fast charging technology.",
+		"price": 29.99,
+		"stock": 1,
+		"category_id": 2
+	},
+	{
+		"id": 47,
+		"name": "Camping Hammock with Mosquito Net",
+		"description": "Camping hammock with integrated mosquito net for bug-free outdoor relaxation. Easy to set up and pack, perfect for camping and backpacking.",
+		"price": 49.99,
+		"stock": 35,
+		"category_id": 1
+	},
+	{
+		"id": 48,
+		"name": "Adjustable Dumbbells Set",
+		"description": "Set of adjustable dumbbells with interchangeable weight plates. Perfect for strength training exercises at home or in the gym.",
+		"price": 249.99,
+		"stock": 2,
+		"category_id": 4
+	},
+	{
+		"id": 49,
+		"name": "Yoga Blocks",
+		"description": "High-density foam yoga blocks for support and stability during yoga poses and stretches. Helps improve flexibility and alignment.",
+		"price": 14.99,
+		"stock": 30,
+		"category_id": 4
+	},
+	{
+		"id": 50,
+		"name": "Resistance Bands Set",
+		"description": "Set of resistance bands with varying levels of resistance. Ideal for strength training, rehabilitation, and physical therapy exercises.",
+		"price": 34.99,
+		"stock": 40,
+		"category_id": 4
+	},
+	{
+		"id": 51,
+		"name": "Foam Roller",
+		"description": "High-density foam roller for self-myofascial release and muscle recovery. Helps relieve muscle tightness and improve flexibility.",
+		"price": 19.99,
+		"stock": 25,
+		"category_id": 4
+	},
+	{
+		"id": 52,
+		"name": "Running Jacket",
+		"description": "Lightweight and breathable running jacket for protection against wind and light rain. Features reflective details for enhanced visibility in low-light conditions.",
+		"price": 59.99,
+		"stock": 50,
+		"category_id": 5
+	},
+	{
+		"id": 53,
+		"name": "Moisture-Wicking Running Shirt",
+		"description": "Moisture-wicking running shirt for staying dry and comfortable during workouts. Made from breathable fabric with quick-drying properties.",
+		"price": 29.99,
+		"stock": 60,
+		"category_id": 5
+	},
+	{
+		"id": 54,
+		"name": "Compression Leggings",
+		"description": "Compression leggings for improved circulation and muscle support during workouts. Suitable for running, yoga, and other athletic activities.",
+		"price": 39.99,
+		"stock": 1,
+		"category_id": 5
+	},
+	{
+		"id": 55,
+		"name": "Trail Running Shoes",
+		"description": "Sturdy trail running shoes with excellent traction and stability. Designed for off-road running and outdoor adventures.",
+		"price": 109.99,
+		"stock": 30,
+		"category_id": 5
+	},
+	{
+		"id": 56,
+		"name": "Hiking Pants",
+		"description": "Durable hiking pants with water-resistant and quick-drying properties. Features multiple pockets and adjustable waist for a comfortable fit.",
+		"price": 49.99,
+		"stock": 35,
+		"category_id": 5
+	},
+	{
+		"id": 57,
+		"name": "Waterproof Hiking Boots",
+		"description": "Waterproof hiking boots with rugged soles and ankle support. Provides traction and stability on uneven terrain.",
+		"price": 129.99,
+		"stock": 2,
+		"category_id": 5
+	},
+	{
+		"id": 58,
+		"name": "Portable Camping Grill",
+		"description": "Portable camping grill for cooking meals outdoors. Compact and lightweight, perfect for camping trips and picnics.",
+		"price": 49.99,
+		"stock": 25,
+		"category_id": 1
+	},
+	{
+		"id": 59,
+		"name": "Travel Multi-Tool",
+		"description": "Compact multi-tool with various functions including knife, scissors, screwdriver, and bottle opener. Essential for camping, hiking, and travel.",
+		"price": 19.99,
+		"stock": 50,
+		"category_id": 2
+	},
+	{
+		"id": 60,
+		"name": "Beach Towel",
+		"description": "Large beach towel with vibrant colors and quick-drying fabric. Perfect for lounging on the beach or by the pool.",
+		"price": 24.99,
+		"stock": 80,
+		"category_id": 3
+	},
+	{
+		"id": 61,
+		"name": "Travel Journal",
+		"description": "Travel journal for documenting your adventures and memories. Features a durable cover and lined pages for writing.",
+		"price": 9.99,
+		"stock": 10,
+		"category_id": 2
+	},
+	{
+		"id": 62,
+		"name": "Camping Lantern",
+		"description": "Portable camping lantern with adjustable brightness levels. Provides illumination for camping trips and outdoor activities.",
+		"price": 29.99,
+		"stock": 40,
+		"category_id": 1
+	},
+	{
+		"id": 63,
+		"name": "Hydration Pack",
+		"description": "Hydration pack with built-in water reservoir and adjustable straps. Ideal for hiking, cycling, and outdoor activities.",
+		"price": 39.99,
+		"stock": 60,
+		"category_id": 1
+	},
+	{
+		"id": 64,
+		"name": "Travel Hammock",
+		"description": "Portable travel hammock for relaxation on the go. Lightweight and easy to set up, perfect for camping and backpacking.",
+		"price": 34.99,
+		"stock": 35,
+		"category_id": 2
+	},
+	{
+		"id": 65,
+		"name": "Camping Cookware Set",
+		"description": "Complete camping cookware set including pots, pans, and utensils. Lightweight and durable, perfect for preparing meals outdoors.",
+		"price": 39.99,
+		"stock": 3,
+		"category_id": 1
+	},
+	{
+		"id": 66,
+		"name": "Travel Adapter",
+		"description": "Universal travel adapter compatible with multiple plug types. Essential for international travel to charge your electronic devices.",
+		"price": 19.99,
+		"stock": 100,
+		"category_id": 2
+	},
+	{
+		"id": 67,
+		"name": "Fishing Tackle Box",
+		"description": "Durable fishing tackle box for organizing and storing fishing gear. Features multiple compartments and a secure latch.",
+		"price": 29.99,
+		"stock": 50,
+		"category_id": 3
+	},
+	{
+		"id": 68,
+		"name": "Outdoor Folding Table",
+		"description": "Portable folding table for outdoor dining and activities. Compact and lightweight, perfect for camping, picnics, and tailgating.",
+		"price": 49.99,
+		"stock": 40,
+		"category_id": 3
+	},
+	{
+		"id": 69,
+		"name": "Fitness Jump Rope",
+		"description": "Adjustable fitness jump rope for cardio workouts and endurance training. Lightweight and portable, suitable for indoor and outdoor use.",
+		"price": 14.99,
+		"stock": 70,
+		"category_id": 4
+	},
+	{
+		"id": 70,
+		"name": "Sunscreen SPF 50",
+		"description": "High-protection sunscreen with SPF 50 for outdoor activities. Water-resistant formula with broad-spectrum UVA/UVB protection.",
+		"price": 12.99,
+		"stock": 120,
+		"category_id": 5
+	},
+	{
+		"id": 71,
+		"name": "Travel Luggage Set",
+		"description": "Matching set of travel luggage including a suitcase, carry-on, and duffel bag. Durable and spacious, perfect for long trips and vacations.",
+		"price": 199.99,
+		"stock": 2,
+		"category_id": 2
+	},
+	{
+		"id": 72,
+		"name": "Portable Bluetooth Speaker",
+		"description": "Portable Bluetooth speaker for wireless audio streaming. Compact and lightweight, perfect for outdoor gatherings and travel.",
+		"price": 79.99,
+		"stock": 50,
+		"category_id": 2
+	},
+	{
+		"id": 73,
+		"name": "Camping Chair with Footrest",
+		"description": "Comfortable camping chair with built-in footrest for ultimate relaxation. Folds compactly for easy transport and storage.",
+		"price": 49.99,
+		"stock": 40,
+		"category_id": 3
+	},
+	{
+		"id": 74,
+		"name": "Travel Neck Wallet",
+		"description": "RFID-blocking neck wallet for securing valuables during travel. Features multiple compartments and adjustable strap for comfortable wear.",
+		"price": 19.99,
+		"stock": 60,
+		"category_id": 2
+	},
+	{
+		"id": 75,
+		"name": "Camping Hammock with Stand",
+		"description": "Freestanding camping hammock with integrated stand for easy setup anywhere. Durable and comfortable, perfect for camping and backyard relaxation.",
+		"price": 99.99,
+		"stock": 30,
+		"category_id": 3
+	},
+	{
+		"id": 76,
+		"name": "Travel Toiletry Bag",
+		"description": "Compact travel toiletry bag for organizing personal hygiene items. Waterproof and durable, with multiple compartments for easy storage.",
+		"price": 14.99,
+		"stock": 80,
+		"category_id": 2
+	},
+	{
+		"id": 77,
+		"name": "Outdoor Picnic Set",
+		"description": "Complete outdoor picnic set including plates, utensils, and a picnic blanket. Convenient and portable, perfect for picnics in the park or campground.",
+		"price": 29.99,
+		"stock": 4,
+		"category_id": 3
+	},
+	{
+		"id": 78,
+		"name": "Fitness Yoga Ball",
+		"description": "Stability exercise ball for core workouts, yoga, and Pilates. Made from anti-burst material with a non-slip surface for safety and stability.",
+		"price": 19.99,
+		"stock": 50,
+		"category_id": 4
+	},
+	{
+		"id": 79,
+		"name": "Travel Document Organizer",
+		"description": "Travel document organizer for storing passports, boarding passes, and travel documents. Keeps important items secure and easily accessible.",
+		"price": 12.99,
+		"stock": 1,
+		"category_id": 2
+	},
+	{
+		"id": 80,
+		"name": "Outdoor Portable Shower",
+		"description": "Portable shower system for outdoor adventures and camping. Compact and easy to set up, provides a refreshing shower experience anywhere.",
+		"price": 39.99,
+		"stock": 25,
+		"category_id": 3
+	},
+	{
+		"id": 81,
+		"name": "Portable Camping Table",
+		"description": "Portable camping table for outdoor dining and cooking. Lightweight and foldable, perfect for camping, picnics, and tailgating.",
+		"price": 29.99,
+		"stock": 40,
+		"category_id": 1
+	},
+	{
+		"id": 82,
+		"name": "Insulated Water Bottle",
+		"description": "Insulated water bottle with double-wall construction to keep beverages cold or hot for extended periods. Durable and leak-proof, ideal for outdoor adventures.",
+		"price": 19.99,
+		"stock": 50,
+		"category_id": 1
+	},
+	{
+		"id": 83,
+		"name": "Campfire Cooking Grill",
+		"description": "Campfire cooking grill for grilling food over an open flame. Features a sturdy construction and adjustable height for versatile cooking options.",
+		"price": 39.99,
+		"stock": 30,
+		"category_id": 1
+	},
+	{
+		"id": 84,
+		"name": "Travel Packing Cubes",
+		"description": "Set of travel packing cubes for organizing clothes and accessories in luggage. Helps maximize space and keep items neat and wrinkle-free.",
+		"price": 24.99,
+		"stock": 60,
+		"category_id": 2
+	},
+	{
+		"id": 85,
+		"name": "Portable Solar Charger",
+		"description": "Portable solar charger for charging electronic devices outdoors. Harnesses solar energy for eco-friendly power on the go.",
+		"price": 49.99,
+		"stock": 25,
+		"category_id": 2
+	},
+	{
+		"id": 86,
+		"name": "Camping Cot",
+		"description": "Foldable camping cot for comfortable sleeping off the ground. Lightweight and easy to set up, perfect for camping and outdoor adventures.",
+		"price": 79.99,
+		"stock": 2,
+		"category_id": 3
+	},
+	{
+		"id": 87,
+		"name": "Travel Backpack Organizer",
+		"description": "Travel backpack organizer for keeping belongings tidy and accessible. Features multiple compartments and pockets for efficient packing.",
+		"price": 14.99,
+		"stock": 8,
+		"category_id": 2
+	},
+	{
+		"id": 88,
+		"name": "Outdoor Fire Starter",
+		"description": "Outdoor fire starter for quickly and easily lighting campfires and outdoor cooking. Compact and waterproof, with a long-lasting ignition.",
+		"price": 9.99,
+		"stock": 100,
+		"category_id": 3
+	},
+	{
+		"id": 89,
+		"name": "Fitness Exercise Mat",
+		"description": "High-density fitness exercise mat for yoga, Pilates, and floor exercises. Provides cushioning and support for comfortable workouts.",
+		"price": 29.99,
+		"stock": 50,
+		"category_id": 4
+	},
+	{
+		"id": 90,
+		"name": "Outdoor Bluetooth Speaker",
+		"description": "Outdoor Bluetooth speaker with rugged construction for durability in outdoor environments. Provides high-quality sound for music and calls.",
+		"price": 69.99,
+		"stock": 35,
+		"category_id": 3
+	},
+	{
+		"id": 91,
+		"name": "Travel Compression Socks",
+		"description": "Travel compression socks for improved circulation and comfort during long flights or car rides. Helps reduce swelling and fatigue in the legs.",
+		"price": 16.99,
+		"stock": 70,
+		"category_id": 2
+	},
+	{
+		"id": 92,
+		"name": "Outdoor Headlamp",
+		"description": "Outdoor headlamp with adjustable brightness levels for hands-free illumination. Perfect for camping, hiking, and nighttime adventures.",
+		"price": 24.99,
+		"stock": 45,
+		"category_id": 3
+	},
+	{
+		"id": 93,
+		"name": "Fitness Foam Roller",
+		"description": "Foam roller for self-myofascial release and muscle recovery. Helps relieve muscle tightness and improve flexibility after workouts.",
+		"price": 19.99,
+		"stock": 0,
+		"category_id": 4
+	},
+	{
+		"id": 94,
+		"name": "Inflatable Camping Pillow",
+		"description": "Inflatable camping pillow for compact and lightweight comfort during outdoor adventures. Easily adjusts firmness for personalized support.",
+		"price": 12.99,
+		"stock": 90,
+		"category_id": 3
+	},
+	{
+		"id": 95,
+		"name": "Travel Laundry Bag",
+		"description": "Travel laundry bag for storing dirty clothes during travel. Lightweight and foldable, with a drawstring closure for secure carrying.",
+		"price": 9.99,
+		"stock": 120,
+		"category_id": 2
+	},
+	{
+		"id": 96,
+		"name": "Outdoor Portable Grill",
+		"description": "Portable grill for outdoor cooking and barbecue. Compact and lightweight, perfect for camping, tailgating, and picnics.",
+		"price": 79.99,
+		"stock": 30,
+		"category_id": 3
+	},
+	{
+		"id": 97,
+		"name": "Travel Sleep Mask",
+		"description": "Comfortable sleep mask for blocking out light and promoting restful sleep during travel. Adjustable strap for a personalized fit.",
+		"price": 7.99,
+		"stock": 150,
+		"category_id": 2
+	},
+	{
+		"id": 98,
+		"name": "Outdoor Camping Mat",
+		"description": "Waterproof camping mat for comfortable outdoor seating. Folds compactly for easy transport and storage.",
+		"price": 19.99,
+		"stock": 80,
+		"category_id": 3
+	},
+	{
+		"id": 99,
+		"name": "Fitness Hand Grip Strengthener",
+		"description": "Hand grip strengthener for improving hand and forearm strength. Adjustable resistance levels for progressive training.",
+		"price": 14.99,
+		"stock": 70,
+		"category_id": 4
+	},
+	{
+		"id": 100,
+		"name": "Travel Rain Poncho",
+		"description": "Disposable rain poncho for staying dry during unexpected showers while traveling. Compact and lightweight, fits easily in a bag or pocket.",
+		"price": 4.99,
+		"stock": 200,
+		"category_id": 2
+	},
+
+	{
+		"id": 101,
+		"name": "Kayak Paddle",
+		"description": "Lightweight and durable kayak paddle for paddling adventures on lakes, rivers, and oceans. Features adjustable length and feathering angles.",
+		"price": 79.99,
+		"stock": 4,
+		"category_id": 1
+	},
+	{
+		"id": 102,
+		"name": "Surfboard Leash",
+		"description": "Surfboard leash for securing your board to your ankle to prevent it from drifting away while surfing. Features durable materials and a comfortable ankle cuff.",
+		"price": 19.99,
+		"stock": 50,
+		"category_id": 1
+	},
+	{
+		"id": 103,
+		"name": "Snorkel Set",
+		"description": "Complete snorkel set including mask, snorkel, and fins for exploring underwater. Provides clear vision and comfortable breathing while snorkeling.",
+		"price": 49.99,
+		"stock": 30,
+		"category_id": 1
+	},
+	{
+		"id": 104,
+		"name": "Wetsuit",
+		"description": "Full-body wetsuit for thermal insulation and protection while diving, surfing, or snorkeling. Made from flexible neoprene for freedom of movement.",
+		"price": 149.99,
+		"stock": 0,
+		"category_id": 1
+	},
+	{
+		"id": 105,
+		"name": "Inflatable Stand-Up Paddle Board (SUP)",
+		"description": "Inflatable stand-up paddle board for paddling adventures on calm waters. Compact and portable, easy to inflate and deflate for transport and storage.",
+		"price": 499.99,
+		"stock": 15,
+		"category_id": 1
+	},
+	{
+		"id": 106,
+		"name": "Waterproof Dry Bag",
+		"description": "Waterproof dry bag for keeping your gear dry while boating, kayaking, or paddle boarding. Features a roll-top closure and durable construction.",
+		"price": 29.99,
+		"stock": 60,
+		"category_id": 2
+	},
+	{
+		"id": 107,
+		"name": "Surf Wax",
+		"description": "Surf wax for enhancing traction and grip on your surfboard. Provides better control and performance while riding waves.",
+		"price": 7.99,
+		"stock": 100,
+		"category_id": 1
+	},
+	{
+		"id": 108,
+		"name": "Waterproof Phone Case",
+		"description": "Waterproof phone case for protecting your phone from water damage while participating in water sports. Allows you to use your phone underwater.",
+		"price": 14.99,
+		"stock": 80,
+		"category_id": 2
+	},
+	{
+		"id": 109,
+		"name": "Surfboard Rack",
+		"description": "Surfboard rack for storing and displaying your surfboards when not in use. Mounts to the wall and keeps boards organized and accessible.",
+		"price": 39.99,
+		"stock": 25,
+		"category_id": 1
+	},
+	{
+		"id": 110,
+		"name": "Scuba Diving Fins",
+		"description": "High-performance scuba diving fins for efficient propulsion underwater. Made from durable materials and comfortable foot pockets.",
+		"price": 89.99,
+		"stock": 35,
+		"category_id": 1
+	},
+	{
+		"id": 111,
+		"name": "Surfboard Repair Kit",
+		"description": "Surfboard repair kit for fixing dings and cracks in your surfboard. Includes resin, fiberglass cloth, sandpaper, and instructions for easy repairs.",
+		"price": 24.99,
+		"stock": 4,
+		"category_id": 1
+	},
+	{
+		"id": 112,
+		"name": "Waterproof Action Camera",
+		"description": "Waterproof action camera for capturing your water sports adventures in high-definition. Features rugged construction and built-in Wi-Fi for easy sharing.",
+		"price": 199.99,
+		"stock": 2,
+		"category_id": 2
+	},
+	{
+		"id": 113,
+		"name": "Surfboard Travel Bag",
+		"description": "Padded surfboard travel bag for protecting your surfboard during transport. Features a durable exterior and padded interior for maximum protection.",
+		"price": 79.99,
+		"stock": 30,
+		"category_id": 1
+	},
+	{
+		"id": 114,
+		"name": "Bodyboard",
+		"description": "Bodyboard for riding waves close to shore. Features a durable foam core and slick bottom for speed and maneuverability in the water.",
+		"price": 49.99,
+		"stock": 45,
+		"category_id": 1
+	},
+	{
+		"id": 115,
+		"name": "Surfboard Traction Pad",
+		"description": "Surfboard traction pad for enhancing grip and control while surfing. Features a textured surface and adhesive backing for easy installation.",
+		"price": 29.99,
+		"stock": 5,
+		"category_id": 1
+	},
+	{
+		"id": 116,
+		"name": "Swim Fins",
+		"description": "Swim fins for increasing propulsion and speed while swimming. Ideal for snorkeling, diving, and swim training.",
+		"price": 34.99,
+		"stock": 55,
+		"category_id": 1
+	},
+	{
+		"id": 117,
+		"name": "Surfboard Nose Guard",
+		"description": "Surfboard nose guard for protecting the nose of your surfboard from damage. Made from durable materials and easy to install with adhesive backing.",
+		"price": 9.99,
+		"stock": 70,
+		"category_id": 1
+	},
+	{
+		"id": 118,
+		"name": "Paddle Board Carrier Strap",
+		"description": "Paddle board carrier strap for easy transport of your SUP board to and from the water. Adjustable and padded for comfort.",
+		"price": 19.99,
+		"stock": 75,
+		"category_id": 1
+	},
+	{
+		"id": 119,
+		"name": "Surfboard Wax Comb",
+		"description": "Surfboard wax comb for removing old wax and roughening up the surface for applying new wax. Helps maintain optimal traction on your surfboard.",
+		"price": 5.99,
+		"stock": 0,
+		"category_id": 1
+	},
+	{
+		"id": 120,
+		"name": "Wetsuit Hanger",
+		"description": "Wetsuit hanger for drying and storing your wetsuit after use. Prevents stretching and damage to your wetsuit fabric.",
+		"price": 12.99,
+		"stock": 100,
+		"category_id": 1
+	},
+	{
+		"id": 121,
+		"name": "Waterproof Dry Bag Backpack",
+		"description": "Waterproof dry bag backpack for keeping your belongings dry during water sports and beach outings. Features adjustable straps and multiple compartments.",
+		"price": 39.99,
+		"stock": 50,
+		"category_id": 3
+	},
+	{
+		"id": 122,
+		"name": "Water Shoes",
+		"description": "Water shoes for protection and traction while walking on rocky beaches or participating in water sports. Quick-drying and lightweight for comfort.",
+		"price": 29.99,
+		"stock": 60,
+		"category_id": 5
+	},
+	{
+		"id": 123,
+		"name": "Beach Umbrella",
+		"description": "Large beach umbrella for providing shade and protection from the sun's rays. Features a sturdy pole and UV-resistant fabric.",
+		"price": 49.99,
+		"stock": 3,
+		"category_id": 3
+	},
+	{
+		"id": 124,
+		"name": "Floating Waterproof Phone Case",
+		"description": "Floating waterproof phone case for protecting your phone from water damage while swimming or boating. Bright color and buoyant design for easy retrieval.",
+		"price": 17.99,
+		"stock": 70,
+		"category_id": 5
+	},
+	{
+		"id": 125,
+		"name": "Beach Towel Clips",
+		"description": "Beach towel clips for securing your towel to beach chairs or loungers to prevent it from blowing away in the wind. Durable and easy to use.",
+		"price": 9.99,
+		"stock": 80,
+		"category_id": 3
+	},
+	{
+		"id": 126,
+		"name": "Swim Goggles",
+		"description": "Swim goggles for clear vision and eye protection while swimming or snorkeling. Features adjustable straps and anti-fog lenses.",
+		"price": 19.99,
+		"stock": 50,
+		"category_id": 5
+	},
+	{
+		"id": 127,
+		"name": "Beach Chair",
+		"description": "Folding beach chair for comfortable seating on sandy shores. Lightweight and portable, with adjustable reclining positions.",
+		"price": 34.99,
+		"stock": 40,
+		"category_id": 3
+	},
+	{
+		"id": 128,
+		"name": "Beach Volleyball",
+		"description": "Official size and weight beach volleyball for friendly matches on the sand. Features a soft outer covering for comfortable play.",
+		"price": 24.99,
+		"stock": 25,
+		"category_id": 3
+	},
+	{
+		"id": 129,
+		"name": "Sun Hat",
+		"description": "Wide-brimmed sun hat for protecting your face and neck from the sun's harmful rays while enjoying beach activities. Lightweight and breathable.",
+		"price": 14.99,
+		"stock": 6,
+		"category_id": 5
+	},
+	{
+		"id": 130,
+		"name": "Beach Cooler Bag",
+		"description": "Insulated beach cooler bag for keeping drinks and snacks cold while spending a day at the beach. Features a spacious interior and adjustable shoulder strap.",
+		"price": 29.99,
+		"stock": 35,
+		"category_id": 3
+	},
+	{
+		"id": 131,
+		"name": "Neoprene Wetsuit Gloves",
+		"description": "Neoprene wetsuit gloves for thermal insulation and protection while surfing, diving, or snorkeling. Provides warmth and dexterity in cold water.",
+		"price": 29.99,
+		"stock": 40,
+		"category_id": 5
+	},
+	{
+		"id": 132,
+		"name": "Waterproof Fitness Tracker",
+		"description": "Waterproof fitness tracker for monitoring your activity and performance during water sports and outdoor activities. Tracks steps, distance, and calories burned.",
+		"price": 79.99,
+		"stock": 50,
+		"category_id": 4
+	},
+	{
+		"id": 133,
+		"name": "Hydration Backpack",
+		"description": "Hydration backpack with built-in water reservoir and adjustable straps. Ideal for staying hydrated during outdoor activities such as hiking and trail running.",
+		"price": 49.99,
+		"stock": 3,
+		"category_id": 5
+	},
+	{
+		"id": 134,
+		"name": "Fitness Swim Paddles",
+		"description": "Fitness swim paddles for improving stroke technique and upper body strength during swimming workouts. Adjustable straps for a secure fit.",
+		"price": 24.99,
+		"stock": 2,
+		"category_id": 4
+	},
+	{
+		"id": 135,
+		"name": "Outdoor Performance Jacket",
+		"description": "Outdoor performance jacket for protection against wind and rain during outdoor activities. Lightweight and breathable, with adjustable features for a custom fit.",
+		"price": 89.99,
+		"stock": 15,
+		"category_id": 5
+	},
+	{
+		"id": 136,
+		"name": "Fitness Swimming Fins",
+		"description": "Fitness swimming fins for enhancing leg strength and propulsion while swimming laps. Made from durable materials with comfortable foot pockets.",
+		"price": 39.99,
+		"stock": 60,
+		"category_id": 4
+	},
+	{
+		"id": 137,
+		"name": "Moisture-Wicking Workout Shorts",
+		"description": "Moisture-wicking workout shorts for staying dry and comfortable during intense workouts. Features breathable fabric and a comfortable elastic waistband.",
+		"price": 34.99,
+		"stock": 70,
+		"category_id": 5
+	},
+	{
+		"id": 138,
+		"name": "Fitness Resistance Bands Set",
+		"description": "Set of fitness resistance bands for strength training and rehabilitation exercises. Includes multiple bands with varying levels of resistance.",
+		"price": 19.99,
+		"stock": 0,
+		"category_id": 4
+	},
+	{
+		"id": 139,
+		"name": "Outdoor Hiking Boots",
+		"description": "Outdoor hiking boots with waterproof construction and rugged soles for traction on various terrains. Provides stability and support during hiking adventures.",
+		"price": 129.99,
+		"stock": 25,
+		"category_id": 5
+	},
+	{
+		"id": 140,
+		"name": "Fitness Foam Roller",
+		"description": "Fitness foam roller for self-myofascial release and muscle recovery after workouts. Helps relieve muscle tightness and improve flexibility.",
+		"price": 19.99,
+		"stock": 35,
+		"category_id": 4
+	},
+	{
+		"id": 141,
+		"name": "Outdoor Rain Jacket",
+		"description": "Outdoor rain jacket for protection against wet weather during hiking and outdoor adventures. Waterproof and breathable, with adjustable features for a custom fit.",
+		"price": 99.99,
+		"stock": 45,
+		"category_id": 5
+	},
+	{
+		"id": 142,
+		"name": "Fitness Exercise Ball",
+		"description": "Fitness exercise ball for core workouts, balance training, and stretching exercises. Made from anti-burst material with a non-slip surface.",
+		"price": 24.99,
+		"stock": 55,
+		"category_id": 4
+	},
+	{
+		"id": 143,
+		"name": "Outdoor Performance Pants",
+		"description": "Outdoor performance pants for protection and mobility during outdoor activities. Features water-resistant fabric and multiple pockets.",
+		"price": 79.99,
+		"stock": 65,
+		"category_id": 5
+	},
+	{
+		"id": 144,
+		"name": "Fitness Yoga Mat",
+		"description": "Fitness yoga mat for yoga, Pilates, and floor exercises. Provides cushioning and support for comfortable workouts.",
+		"price": 29.99,
+		"stock": 75,
+		"category_id": 4
+	},
+	{
+		"id": 145,
+		"name": "Outdoor Performance Shirt",
+		"description": "Outdoor performance shirt for moisture management and sun protection during outdoor activities. Lightweight and breathable fabric with UV protection.",
+		"price": 49.99,
+		"stock": 85,
+		"category_id": 5
+	},
+	{
+		"id": 146,
+		"name": "Fitness Kettlebell",
+		"description": "Fitness kettlebell for strength training and functional exercises. Features a durable cast iron construction with a comfortable grip.",
+		"price": 39.99,
+		"stock": 95,
+		"category_id": 4
+	},
+	{
+		"id": 147,
+		"name": "Outdoor Performance Vest",
+		"description": "Outdoor performance vest for lightweight warmth and freedom of movement during outdoor activities. Features insulation and water-resistant fabric.",
+		"price": 69.99,
+		"stock": 105,
+		"category_id": 5
+	},
+	{
+		"id": 148,
+		"name": "Fitness Jump Rope",
+		"description": "Fitness jump rope for cardiovascular workouts and improving coordination. Adjustable length and durable construction for long-lasting use.",
+		"price": 14.99,
+		"stock": 115,
+		"category_id": 4
+	},
+	{
+		"id": 149,
+		"name": "Outdoor Sun Hat",
+		"description": "Outdoor sun hat for protection against harmful UV rays during outdoor activities. Wide brim and adjustable chin strap for a secure fit.",
+		"price": 19.99,
+		"stock": 125,
+		"category_id": 5
+	},
+	{
+		"id": 150,
+		"name": "Fitness Medicine Ball",
+		"description": "Fitness medicine ball for strength training and functional exercises. Features a textured surface for improved grip during workouts.",
+		"price": 29.99,
+		"stock": 135,
+		"category_id": 4
+	}
 ]
