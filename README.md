@@ -86,7 +86,12 @@ By default, the API-bun uses an in-memory storage system for rapid prototyping a
 
 If you want to feed the system with some seed data, just create a file named `db/{collection_name}.json` with an array of objects. Api-bun will load it automatically and serve it fresh without touching nothing.
 
-As an usable example, you can find a `db/activities.json` file with a list of recreational activities. Also you can taste flavors of the world by using the amazing [countries-states-cities-database](https://github.com/dr5hn/countries-states-cities-database) files.
+As any usable example, you can find :
+- a `db/activities.json` file with a list of recreational activities. 
+- a `db/categories.json` file with a list of categories for an store.
+- a `db/products.json` file with a list of products for an store.
+
+Also you can taste flavors of the world by using the amazing [countries-states-cities-database](https://github.com/dr5hn/countries-states-cities-database) files.
 
 ### 3.2 🍲 File System
 
@@ -112,21 +117,41 @@ The identified user `id` is also added to any posted item as `userId` property a
 #### To register a new user
 
 ```bash
-curl -X POST http://localhost:3000/register -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
+curl -X POST http://localhost:3000/api/register -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
 ```
 
 #### To login
 
 ```bash
-curl -X POST http://localhost:3000/login -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
+curl -X POST http://localhost:3000/api/login -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
 ```
 
-## 5 🥪 Hot features and cold road-map
+## 5 🍔 Forced responses
+
+When testing your app, sometimes you want to force the API to return a specific response. This can be done by adding some query parameter to the request.
+
+### 5.1 🍟 Forced status codes
+
+To force a specific status code, add the `status` query parameter to the request.
+
+```bash
+curl -X GET http://localhost:3000/api/activities?status=404
+```
+
+### 5.2 🍕 Forced dela
+
+To force a delay in the response, add the `delay` query parameter to the request. The value is in milliseconds.
+
+```bash
+curl -X GET http://localhost:3000/api/activities?delay=5000
+```
+
+## X 🥪 Hot features and cold road-map
 
 - [x] Publishes a generic CRUD API
-- [x] Endpoint routes in the form `http://localhost:3000/{collection_name}` for GET all or POST.
-- [x] Add the _id_ `http://localhost:3000/{collection_name}/{id}` for GET one, PUT or DELETE.
-- [x] Add _queryParams_ `http://localhost:3000/{collection_name}?key={key}&value={value}` for GET by key/value.
+- [x] Endpoint routes in the form `http://localhost:3000/api/{collection_name}` for GET all or POST.
+- [x] Add the _id_ `http://localhost:3000/api/{collection_name}/{id}` for GET one, PUT or DELETE.
+- [x] Add _queryParams_ `http://localhost:3000/api/{collection_name}?key={key}&value={value}` for GET by key/value.
 - [x] Always try to feeds any resource with seed data from `db/{collection_name}.json`.
 - [x] If no file found, then starts with an empty array.
 - [x] Uses _id_ as a primary key to identify items.
