@@ -1,14 +1,8 @@
-import {
-	apiController,
-	deleteController,
-	getController,
-	postController,
-	putController,
-} from "../api/api.controller";
+import { apiController } from "../api/api.controller";
 import { forcedController } from "../api/forced.controller";
 import { getWebController } from "../api/web.controller";
 import { API_BUN_CONFIG } from "../api_bun.config";
-import { logInfo, logTrace } from "../domain/log.service";
+import { logTrace } from "../domain/log.service";
 import { buildClientRequest } from "./client_request.service";
 import type { ClientRequest } from "./client_request.type";
 import type { ClientResponse } from "./client_response.class";
@@ -30,6 +24,10 @@ export async function handleRequest(request: Request): Promise<ClientResponse> {
 	return await getWebController(clientRequest);
 }
 
+/**
+ * Handles the forced delay response
+ * @param delayMs Milliseconds of forced waiting or undefined to skip
+ */
 async function handleDelayedResponse(delayMs: number | undefined): Promise<void> {
 	if (!delayMs) return;
 	logTrace(`Forced delaying response by ${delayMs} ms`);

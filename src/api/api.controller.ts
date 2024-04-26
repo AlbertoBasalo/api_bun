@@ -16,10 +16,15 @@ import {
 // API method Controller
 // Receives a ClientRequest object and returns a ClientResponse object
 
+/**
+ * Controls every method to the API
+ * @param clientRequest The client request
+ * @returns A client response object
+ */
 export async function apiController(clientRequest: ClientRequest): Promise<ClientResponse> {
 	if (clientRequest.resource === "") {
 		return new ClientResponse({
-			body: "Api root. Type /api/{resource} to access a resource.",
+			body: "Api root, nothing to see here. Go to /api/{resource-name} to access data.",
 			status: 200,
 			clientRequest,
 		});

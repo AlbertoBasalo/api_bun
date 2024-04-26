@@ -14,14 +14,12 @@ import type {
  * @param request Request object
  * @returns Structured information extracted from the request object
  */
-export async function buildClientRequest(
-	request: Request,
-): Promise<ClientRequest> {
+export async function buildClientRequest(request: Request): Promise<ClientRequest> {
 	const method = request.method;
 	const url = new URL(request.url);
 	const endPoint = url.pathname;
 	const query: URLSearchParams = url.searchParams;
-	const { root, resource, id } = extractFromEndPoint(endPoint);
+	const { root, resource, id } = extractEndPoint(endPoint);
 	const body: ClientBody | undefined = await extractBody(request);
 	const params: Params | undefined = extractParams(query);
 	const force: ForcedParams | undefined = await extractForce(query);
@@ -41,7 +39,12 @@ export async function buildClientRequest(
 	return clientRequest;
 }
 
-function extractFromEndPoint(endPoint: string): {
+/**
+ * Extracts end point information from the request object
+ * @param endPoint The end point of the request
+ * @returns The root, resource and id of the end point
+ */
+function extractEndPoint(endPoint: string): {
 	root: string;
 	resource: string;
 	id: string | undefined;
@@ -53,6 +56,11 @@ function extractFromEndPoint(endPoint: string): {
 	return { root, resource, id };
 }
 
+/**
+ * Extracts the query parameters from the request object
+ * @param query The query parameters of the request
+ * @returns the expected parameters with values or undefined when not found
+ */
 function extractParams(query: URLSearchParams): Params | undefined {
 	const q = query.get("q") || undefined;
 	const key = query.get("key") || undefined;
@@ -78,9 +86,12 @@ async function extractBody(request: Request): Promise<ClientBody | undefined> {
 	return undefined;
 }
 
-async function extractForce(
-	query: URLSearchParams,
-): Promise<ForcedParams | undefined> {
+/**
+ * Extracts the parameters for forced responses from the query
+ * @param query The query parameters of the request
+ * @returns Delay or expected status code for the response
+ */
+async function extractForce(query: URLSearchParams): Promise<ForcedParams | undefined> {
 	const qDelay = query.get("delay");
 	let delay: number | undefined;
 	if (qDelay) delay = Number.parseInt(qDelay);
@@ -94,9 +105,9 @@ async function extractForce(
 }
 
 /**
- * Extracts the user id from the request headers
+ * Extracts the status and user id from the request headers
  * @param request Request object
- * @returns User id
+ * @returns User id and anonymous status
  */
 function extractSecurity(request: Request): Security | undefined {
 	if (API_BUN_CONFIG.SECURITY === "none") return undefined;

@@ -2,6 +2,10 @@ import { API_BUN_CONFIG } from "./api_bun.config";
 import { logError, logInfo } from "./domain/log.service";
 import { handleRequest } from "./server/request.handler";
 
+/**
+ * API-bun 🥖
+ * This is the main entry point for the server
+ */
 const server = Bun.serve({
 	port: 3000,
 	fetch(req) {
@@ -24,6 +28,10 @@ function isFavIcon(req: Request) {
 	return new URL(req.url).pathname === "/favicon.ico";
 }
 
+/**
+ * Main function
+ * Writes a welcome message to the console
+ */
 function main() {
 	console.clear();
 	logInfo(`API-bun is listening on ${server.url} 🥖`, API_BUN_CONFIG);
