@@ -162,6 +162,7 @@ curl -X GET http://localhost:3000/api/activities?delay=5000
 - [x] Logs to console with different levels (_info, none, verbose_).
 - [x] Minimal security with signed token (not JWT compliant).
 - [ ] _JWT Security and authorization_
+- [ ] _Clear an endpoint when DELETE to the endpoint root_
 - [ ] _Sorted results_
 - [ ] _Pagination_
 - [ ] _Put and patch distinction_
