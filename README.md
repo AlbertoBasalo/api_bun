@@ -126,11 +126,26 @@ curl -X POST http://localhost:3000/api/register -d '{"email":"admin@world.org","
 curl -X POST http://localhost:3000/api/login -d '{"email":"admin@world.org","password":"1234"}' -H "Content-Type: application/json"
 ```
 
-## 5 🍔 Forced responses
+## 5 🍕 API endpoints
+
+### 5.1 🍟 Get data
+
+```bash
+# get all activities
+http://localhost:3000/api/activities
+# get one activity
+http://localhost:3000/api/activities/1
+# get activities by key/value
+http://localhost:3000/api/activities?key=slug&value=standup-surfing_laco-di-como_2023-08-01
+# get by content
+http://localhost:3000/api/activities?q=surf
+```
+
+## 6 🍔 Forced responses
 
 When testing your app, sometimes you want to force the API to return a specific response. This can be done by adding some query parameter to the request.
 
-### 5.1 🍟 Forced status codes
+### 6.1 🍟 Forced status codes
 
 To force a specific status code, add the `status` query parameter to the request.
 
@@ -138,7 +153,7 @@ To force a specific status code, add the `status` query parameter to the request
 curl -X GET http://localhost:3000/api/activities?status=404
 ```
 
-### 5.2 🍕 Forced dela
+### 6.2 🍕 Forced delay
 
 To force a delay in the response, add the `delay` query parameter to the request. The value is in milliseconds.
 
