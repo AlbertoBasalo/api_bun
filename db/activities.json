@@ -1,6 +1,6 @@
 [
 	{
-		"id": 1,
+		"id": "0bce2b38-55bc-4c0f-b57c-249d5b3e85ee",
 		"name": "Standup Surfing",
 		"slug": "standup-surfing_laco-di-como_2023-08-01",
 		"price": 30,
@@ -10,10 +10,10 @@
 		"maxParticipants": 10,
 		"minParticipants": 2,
 		"status": "done",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 2,
+		"id": "2f3b567d-27ad-4d72-a8d5-4a66c3e87ff3",
 		"name": "Kayaking",
 		"slug": "kayaking_grand-canyon_2023-07-14",
 		"price": 50,
@@ -23,10 +23,10 @@
 		"maxParticipants": 12,
 		"minParticipants": 6,
 		"status": "cancelled",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 3,
+		"id": "34a9c60e-0b94-4f70-a202-f6c0d9f09f0c",
 		"name": "Surfing",
 		"slug": "surfing_hawaii_2023-03-08",
 		"price": 40,
@@ -36,10 +36,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "done",
-		"userId": 2
+		"userId": "2"
 	},
 	{
-		"id": 4,
+		"id": "49a4cf7a-801b-408f-a78b-0e4a78a77561",
 		"name": "Sailing",
 		"slug": "sailing_mediteranean-sea_2024-09-28",
 		"price": 160,
@@ -49,10 +49,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 5,
+		"id": "d01e26b5-babf-4f98-bc43-5fc7dcce4d6f",
 		"name": "Hiking",
 		"slug": "hiking_alps_2024-07-28",
 		"price": 20,
@@ -62,10 +62,10 @@
 		"maxParticipants": 20,
 		"minParticipants": 10,
 		"status": "published",
-		"userId": 2
+		"userId": "2"
 	},
 	{
-		"id": 6,
+		"id": "1e41d542-85d4-4eae-9f22-75f5c237be1a",
 		"name": "Wind Surfing",
 		"slug": "wind-surfing_canary-islands_2024-11-15",
 		"price": 140,
@@ -75,10 +75,10 @@
 		"maxParticipants": 4,
 		"minParticipants": 2,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 7,
+		"id": "4e3b16a3-2875-4be3-80c4-60c74a8dfc1a",
 		"name": "Snorkeling diving",
 		"slug": "snorkeling-diving_riviera-maya_2024-04-21",
 		"price": 80,
@@ -88,10 +88,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 8,
+		"id": "d35161f1-f35c-4ac0-b6b2-c80b7ab8b25f",
 		"name": "Scuba diving",
 		"slug": "scuba-diving_punta-cana_2024-05-11",
 		"price": 120,
@@ -101,10 +101,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "draft",
-		"userId": 2
+		"userId": "2"
 	},
 	{
-		"id": 9,
+		"id": "062f8b2a-9e41-4c32-9886-13c653d92ba1",
 		"name": "Paragliding",
 		"slug": "paragliding_alps_2024-06-01",
 		"price": 100,
@@ -114,10 +114,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 10,
+		"id": "d9d4690b-d605-40f5-953b-46005cb67c2b",
 		"name": "Bungee jumping",
 		"slug": "bungee-jumping_alps_2024-06-01",
 		"price": 100,
@@ -127,10 +127,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 11,
+		"id": "13afdf28-f9e4-4c13-97a6-5e3e911e3871",
 		"name": "Skydiving",
 		"slug": "skydiving_alps_2024-06-01",
 		"price": 100,
@@ -140,10 +140,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "draft",
-		"userId": 2
+		"userId": "2"
 	},
 	{
-		"id": 12,
+		"id": "52430c0c-c5ab-40fc-b6cb-394cf68954c1",
 		"name": "Canyoning",
 		"slug": "canyoning_alps_2024-06-01",
 		"price": 100,
@@ -153,10 +153,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 13,
+		"id": "6ae05d37-50ef-4963-a1b8-3b34c2ef4f57",
 		"name": "Rafting",
 		"slug": "rafting_alps_2024-06-01",
 		"price": 100,
@@ -166,10 +166,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 14,
+		"id": "9d7d4e61-e38c-4373-9e35-e96fe280bb08",
 		"name": "Climbing",
 		"slug": "climbing_alps_2024-06-01",
 		"price": 100,
@@ -179,10 +179,10 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "cancelled",
-		"userId": 2
+		"userId": "2"
 	},
 	{
-		"id": 15,
+		"id": "ee68e68b-3a3f-4b75-9801-15a94e22afdf",
 		"name": "Standup Surfing",
 		"slug": "standup-surfing_laco-di-como_2027-08-01",
 		"price": 30,
@@ -192,10 +192,10 @@
 		"maxParticipants": 10,
 		"minParticipants": 2,
 		"status": "published",
-		"userId": 1
+		"userId": "'1'"
 	},
 	{
-		"id": 16,
+		"id": "b10a4f36-2c13-46c7-b2ae-82634c0d5f34",
 		"name": "Kayaking",
 		"slug": "kayaking-grand_canyon_2024-07-14",
 		"price": 50,
@@ -205,10 +205,10 @@
 		"maxParticipants": 12,
 		"minParticipants": 6,
 		"status": "published",
-		"userId": 1
+		"userId": "1"
 	},
 	{
-		"id": 17,
+		"id": "df83f7f8-8db4-4a6b-88ea-4426b3a50a20",
 		"name": "Surfing",
 		"slug": "surfing_hawaii_2024-03-08",
 		"price": 40,
@@ -218,6 +218,6 @@
 		"maxParticipants": 8,
 		"minParticipants": 4,
 		"status": "draft",
-		"userId": 2
+		"userId": "2"
 	}
 ]
