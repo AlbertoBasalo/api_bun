@@ -85,7 +85,7 @@ export async function insert(collection: string, item: Item): Promise<Item> {
  */
 export async function update(collection: string, id: string, item: Item): Promise<Item | null> {
 	const collectionData = await readCollection(collection);
-	const index = collectionData.findIndex((i: Item) => i.id === id);
+	const index = collectionData.findIndex((i: Item) => (item.id as string).toString() === id);
 	if (index === -1) {
 		return null;
 	}
