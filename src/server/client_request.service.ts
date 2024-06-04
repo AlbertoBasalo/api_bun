@@ -16,9 +16,10 @@ import type {
  */
 export async function buildClientRequest(request: Request): Promise<ClientRequest> {
 	const method = request.method;
-	const url = new URL(request.url);
-	const endPoint = url.pathname;
-	const query: URLSearchParams = url.searchParams;
+	const url = request.url;
+	const reqUrl = new URL(url);
+	const endPoint = reqUrl.pathname;
+	const query: URLSearchParams = reqUrl.searchParams;
 	const { root, resource, id } = extractEndPoint(endPoint);
 	const body: ClientBody | undefined = await extractBody(request);
 	const params: Params | undefined = extractParams(query);
@@ -27,6 +28,7 @@ export async function buildClientRequest(request: Request): Promise<ClientReques
 	const clientRequest = {
 		method,
 		endPoint,
+		url,
 		root,
 		resource,
 		id,

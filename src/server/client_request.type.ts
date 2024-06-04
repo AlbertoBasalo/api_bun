@@ -6,6 +6,7 @@ export type ClientRequest = {
 	endPoint: string;
 	root: string;
 	resource: string;
+	url: string;
 	id?: string;
 	params?: Params;
 	body?: ClientBody;

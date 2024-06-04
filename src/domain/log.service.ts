@@ -51,7 +51,7 @@ export function logResponse(clientResponse: ClientResponse): void {
 }
 
 function getLogForRequest(clientRequest?: ClientRequest) {
-	return `${clientRequest?.method.padEnd(6, " ")} ${clientRequest?.endPoint}`;
+	return `${clientRequest?.method.padEnd(6, " ")} ${clientRequest?.url}`;
 }
 
 function printPayload(payload?: unknown): void {
