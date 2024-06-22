@@ -15,22 +15,22 @@ import { ClientResponse } from "../server/client_response.class";
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function postRegister(clientRequest: ClientRequest): Promise<ClientResponse> {
-  const credentials: Credentials = clientRequest.body as Credentials;
-  if (!credentials) return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
-  const email = credentials.email;
-  const existingUser = await getByKeyValue("users", "email", email);
-  if (existingUser.length > 0) {
-    logWarning("Registering a user that already exists", { email });
-    return new ClientResponse({ body: "Invalid credentials", status: 400, clientRequest });
-  }
-  const hashedCredentials = await hashCredentials(credentials) as NewItem;
-  const newUser = await post("users", hashedCredentials);
-  const userCredentials = castToUserCredentials(newUser.data);
-  if (!userCredentials.data) {
-    return new ClientResponse({ body: newUser.error, status: 500, clientRequest });
-  }
-  const userToken = buildUserToken(userCredentials.data);
-  return new ClientResponse({ body: userToken, status: 201, clientRequest });
+	const credentials: Credentials = clientRequest.body as Credentials;
+	if (!credentials) return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
+	const email = credentials.email;
+	const existingUser = await getByKeyValue("users", "email", email);
+	if (existingUser.length > 0) {
+		logWarning("Registering a user that already exists", { email });
+		return new ClientResponse({ body: "Invalid credentials", status: 400, clientRequest });
+	}
+	const hashedCredentials = (await hashCredentials(credentials)) as NewItem;
+	const newUser = await post("users", hashedCredentials);
+	const userCredentials = castToUserCredentials(newUser.data);
+	if (!userCredentials.data) {
+		return new ClientResponse({ body: newUser.error, status: 500, clientRequest });
+	}
+	const userToken = buildUserToken(userCredentials.data);
+	return new ClientResponse({ body: userToken, status: 201, clientRequest });
 }
 
 /**
@@ -40,27 +40,30 @@ export async function postRegister(clientRequest: ClientRequest): Promise<Client
  * @throws {ClientResponse} If the request is invalid or unauthorized returns an error response
  */
 export async function postLogin(clientRequest: ClientRequest): Promise<ClientResponse> {
-  const credentials: Credentials = clientRequest.body as Credentials;
-  const email = credentials.email;
-  if (!email) {
-    return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
-  }
-  const existingUsers = await getByKeyValue("users", "email", email);
-  if (!existingUsers[0]) {
-    return new ClientResponse({ body: "Invalid credentials", status: 400, clientRequest });
-  }
-  const existingUserResult: Result<Credentials & Item> = castToUserCredentials(existingUsers[0]);
-  if (!existingUserResult.data) {
-    logError(existingUserResult.error || 'Item malformed on db', { email });
-    return new ClientResponse({ body: "Internal server error", status: 500, clientRequest });
-  }
-  const password: string = existingUserResult.data.password;
-  if (!(await verifyCredentials(credentials, password))) {
-    return new ClientResponse({ body: "Invalid credentials", status: 404, clientRequest });
-  }
-  const userToken = buildUserToken(existingUserResult.data);
-  return new ClientResponse({ body: userToken, status: 201, clientRequest });
+	const credentials: Credentials = clientRequest.body as Credentials;
+	const email = credentials.email;
+	if (!email) {
+		return new ClientResponse({ body: "Bad request", status: 400, clientRequest });
+	}
+	const existingUsers = await getByKeyValue("users", "email", email);
+	if (!existingUsers[0]) {
+		logWarning("Login attempt with non-existing user", { email });
+		return new ClientResponse({ body: "Invalid credentials", status: 400, clientRequest });
+	}
+	const existingUserResult: Result<Credentials & Item> = castToUserCredentials(existingUsers[0]);
+	if (!existingUserResult.data) {
+		logError(existingUserResult.error || "Item malformed on db", { email });
+		return new ClientResponse({ body: "Internal server error", status: 500, clientRequest });
+	}
+	const password: string = existingUserResult.data.password;
+	if (!(await verifyCredentials(credentials, password))) {
+		return new ClientResponse({ body: "Invalid credentials", status: 404, clientRequest });
+	}
+	const userToken = buildUserToken(existingUserResult.data);
+	return new ClientResponse({ body: userToken, status: 201, clientRequest });
 }
+
+// ToDo: delete user account
 
 /**
  * Cast between Item and Credentials
@@ -69,16 +72,16 @@ export async function postLogin(clientRequest: ClientRequest): Promise<ClientRes
  * @throws {Result} If the item is malformed returns an error
  */
 function castToUserCredentials(user?: Item): Result<Credentials & Item> {
-  if (!user) {
-    const error = "User not found";
-    return { error };
-  }
-  const data = user as Credentials & Item;
-  if (!data.id || !data.email || !data.password) {
-    const error = "Item malformed";
-    return { error };
-  }
-  return { data };
+	if (!user) {
+		const error = "User not found";
+		return { error };
+	}
+	const data = user as Credentials & Item;
+	if (!data.id || !data.email || !data.password) {
+		const error = "Item malformed";
+		return { error };
+	}
+	return { data };
 }
 
 /**
@@ -87,13 +90,13 @@ function castToUserCredentials(user?: Item): Result<Credentials & Item> {
  * @returns The user token
  */
 function buildUserToken(existingUser: Credentials & Item): UserToken {
-  const id = existingUser.id;
-  const email = existingUser.email;
-  const user: { id: string, email: string } = { id, email };
-  const accessToken = generateToken(id);
-  const userToken = {
-    user,
-    accessToken,
-  };
-  return userToken;
+	const id = existingUser.id;
+	const email = existingUser.email;
+	const user: { id: string; email: string } = { id, email };
+	const accessToken = generateToken(id);
+	const userToken = {
+		user,
+		accessToken,
+	};
+	return userToken;
 }
