@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pmt_1",
+    "invoice_id": "inv_1",
+    "amount": 28000000,
+    "paid_at": "2024-07-21T14:30:00Z"
+  },
+  {
+    "id": "pmt_2",
+    "invoice_id": "inv_2",
+    "amount": 250000,
+    "paid_at": "2024-09-10T11:15:00Z"
+  }
+]

@@ -1,0 +1,13 @@
+    // Start Generation Here
+    POST http://localhost:3000/api/agencies
+    Content-Type: application/json
+
+    {
+        "user_id": "usr_a3",
+        "description": "Innovative space solutions provider",
+        "contact_info": "Phone: +1-800-SPACE-NW",
+        "contact_email": "contact@spacenw.com",
+        "legal_name": "SpaceNW Corporation",
+        "legal_tax_id": "US112233445",
+        "legal_address": "456 Galaxy Way, Star City, SC 67890, USA"
+    }

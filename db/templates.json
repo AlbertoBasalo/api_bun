@@ -1,0 +1,20 @@
+[
+  {
+    "id": "tmpl_1",
+    "event_name": "booking_confirmed",
+    "subject": "Booking Confirmation for launch to {destination}",
+    "message": "A new booking for {number_of_seats} seat(s) on the launch {mission} to {destination} on {date} has been confirmed. \n Congratulations!"
+  },
+  {
+    "id": "tmpl_2",
+    "event_name": "launch_scheduled",
+    "subject": "Launch {mission} Scheduled",
+    "message": "The launch {mission} to {destination} has been scheduled for {date}. \n We will send you a notification when the launch is confirmed."
+  },
+  {
+    "id": "tmpl_3",
+    "event_name": "invoice_issued",
+    "subject": "Invoice {number} Issued for launch {mission}",
+    "message": "The invoice {number} for the launch {mission} to {destination} has been issued. \n The total price is {amount}. \n Please pay within 30 days."
+  }
+]

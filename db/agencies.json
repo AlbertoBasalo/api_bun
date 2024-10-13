@@ -1,0 +1,38 @@
+[
+  {
+    "id": "usr_a1",
+    "description": "Pioneering space travel since 2030",
+    "contact_info": "Phone: +1-800-SPACE-X1",
+    "contact_email": "info@spacex.com",
+    "legal_name": "SpaceX Corporation",
+    "legal_tax_id": "US123456789",
+    "legal_address": "1 Rocket Road, Hawthorne, CA 90250, USA"
+  },
+  {
+    "id": "usr_a2",
+    "description": "Your gateway to the stars",
+    "contact_info": "Phone: +44-20-STAR-TREK",
+    "contact_email": "contact@virgingalactic.com",
+    "legal_name": "Virgin Galactic Ltd",
+    "legal_tax_id": "UK987654321",
+    "legal_address": "166 Tooley Street, London, SE1 2QH, UK"
+  },
+  {
+    "id": "usr_a3",
+    "description": "Luxury space tourism for the discerning traveler",
+    "contact_info": "Phone: +33-1-SPACE-LUX",
+    "contact_email": "info@galaxyluxe.com",
+    "legal_name": "Galaxy Luxe S.A.",
+    "legal_tax_id": "FR987654321",
+    "legal_address": "8 Avenue des Champs-Élysées, 75008 Paris, France"
+  },
+  {
+    "id": "usr_a4",
+    "description": "Affordable space adventures for everyone",
+    "contact_info": "Phone: +81-3-SPACE-4-ALL",
+    "contact_email": "contact@cosmicbudget.jp",
+    "legal_name": "Cosmic Budget Corp.",
+    "legal_tax_id": "JP123456789",
+    "legal_address": "1-1 Marunouchi, Chiyoda-ku, Tokyo 100-0005, Japan"
+  }
+]

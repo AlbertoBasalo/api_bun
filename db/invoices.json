@@ -1,0 +1,29 @@
+[
+  {
+    "id": "inv_1",
+    "number": "INV-2025-001",
+    "agency_id": "usr_a1",
+    "launch_id": "lnch_1",
+    "amount": 28000000,
+    "issued_at": "2024-07-20T12:00:00Z",
+    "status": "paid"
+  },
+  {
+    "id": "inv_2",
+    "number": "INV-2025-002",
+    "agency_id": "usr_a2",
+    "launch_id": "lnch_2",
+    "amount": 500000,
+    "issued_at": "2024-09-01T09:00:00Z",
+    "status": "pending"
+  },
+  {
+    "id": "inv_3",
+    "number": "INV-2026-001",
+    "agency_id": "usr_a1",
+    "launch_id": "lnch_3",
+    "amount": 55000000,
+    "issued_at": "2025-01-01T00:00:00Z",
+    "status": "pending"
+  }
+]

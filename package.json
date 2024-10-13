@@ -26,7 +26,7 @@
 		"build": "bun build --minify src/index.ts > dist/api-bun/index.js ",
 		"prestart": "bun run build",
 		"start": "bun run dist/api-bun/index.js",
-		"dev": "LOG_LEVEL=verbose STORAGE=memory bun --watch run src/index.ts",
+		"dev": "LOG_LEVEL=verbose STORAGE=memory API_FORCED_TIMEOUT=5000 bun --watch run src/index.ts",
 		"lint": "biome check ./src",
 		"lint:fix": "biome check --apply ./src"
 	},

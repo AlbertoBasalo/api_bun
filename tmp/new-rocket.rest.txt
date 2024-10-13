@@ -1,0 +1,10 @@
+    // Start Generation Here
+    POST http://localhost:3000/api/rockets
+    Content-Type: application/json
+
+    {
+        "agency_id": "usr_a1",
+        "name": "Falcon X",
+        "capacity": 150,
+        "range": "jupiter"
+    }

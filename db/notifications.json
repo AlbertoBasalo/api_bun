@@ -1,0 +1,27 @@
+[
+  {
+    "id": "notif_1",
+    "template_id": "tmpl_1",
+    "user_id": "usr_t1",
+    "subject": "Booking Confirmation",
+    "message": "Your booking for 1 seat(s) on the launch to Moon on 2025-07-20 has been confirmed.",
+    "data": {
+      "launch_id": "lnch_1",
+      "destination": "Moon",
+      "date": "2025-07-20"
+    },
+    "status": "sent"
+  },
+  {
+    "id": "notif_2",
+    "template_id": "tmpl_2",
+    "user_id": "usr_a1",
+    "subject": "Launch Scheduled",
+    "message": "The launch has been scheduled for 2026-01-01.",
+    "data": {
+      "launch_id": "lnch_3",
+      "date": "2026-01-01"
+    },
+    "status": "pending"
+  }
+]

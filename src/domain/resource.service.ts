@@ -9,7 +9,6 @@ import {
   selectByKeyValue,
   update,
 } from "../repository/memory.repository";
-import { generateUUID } from "./crypto.service";
 import type { Item, NewItem } from "./item.type";
 import type { Result } from "./result.type";
 
@@ -25,7 +24,11 @@ export async function getById(collection: string, id: string): Promise<Result<It
   return { data: result, error };
 }
 
-export async function getByKeyValue(collection: string, key: string, value: string): Promise<Item[]> {
+export async function getByKeyValue(
+  collection: string,
+  key: string,
+  value: string
+): Promise<Item[]> {
   const selectedData = await selectByKeyValue(collection, key, value);
   const result = selectedData;
   return result;
@@ -45,13 +48,28 @@ export async function post(collection: string, newItem: NewItem): Promise<Result
       return { data: undefined, error: `Item with id ${id} already exists in ${collection}` };
     }
   } else {
-    id = generateUUID();
+    id = await generateCustomId(collection); // old id = generateUUID();
   }
   const createdAt = new Date();
   const updatedAt = null;
   const item: Item = { ...newItem, id, createdAt, updatedAt };
   const result = await insert(collection, item);
   return { data: result };
+}
+
+// Start Generation Here
+export async function generateCustomId(collection: string): Promise<string> {
+  const items = await getAll(collection);
+  const count = items.length;
+  const number = (count + 1).toString();
+  const consonants = collection.match(/[bcdfghjklmnpqrstvwxyz]/gi);
+  let prefix = "";
+  if (consonants && consonants.length >= 3) {
+    prefix = consonants.slice(0, 3).join("").toLowerCase();
+  } else {
+    prefix = collection.substring(0, 3).toLowerCase();
+  }
+  return `${prefix}_${number}`;
 }
 
 export async function put(collection: string, id: string, item: Item): Promise<Result<Item>> {
