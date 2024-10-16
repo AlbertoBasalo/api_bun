@@ -5,7 +5,7 @@
     "rocketId": "rkt_1",
     "date": "2025-07-20T10:00:00Z",
     "mission": "Artemis I",
-    "destination": "Moon",
+    "destination": "Moon Orbit",
     "pricePerSeat": 28000000,
     "status": "delayed"
   },
@@ -15,7 +15,7 @@
     "rocketId": "rkt_2",
     "date": "2025-09-15T14:30:00Z",
     "mission": "Space walk",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit",
     "pricePerSeat": 250000,
     "status": "confirmed"
   },
@@ -35,7 +35,7 @@
     "rocketId": "rkt_4",
     "date": "2025-12-24T23:59:59Z",
     "mission": "Lunar Christmas",
-    "destination": "Moon",
+    "destination": "Moon Orbit",
     "pricePerSeat": 75000000,
     "status": "scheduled"
   },
@@ -45,7 +45,7 @@
     "rocketId": "rkt_5",
     "date": "2024-05-11T11:11:11Z",
     "mission": "Orbital Luxury",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit ",
     "pricePerSeat": 5000000,
     "status": "launched"
   },
@@ -55,7 +55,7 @@
     "rocketId": "rkt_6",
     "date": "2025-10-10T10:00:00Z",
     "mission": "Budget Orbit",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit",
     "pricePerSeat": 100000,
     "status": "scheduled"
   },
@@ -65,7 +65,7 @@
     "rocketId": "rkt_7",
     "date": "2026-02-14T14:00:00Z",
     "mission": "Lunar Valentine",
-    "destination": "Moon",
+    "destination": "Moon Orbit",
     "pricePerSeat": 500000,
     "status": "aborted"
   },
@@ -75,7 +75,7 @@
     "rocketId": "rkt_1",
     "date": "2026-03-21T08:00:00Z",
     "mission": "Spring Equinox Special",
-    "destination": "Moon",
+    "destination": "Moon Landing",
     "pricePerSeat": 30000000,
     "status": "scheduled"
   },
@@ -85,7 +85,7 @@
     "rocketId": "rkt_2",
     "date": "2026-04-01T12:00:00Z",
     "mission": "April Fools Orbit",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit",
     "pricePerSeat": 275000,
     "status": "scheduled"
   },
@@ -95,7 +95,7 @@
     "rocketId": "rkt_4",
     "date": "2026-05-15T18:30:00Z",
     "mission": "Lunar Gala",
-    "destination": "Moon",
+    "destination": "Moon Orbit",
     "pricePerSeat": 80000000,
     "status": "scheduled"
   },
@@ -105,7 +105,7 @@
     "rocketId": "rkt_6",
     "date": "2026-06-21T06:00:00Z",
     "mission": "Summer Solstice Orbit",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit",
     "pricePerSeat": 110000,
     "status": "scheduled"
   },
@@ -125,7 +125,7 @@
     "rocketId": "rkt_5",
     "date": "2026-08-08T08:08:08Z",
     "mission": "Lucky Orbit",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit",
     "pricePerSeat": 5500000,
     "status": "scheduled"
   },
@@ -135,7 +135,7 @@
     "rocketId": "rkt_2",
     "date": "2026-09-22T10:00:00Z",
     "mission": "Autumn Equinox Adventure",
-    "destination": "Earth",
+    "destination": "Low Earth Orbit",
     "pricePerSeat": 280000,
     "status": "scheduled"
   },
@@ -155,7 +155,7 @@
     "rocketId": "rkt_1",
     "date": "2026-11-25T12:00:00Z",
     "mission": "Thanksgiving in Space",
-    "destination": "Moon",
+    "destination": "Moon Orbit",
     "pricePerSeat": 32000000,
     "status": "scheduled"
   },
@@ -165,7 +165,7 @@
     "rocketId": "rkt_4",
     "date": "2023-12-31T23:59:59Z",
     "mission": "New Year's Eve on the Moon",
-    "destination": "Moon",
+    "destination": "Moon Landing",
     "pricePerSeat": 85000000,
     "status": "launched"
   }
