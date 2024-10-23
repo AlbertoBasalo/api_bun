@@ -1,122 +1,122 @@
 [
   {
     "id": "usr_t1",
-    "contact_phone": "+1-555-123-4567",
-    "contact_email": "john.doe@email.com",
-    "emergency_contact": "Jane Doe: +1-555-987-6543",
-    "travel_preferences": {
-      "preferred_destination": "Moon",
-      "dietary_restrictions": "Vegetarian"
+    "contactPhone": "+1-555-123-4567",
+    "contactEmail": "john.doe@email.com",
+    "emergencyContact": "Jane Doe: +1-555-987-6543",
+    "travelPreferences": {
+      "preferredDestination": "Moon",
+      "dietaryRestrictions": "Vegetarian"
     }
   },
   {
     "id": "usr_t2",
-    "contact_phone": "+44-20-1234-5678",
-    "contact_email": "emma.smith@email.co.uk",
-    "emergency_contact": "James Smith: +44-20-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Mars",
-      "medical_conditions": "None"
+    "contactPhone": "+44-20-1234-5678",
+    "contactEmail": "emma.smith@email.co.uk",
+    "emergencyContact": "James Smith: +44-20-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Mars",
+      "medicalConditions": "None"
     }
   },
   {
     "id": "usr_t3",
-    "contact_phone": "+33-6-1234-5678",
-    "contact_email": "pierre.dupont@email.fr",
-    "emergency_contact": "Marie Dupont: +33-6-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Venus",
-      "dietary_restrictions": "Gluten-free"
+    "contactPhone": "+33-6-1234-5678",
+    "contactEmail": "pierre.dupont@email.fr",
+    "emergencyContact": "Marie Dupont: +33-6-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Venus",
+      "dietaryRestrictions": "Gluten-free"
     }
   },
   {
     "id": "usr_t4",
-    "contact_phone": "+81-90-1234-5678",
-    "contact_email": "yuki.tanaka@email.jp",
-    "emergency_contact": "Hiroshi Tanaka: +81-90-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Jupiter",
-      "medical_conditions": "Motion sickness"
+    "contactPhone": "+81-90-1234-5678",
+    "contactEmail": "yuki.tanaka@email.jp",
+    "emergencyContact": "Hiroshi Tanaka: +81-90-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Jupiter",
+      "medicalConditions": "Motion sickness"
     }
   },
   {
     "id": "usr_t5",
-    "contact_phone": "+49-151-1234-5678",
-    "contact_email": "anna.schmidt@email.de",
-    "emergency_contact": "Hans Schmidt: +49-151-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Saturn",
-      "dietary_restrictions": "Vegan"
+    "contactPhone": "+49-151-1234-5678",
+    "contactEmail": "anna.schmidt@email.de",
+    "emergencyContact": "Hans Schmidt: +49-151-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Saturn",
+      "dietaryRestrictions": "Vegan"
     }
   },
   {
     "id": "usr_t6",
-    "contact_phone": "+61-4-1234-5678",
-    "contact_email": "michael.johnson@email.au",
-    "emergency_contact": "Sarah Johnson: +61-4-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Neptune",
-      "medical_conditions": "Asthma"
+    "contactPhone": "+61-4-1234-5678",
+    "contactEmail": "michael.johnson@email.au",
+    "emergencyContact": "Sarah Johnson: +61-4-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Neptune",
+      "medicalConditions": "Asthma"
     }
   },
   {
     "id": "usr_t7",
-    "contact_phone": "+7-915-123-4567",
-    "contact_email": "elena.ivanova@email.ru",
-    "emergency_contact": "Ivan Petrov: +7-915-876-5432",
-    "travel_preferences": {
-      "preferred_destination": "Pluto",
-      "dietary_restrictions": "Kosher"
+    "contactPhone": "+7-915-123-4567",
+    "contactEmail": "elena.ivanova@email.ru",
+    "emergencyContact": "Ivan Petrov: +7-915-876-5432",
+    "travelPreferences": {
+      "preferredDestination": "Pluto",
+      "dietaryRestrictions": "Kosher"
     }
   },
   {
     "id": "usr_t8",
-    "contact_phone": "+55-11-91234-5678",
-    "contact_email": "carlos.silva@email.br",
-    "emergency_contact": "Ana Silva: +55-11-98765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Mercury",
-      "medical_conditions": "Diabetes"
+    "contactPhone": "+55-11-91234-5678",
+    "contactEmail": "carlos.silva@email.br",
+    "emergencyContact": "Ana Silva: +55-11-98765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Mercury",
+      "medicalConditions": "Diabetes"
     }
   },
   {
     "id": "usr_t9",
-    "contact_phone": "+86-138-1234-5678",
-    "contact_email": "li.wei@email.cn",
-    "emergency_contact": "Zhang Min: +86-138-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Asteroid Belt",
-      "dietary_restrictions": "Halal"
+    "contactPhone": "+86-138-1234-5678",
+    "contactEmail": "li.wei@email.cn",
+    "emergencyContact": "Zhang Min: +86-138-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Asteroid Belt",
+      "dietaryRestrictions": "Halal"
     }
   },
   {
     "id": "usr_t10",
-    "contact_phone": "+91-98765-43210",
-    "contact_email": "priya.patel@email.in",
-    "emergency_contact": "Raj Patel: +91-98765-12345",
-    "travel_preferences": {
-      "preferred_destination": "Europa",
-      "medical_conditions": "Claustrophobia"
+    "contactPhone": "+91-98765-43210",
+    "contactEmail": "priya.patel@email.in",
+    "emergencyContact": "Raj Patel: +91-98765-12345",
+    "travelPreferences": {
+      "preferredDestination": "Europa",
+      "medicalConditions": "Claustrophobia"
     }
   },
   {
     "id": "usr_t11",
-    "contact_phone": "+27-71-234-5678",
-    "contact_email": "thabo.nkosi@email.za",
-    "emergency_contact": "Lerato Nkosi: +27-71-876-5432",
-    "travel_preferences": {
-      "preferred_destination": "Titan",
-      "dietary_restrictions": "Pescatarian"
+    "contactPhone": "+27-71-234-5678",
+    "contactEmail": "thabo.nkosi@email.za",
+    "emergencyContact": "Lerato Nkosi: +27-71-876-5432",
+    "travelPreferences": {
+      "preferredDestination": "Titan",
+      "dietaryRestrictions": "Pescatarian"
     }
   },
   {
     "id": "usr_t12",
-    "contact_phone": "+52-1-55-1234-5678",
-    "contact_email": "sofia.rodriguez@email.mx",
-    "emergency_contact": "Miguel Rodriguez: +52-1-55-8765-4321",
-    "travel_preferences": {
-      "preferred_destination": "Io",
-      "medical_conditions": "Hypertension"
+    "contactPhone": "+52-1-55-1234-5678",
+    "contactEmail": "sofia.rodriguez@email.mx",
+    "emergencyContact": "Miguel Rodriguez: +52-1-55-8765-4321",
+    "travelPreferences": {
+      "preferredDestination": "Io",
+      "medicalConditions": "Hypertension"
     }
   }
 ]
