@@ -34,5 +34,14 @@
     "legalName": "Cosmic Budget Corp.",
     "legalTaxId": "JP123456789",
     "legalAddress": "1-1 Marunouchi, Chiyoda-ku, Tokyo 100-0005, Japan"
+  },
+  {
+    "id": "usr_a5",
+    "description": "Experience the vastness and mystery of the universe",
+    "contactInfo": "Phone: +86-10-DEEP-BLUE",
+    "contactEmail": "info@deepblue.cn ",
+    "legalName": "Deep Blue Aerospace",
+    "legalTaxId": "CN123456789",
+    "legalAddress": "10001 Beijing, China"
   }
 ]

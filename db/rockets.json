@@ -3,7 +3,7 @@
     "id": "rkt_1",
     "agency_id": "usr_a1",
     "name": "Falcon Heavy",
-    "capacity": 100,
+    "capacity": 10,
     "range": "mars"
   },
   {
@@ -17,7 +17,7 @@
     "id": "rkt_3",
     "agency_id": "usr_a1",
     "name": "Starship",
-    "capacity": 100,
+    "capacity": 10,
     "range": "mars"
   },
   {
@@ -47,5 +47,12 @@
     "name": "BudgetExplorer",
     "capacity": 15,
     "range": "moon"
+  },
+  {
+    "id": "rkt_8",
+    "agency_id": "usr_a5",
+    "name": "Deep Blue",
+    "capacity": 10,
+    "range": "low_earth"
   }
 ]

@@ -5,7 +5,8 @@
     "launchId": "lnch_1",
     "numberOfSeats": 1,
     "totalPrice": 28000000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_1"]
   },
   {
     "id": "bkg_2",
@@ -13,7 +14,8 @@
     "launchId": "lnch_2",
     "numberOfSeats": 2,
     "totalPrice": 500000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_2", "pss_13"]
   },
   {
     "id": "bkg_3",
@@ -21,7 +23,8 @@
     "launchId": "lnch_4",
     "numberOfSeats": 1,
     "totalPrice": 75000000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_3"]
   },
   {
     "id": "bkg_4",
@@ -29,7 +32,8 @@
     "launchId": "lnch_6",
     "numberOfSeats": 3,
     "totalPrice": 300000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_4", "pss_14", "pss_15"]
   },
   {
     "id": "bkg_5",
@@ -37,7 +41,8 @@
     "launchId": "lnch_7",
     "numberOfSeats": 2,
     "totalPrice": 1000000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_5", "pss_16"]
   },
   {
     "id": "bkg_6",
@@ -45,7 +50,8 @@
     "launchId": "lnch_9",
     "numberOfSeats": 1,
     "totalPrice": 275000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_6"]
   },
   {
     "id": "bkg_7",
@@ -53,7 +59,8 @@
     "launchId": "lnch_10",
     "numberOfSeats": 2,
     "totalPrice": 160000000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_7", "pss_17"]
   },
   {
     "id": "bkg_8",
@@ -61,7 +68,8 @@
     "launchId": "lnch_12",
     "numberOfSeats": 1,
     "totalPrice": 60000000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_8"]
   },
   {
     "id": "bkg_9",
@@ -69,7 +77,8 @@
     "launchId": "lnch_15",
     "numberOfSeats": 4,
     "totalPrice": 2200000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_9", "pss_18", "pss_19", "pss_20"]
   },
   {
     "id": "bkg_10",
@@ -77,6 +86,16 @@
     "launchId": "lnch_17",
     "numberOfSeats": 2,
     "totalPrice": 170000000,
-    "status": "confirmed"
+    "status": "confirmed",
+    "passengers": ["pss_10", "pss_21"]
+  },
+  {
+    "id": "bkg_11",
+    "travelerId": "usr_t11",
+    "launchId": "lnch_18",
+    "numberOfSeats": 2,
+    "totalPrice": 70000000,
+    "status": "confirmed",
+    "passengers": ["pss_11", "pss_22"]
   }
 ]

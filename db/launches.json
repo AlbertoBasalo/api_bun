@@ -168,5 +168,15 @@
     "destination": "Moon Landing",
     "pricePerSeat": 85000000,
     "status": "launched"
+  },
+  {
+    "id": "lnch_18",
+    "agencyId": "usr_a5",
+    "rocketId": "rkt_8",
+    "date": "2027-02-06T00:00:00Z",
+    "mission": "Chinese New Year",
+    "destination": "Moon Orbit",
+    "pricePerSeat": 35000000,
+    "status": "scheduled"
   }
 ]
